@@ -1,0 +1,26 @@
+@import './login-signUp.style.css';
+@import './error.style.css';
+
+* {
+    font-family: 'Source Serif Pro', serif;
+}
+.signup{
+    background-color: #CAF0D3;
+    min-height: 100vh;
+}
+.login{
+    background-color: #CAF0D3;
+    min-height: 100vh;
+}
+.warning {
+    background-color: rgb(247, 255, 249);
+    min-height: 100vh;
+}
+/* .video {
+    object-fit: cover;
+    width: 50vw;
+    height: 50vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+} */

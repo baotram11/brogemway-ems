@@ -1,0 +1,47 @@
+[
+  {
+    "CatIDNext": 1,
+    "CatNextName": "Điện thoại",
+    "CatID": 1
+  },
+  {
+    "CatIDNext": 2,
+    "CatNextName": "Máy tính bảng/Laptop",
+    "CatID": 1
+  },
+  {
+    "CatIDNext": 3,
+    "CatNextName": "Áo",
+    "CatID": 2
+  },
+  {
+    "CatIDNext": 4,
+    "CatNextName": "Quần",
+    "CatID": 2
+  },
+  {
+    "CatIDNext": 5,
+    "CatNextName": "Balo/Túi xách",
+    "CatID": 2
+  },
+  {
+    "CatIDNext": 6,
+    "CatNextName": "Giày thể thao",
+    "CatID": 3
+  },
+  {
+    "CatIDNext": 7,
+    "CatNextName": "Giày tây",
+    "CatID": 3
+  },
+  {
+    "CatIDNext": 8,
+    "CatNextName": "Đồ dùng nhà bếp",
+    "CatID": 4
+  },
+  {
+    "CatIDNext": 9,
+    "CatNextName": "Thiết bị gia đình",
+    "CatID": 4
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "CatID": 1,
+    "CatName": "Thiết bị số"
+  },
+  {
+    "CatID": 2,
+    "CatName": "Thời trang"
+  },
+  {
+    "CatID": 3,
+    "CatName": "Giày"
+  },
+  {
+    "CatID": 4,
+    "CatName": "Gia dụng"
+  }
+]
