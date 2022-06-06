@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Categories = require('../Database/Categories.json');
+// const Categories = require('.../Database/Categories.json');
 
 export default function Category() {
   return (
