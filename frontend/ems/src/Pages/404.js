@@ -12,7 +12,7 @@ const Warning = () => {
 
             
             <div class="card text-center">
-                <img src={require('../Assets/Images/icons/404/warning.gif')} class="card-img-center" />
+                <img src={require('../Assets/Images/icons/404/warning.gif')} alt="..." class="card-img-center" />
                 <div class="card-body">
                     <h4 class="card-text"><i>Sorry, requested page not found</i></h4>
                 

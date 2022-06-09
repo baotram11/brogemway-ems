@@ -1,13 +1,16 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
+import Navbar from "../../Components/Header/Header.NavBar";
 
 export default function SignUp() {
     return (
         <div className="signup">
+            <Navbar />
+
             <div class="container-fluid" id="registerContainer">
                 <div class="row justify-content-center">
 
-                    <div class="col-9">
+                    <div class="col m-5 ">
                         <div class="registerForm">
                             <h1>Đăng ký</h1>
 
@@ -42,7 +45,7 @@ export default function SignUp() {
 
                                     <label class="form-check-label" for="checkRemember">Ghi nhớ đăng nhập</label>
 
-                                    <label class="forgot-password"><a href="#">Quên mật khẩu?</a></label>
+                                    <label class="forgot-password"><a href="/forgot-password">Quên mật khẩu?</a></label>
 
                                     <br />
 

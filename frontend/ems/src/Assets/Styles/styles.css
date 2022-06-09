@@ -1,7 +1,7 @@
 @import './home.style.css';
-@import './motivation.style.css';
 @import './login-signUp.style.css';
 @import './error.style.css';
+@import '../../Components/Product/Product.Style.css';
 
 * {
     font-family: 'Source Serif Pro', serif;
