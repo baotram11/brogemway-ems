@@ -1,24 +1,27 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-import Home     from '../Pages/home';
-import Warning  from '../Pages/404';
-import Login    from '../Pages/SignUp_Login/login';
-import SignUp   from '../Pages/SignUp_Login/signUp';
-import ProductList from '../Pages/Category/productList';
-import ProductDetail from '../Pages/Category/productDetail';
+import Home from '../Pages/Home/home';
+import Page404 from '../Pages/404/page404';
+import Login from '../Pages/Login/login';
+import SignUp from '../Pages/SignUp/signUp';
+import ProductList from '../Pages/ProductDetail/productList';
+import ProductDetail from '../Pages/ProductDetail/productDetail';
 
 const productList = require('../Database/Products.json');
 
 const Router = () => {
     return (
         <Routes>
-            <Route path="/"                 element={<Home              />} />
-            <Route path="/login"            element={<Login             />} />
-            <Route path="/signup"           element={<SignUp            />} />   
-            <Route path="/err"              element={<Warning           />} />  
-            <Route path="/products"         element={<ProductList products={productList} />} />
-            <Route path="/infoProduct:id"  element={<ProductDetail    />} />                    
+            <Route path='/' element={<Home />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<SignUp />} />
+            <Route path='/err' element={<Page404 />} />
+            <Route
+                path='/products'
+                element={<ProductList products={productList} />}
+            />
+            <Route path='/infoProduct:id' element={<ProductDetail />} />
         </Routes>
     );
 };

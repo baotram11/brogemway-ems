@@ -1,0 +1,26 @@
+// Import utilities
+@import 'Utils/fonts.scss';
+
+// Import Bootstrap source files
+@import '/node_modules/bootstrap/scss/bootstrap';
+
+// utils styles
+@import 'utils';
+
+// Import styles
+@import 'variables';
+@import 'mixins';
+
+// components
+@import '/src/Components/NavBar/navbar';
+@import '/src/Components/CarouselSlider/carouselSlider';
+
+@import '/src/Layouts/Header/header';
+@import '/src/Layouts/Footer/footer';
+
+@import '/src/Pages/404/page404';
+@import '/src/Pages/AccountDetail/accountDetail';
+@import '/src/Pages/Home/home';
+@import '/src/Pages/Login/login';
+@import '/src/Pages/ProductDetail/productDetail';
+@import '/src/Pages/SignUp/signUp';
