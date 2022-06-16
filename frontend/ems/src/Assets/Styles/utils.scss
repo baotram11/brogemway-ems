@@ -1,3 +1,5 @@
+@import '/src/Assets/Styles/variables';
+
 h1,
 h2,
 h3,
@@ -18,37 +20,37 @@ table,
 th,
 td,
 caption {
-    font-family: 'Source Serif Pro', serif;
-    margin: 0;
-    padding: 0;
+	font-family: 'Source Serif Pro', serif;
+	margin: 0;
+	padding: 0;
 
-    .raw-HTML & {
-        margin: inherit;
-        padding: inherit;
-    }
+	.raw-HTML & {
+		margin: inherit;
+		padding: inherit;
+	}
 }
 
 img {
-    border-style: none;
-    vertical-align: middle;
+	border-style: none;
+	vertical-align: middle;
 }
-a {
-    color: $font-color !important;
-    text-decoration: none !important;
-    -moz-transition: color $layout-transition-speed ease-in-out;
-    -webkit-transition: color $layout-transition-speed ease-in-out;
-    -ms-transition: color $layout-transition-speed ease-in-out;
-    transition: color $layout-transition-speed ease-in-out;
+// a {
+// 	color: $font-color !important;
+// 	text-decoration: none !important;
+// 	-moz-transition: color $layout-transition-speed ease-in-out;
+// 	-webkit-transition: color $layout-transition-speed ease-in-out;
+// 	-ms-transition: color $layout-transition-speed ease-in-out;
+// 	transition: color $layout-transition-speed ease-in-out;
 
-    &:hover {
-        color: $font-hover-color !important;
-        -moz-transition: color $layout-transition-speed ease-in-out;
-        -webkit-transition: color $layout-transition-speed ease-in-out;
-        -ms-transition: color $layout-transition-speed ease-in-out;
-        transition: color $layout-transition-speed ease-in-out;
-    }
+// 	&:hover {
+// 		color: $font-hover-color !important;
+// 		-moz-transition: color $layout-transition-speed ease-in-out;
+// 		-webkit-transition: color $layout-transition-speed ease-in-out;
+// 		-ms-transition: color $layout-transition-speed ease-in-out;
+// 		transition: color $layout-transition-speed ease-in-out;
+// 	}
 
-    &:focus {
-        outline: none;
-    }
-}
+// 	&:focus {
+// 		outline: none;
+// 	}
+// }

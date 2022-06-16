@@ -1,8 +1,9 @@
 // transition mixin
+@import '/src/Assets/Styles/Utils/fonts';
 
 @mixin fontBrand {
-    color: $theme-medium-green;
-    font-family: 'Posterama', sans-serif;
-    letter-spacing: 0.0625em;
-    text-transform: uppercase;
+	color: $theme-medium-green;
+	font-family: 'Posterama', sans-serif;
+	letter-spacing: 0.0625em;
+	text-transform: uppercase;
 }

@@ -1,17 +1,18 @@
+@import '/src/Assets/Styles/variables';
+
 .masthead {
-    padding-top: 10.5rem;
-    padding-bottom: 6rem;
-    text-align: center;
-    background-image: $img-homepage;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-position: center center;
-    background-size: cover;
+	padding-top: 10.5rem;
+	padding-bottom: 6rem;
+	text-align: center;
+	background-image: url('../../Assets/Images/homepage.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
 }
 
 @media (min-width: 768px) {
-    .masthead {
-        padding-top: 17rem;
-        padding-bottom: 12.5rem;
-    }
+	.masthead {
+		padding-top: 17rem;
+		padding-bottom: 12.5rem;
+	}
 }

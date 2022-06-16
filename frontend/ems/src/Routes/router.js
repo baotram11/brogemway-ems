@@ -11,19 +11,19 @@ import ProductDetail from '../Pages/ProductDetail/productDetail';
 const productList = require('../Database/Products.json');
 
 const Router = () => {
-    return (
-        <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/signup' element={<SignUp />} />
-            <Route path='/err' element={<Page404 />} />
-            <Route
-                path='/products'
-                element={<ProductList products={productList} />}
-            />
-            <Route path='/infoProduct:id' element={<ProductDetail />} />
-        </Routes>
-    );
+	return (
+		<Routes>
+			<Route path='*' element={<Page404 />} />
+			<Route path='/' element={<Home />} />
+			<Route path='/login' element={<Login />} />
+			<Route path='/signup' element={<SignUp />} />
+			<Route
+				path='/products'
+				element={<ProductList products={productList} />}
+			/>
+			<Route path='/products:id' element={<ProductDetail />} />
+		</Routes>
+	);
 };
 
 export default Router;

@@ -1,6 +1,5 @@
 import React from 'react';
-import { BsPlusLg, BsCartPlus, BsCartCheck } from 'react-icons/bs';
-import { IoHeartOutline } from 'react-icons/io5';
+import { BsPlusLg} from 'react-icons/bs';
 
 import Header from '../../Layouts/Header/header';
 
