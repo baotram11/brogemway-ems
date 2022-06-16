@@ -1,58 +1,65 @@
 @import '/src/Assets/Styles/variables';
 
-#portfolio .portfolio-item {
-	max-width: 26rem;
-	margin-left: auto;
-	margin-right: auto;
-}
-#portfolio .portfolio-item .portfolio-link {
-	position: relative;
-	display: block;
-	margin: 0 auto;
-}
-#portfolio .portfolio-item .portfolio-link .portfolio-hover {
-	display: flex;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background: $portfolio-link-hover;
-	align-items: center;
-	justify-content: center;
-	opacity: 0;
-	transition: opacity ease-in-out 0.25s;
-}
-#portfolio
-	.portfolio-item
-	.portfolio-link
-	.portfolio-hover
-	.portfolio-hover-content {
-	font-size: 1.25rem;
-	color: white;
-}
-#portfolio .portfolio-item .portfolio-link:hover .portfolio-hover {
-	opacity: 1;
-}
-#portfolio .portfolio-item .portfolio-caption {
-	padding: 1.5rem;
-	text-align: center;
-	background-color: #fff;
-}
-#portfolio .section-heading {
-	font-family: $font-family-heading;
-	color: $theme-dark-green;
-}
-#portfolio .section-subheading {
-	font-family: 'Source Serif Pro', serif;
-	font-size: 120%;
-	font-style: italic;
-}
-#portfolio .portfolio-item .portfolio-caption .portfolio-caption-heading {
-	font-size: 1.5rem;
-	font-family: $font-family-heading;
-	font-weight: $font-weight-bold-three;
-	margin-bottom: 0;
-}
-#portfolio .portfolio-item .portfolio-caption .portfolio-caption-subheading {
-	font-style: italic;
-	font-family: 'Source Serif Pro', serif;
+#portfolio {
+	.portfolio-item {
+		max-width: 26rem;
+		margin-left: auto;
+		margin-right: auto;
+
+		.portfolio-link {
+			position: relative;
+			display: block;
+			margin: 0 auto;
+
+			&:hover {
+				.portfolio-hover {
+					opacity: 1;
+				}
+			}
+
+			.portfolio-hover {
+				display: flex;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background: $portfolio-link-hover;
+				align-items: center;
+				justify-content: center;
+				opacity: 0;
+				transition: opacity ease-in-out 0.25s;
+
+				.portfolio-hover-content {
+					font-size: 1.25rem;
+					color: white;
+				}
+			}
+		}
+
+		.portfolio-caption {
+			padding: 1.5rem;
+			text-align: center;
+			background-color: #fff;
+			.portfolio-caption-heading {
+				font-size: 1.5rem;
+				font-family: $font-family-heading;
+				font-weight: $font-weight-bold-three;
+				margin-bottom: 0;
+			}
+			.portfolio-caption-subheading {
+				font-style: italic;
+				font-family: 'Source Serif Pro', serif;
+			}
+		}
+	}
+
+	.section-heading {
+		font-family: $font-family-heading;
+		color: $theme-dark-green;
+	}
+
+	.section-subheading {
+		font-family: $font-family-normal;
+		font-size: 120%;
+		font-style: italic;
+	}
 }

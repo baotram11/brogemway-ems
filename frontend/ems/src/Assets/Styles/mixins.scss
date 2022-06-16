@@ -7,3 +7,13 @@
 	letter-spacing: 0.0625em;
 	text-transform: uppercase;
 }
+
+@mixin subheading {
+	font-style: italic;
+	font-family: $font-family-normal;
+	color: red;
+}
+
+@mixin Heading {
+
+}
