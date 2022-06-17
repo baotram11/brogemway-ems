@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../Layouts/Header/header';
 
-const ProductList = (props) => {
+const AllProducts = (props) => {
 	const { products } = props;
 
 	return (
@@ -42,4 +42,4 @@ const ProductList = (props) => {
 	);
 };
 
-export default ProductList;
+export default AllProducts;
