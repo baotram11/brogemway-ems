@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Redirect } from 'react-router-dom';
 
 import Home from '../Pages/Home/home';
 import Page404 from '../Pages/404/page404';
@@ -13,7 +13,7 @@ const productList = require('../Database/Products.json');
 const Router = () => {
 	return (
 		<Routes>
-			<Route path='*' element={<Page404 />} />
+			<Redirect to={<Page404 />} />
 			<Route path='/' element={<Home />} />
 			<Route path='/login' element={<Login />} />
 			<Route path='/signup' element={<SignUp />} />
