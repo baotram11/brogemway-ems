@@ -1,0 +1,29 @@
+// Import utilities
+@import 'utils/fonts.scss';
+
+// Import Bootstrap source files
+@import '/node_modules/bootstrap/scss/bootstrap';
+
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+
+// utils styles
+@import 'utils';
+
+// Import styles
+@import 'variables';
+@import 'mixins';
+
+// components
+@import '/src/components/CarouselSlider/CarouselSlider';
+
+@import '/src/layouts/header/Header';
+@import '/src/layouts/footer/Footer';
+
+@import '/src/screens/AccountScreen/AccountScreen';
+@import '/src/screens/HomeScreen/HomeScreen';
+@import '/src/screens/LoginScreen/LoginScreen';
+@import '/src/screens/NotFoundScreen/NotFoundScreen';
+@import '/src/screens/ProductListScreen/ProductListScreen';
+@import '/src/screens/ProductScreen/ProductScreen';
+@import '/src/screens/RegisterScreen/RegisterScreen';

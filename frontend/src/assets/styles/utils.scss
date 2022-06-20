@@ -1,0 +1,36 @@
+@import '/src/assets/styles/variables';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+dl,
+dd,
+ol,
+ul,
+form,
+fieldset,
+legend,
+table,
+th,
+td,
+caption {
+	font-family: 'Source Serif Pro', serif;
+	margin: 0;
+	padding: 0;
+
+	.raw-HTML & {
+		margin: inherit;
+		padding: inherit;
+	}
+}
+
+img {
+	border-style: none;
+	vertical-align: middle;
+}
