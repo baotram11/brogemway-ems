@@ -8,7 +8,7 @@ const products = require('../../database/Products.json');
 const ProductListScreen = () => {
 	return (
 		<div className='productlist-screen text-center'>
-			<h2 class='section-heading text-uppercase mb-3 pt-5'>Sản phẩm</h2>
+			<h2 className='section-heading text-uppercase mb-3 pt-5'>Sản phẩm</h2>
 
 			<div className='row m-5'>
 				{products.map((product) => (

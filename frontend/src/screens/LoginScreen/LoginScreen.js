@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 // import './LoginScreen.scss';
@@ -11,67 +12,64 @@ const LoginScreen = () => {
 				<title>Đăng nhập &#9702; Brogemway</title>
 			</Helmet>
 
-			<div class='container-fluid' id='loginContainer'>
-				<div class='row justify-content-center'>
-					<div class='col-lg-8'>
-						<div class='loginForm'>
-							<h1>Đăng ký</h1>
+			<div className='container-fluid' id='loginContainer'>
+				<div className='row justify-content-center'>
+					<div className='loginForm col-lg-8'>
+						<h1>Đăng nhập</h1>
 
-							{/* Login Form */}
-							<form>
-								<div class='form-group mb-4'>
-									<input
-										type='username'
-										class='form-control'
-										id='inputUsername'
-										placeholder='Tên đăng nhập'
-									/>
-								</div>
+						<form>
+							<div className='form-group mb-4'>
+								<input
+									type='username'
+									className='form-control'
+									id='inputUsername'
+									placeholder='Tên đăng nhập'
+								/>
+							</div>
 
-								<div class='form-group mb-4'>
-									<input
-										type='password'
-										class='form-control'
-										id='inputPassword'
-										placeholder='Mật khẩu'
-									/>
-								</div>
+							<div className='form-group mb-4'>
+								<input
+									type='password'
+									className='form-control'
+									id='inputPassword'
+									placeholder='Mật khẩu'
+								/>
+							</div>
 
-								<div class='form-check mb-4'>
-									<label class='switch '>
-										<input type='checkbox' />
-										<span class='slider round'></span>
-									</label>
-
-									<label
-										class='form-check-label'
-										for='checkRemember'
-									>
-										Ghi nhớ đăng nhập
-									</label>
-
-									<label class='forgot-password'>
-										<a href='/'>Quên mật khẩu?</a>
-									</label>
-
-									<br />
-
-									<label></label>
-								</div>
-
-								<button
-									type='submit'
-									class='btn btn-lg btn-block btn-success'
-								>
-									Đăng nhập
-								</button>
-								<br />
-								<label class='create-account mt-3'>
-									<span>Bạn chưa có tài khoản? </span>
-									<a href='/signup'> Tạo tài khoản </a>
+							<div className='form-check mb-4'>
+								<label className='switch '>
+									<input type='checkbox' />
+									<span className='slider round'></span>
 								</label>
-							</form>
-						</div>
+
+								<label
+									className='form-check-label'
+									for='checkRemember'
+								>
+									Ghi nhớ đăng nhập
+								</label>
+
+								<label className='forgot-password'>
+									<Link href='/'>Quên mật khẩu?</Link>
+								</label>
+
+								<br />
+
+								<label></label>
+							</div>
+
+							<button
+								type='submit'
+								className='btn btn-lg btn-block btn-success'
+							>
+								Đăng nhập
+							</button>
+							<br />
+							<label className='create-account mt-3'>
+								<span>Bạn chưa có tài khoản? </span>
+								<Link href='/register'> Tạo tài khoản </Link>
+							</label>
+						</form>
 					</div>
 				</div>
 			</div>

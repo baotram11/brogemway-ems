@@ -14,15 +14,9 @@ import Footer from './layouts/footer/Footer';
 const App = () => {
 	return (
 		<BrowserRouter>
-			<header>
-				<Header />
-			</header>
-			<main>
-				<Router />
-			</main>
-			<footer>
-				<Footer />
-			</footer>
+			<Header />
+			<Router />
+			<Footer />
 		</BrowserRouter>
 	);
 };

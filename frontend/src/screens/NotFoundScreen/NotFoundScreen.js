@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { AiOutlineHome } from 'react-icons/ai';
 
@@ -12,24 +13,24 @@ const NotFoundScreen = () => {
 				<title>404 - Không tìm thấy trang &#9702; Brogemway</title>
 			</Helmet>
 
-			<div class='card text-center'>
+			<div className='card text-center'>
 				<img
 					src={require('../../assets/images/notfound.gif')}
 					alt='...'
-					class='card-img-center'
+					className='card-img-center'
 				/>
-				<div class='card-body'>
-					<h4 class='card-text'>
+				<div className='card-body'>
+					<h4 className='card-text'>
 						<i>Sorry, requested page not found</i>
 					</h4>
 
-					<a
+					<Link
 						href='/'
-						class='card-footer-item'
+						className='card-footer-item'
 						style={{ fontSize: '2vw', color: 'red' }}
 					>
 						<AiOutlineHome /> Trang chủ
-					</a>
+					</Link>
 				</div>
 			</div>
 		</div>

@@ -1,162 +1,153 @@
 @import '/src/assets/styles/variables';
 
-.login {
+.login-screen {
 	background-color: $theme-light-green;
 	min-height: 100vh;
-}
 
-.loginContainer {
-	padding-top: 10%;
-	text-align: center;
-}
+	.loginContainer {
+		padding-top: 10%;
+		text-align: center;
 
-.loginForm {
-	width: 100%;
-	height: 500px;
-	background-color: #fff;
-	padding: 15px;
-	padding-top: 30px;
-}
+		.loginForm {
+			width: 100%;
+			height: 500px;
+			background-color: #fff;
+			padding: 15px;
+			padding-top: 30px;
+			h1 {
+				margin-top: 30px;
+				font-weight: bold;
+				font-size: 50px;
+				letter-spacing: 1px;
+			}
+			form {
+				max-width: 420px;
+				margin: 30px auto;
+			}
+			.btn {
+				width: 420px;
+				border-radius: 15px;
+				font-weight: bold;
+				font-size: 20px;
+				padding: 5px 25px 5px 25px;
+				background-color: #2da058;
+			}
 
-.loginForm h1 {
-	margin-top: 30px;
-	font-weight: bold;
-	font-size: 50px;
-	letter-spacing: 1px;
-}
+			.form-group {
+				input {
+					font-size: 15px;
+					font-weight: lighter;
+					padding-bottom: 10px;
+					border-color: #d8dee4;
+					background-color: transparent;
+					color: $theme-dark-green !important;
+					padding: 10px 30px;
+					border-radius: 15px;
+					transition: 0.2s;
+				}
+			}
 
-.loginForm form {
-	max-width: 420px;
-	margin: 30px auto;
-}
+			.form-check {
+				padding: 0;
+				text-align: left;
+				label {
+					vertical-align: top;
+					padding-top: 5px;
+					padding-left: 10px;
+					font-size: 15px;
+					color: #424242;
+				}
+			}
 
-.loginForm .btn {
-	width: 420px;
-	border-radius: 15px;
-	font-weight: bold;
-	font-size: 20px;
-	padding: 5px 25px 5px 25px;
-	background-color: #2da058;
-}
+			.forgot-password {
+				text-align: right;
+				float: right;
+				font-weight: bold;
+				font-size: 15px;
+				Link {
+					color: $slider-active;
+					opacity: 0.8;
+					&:hover {
+						color: $theme-medium-green;
+						opacity: 1;
+					}
+				}
+			}
 
-.form-group input {
-	font-size: 15px;
-	font-weight: lighter;
-	padding-bottom: 10px;
-	border-color: #d8dee4;
-	background-color: transparent;
-	color: #465347 !important;
-	padding: 10px 30px;
-	border-radius: 15px;
-	transition: 0.2s;
-}
+			.create-account {
+				Link {
+					font-weight: bold;
+					color: $theme-medium-green;
+					opacity: 0.7;
+					&:hover {
+						color: $theme-medium-green;
+						opacity: 1;
+					}
+				}
+			}
 
-/* Form check styles*/
-.form-check {
-	padding: 0;
-	text-align: left;
-}
+			.switch {
+				position: relative;
+				display: inline-block;
+				width: 60px;
+				height: 30px;
+				input {
+					display: none;
+				}
+			}
 
-.form-check label {
-	vertical-align: top;
-	padding-top: 5px;
-	padding-left: 10px;
-	font-size: 15px;
-	color: #424242;
-}
+			.slider {
+				position: absolute;
+				cursor: pointer;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: $slider-background;
+				-webkit-transition: 0.4s;
+				transition: 0.4s;
+				border-radius: 30px;
 
-.forgot-password {
-	text-align: right;
-	float: right;
-	font-weight: bold;
-	font-size: 15px;
-}
+				&:before {
+					position: absolute;
+					content: '';
+					height: 22px;
+					width: 22px;
+					left: 4px;
+					bottom: 4px;
+					background-color: white;
+					-webkit-transition: 0.4s;
+					transition: 0.4s;
+					border-radius: 50%;
+				}
+			}
 
-.forgot-password a {
-	color: #00b72e;
-	opacity: 0.8;
-}
+			input:checked + .slider {
+				background-color: $slider-active;
+			}
 
-.forgot-password a:hover {
-	color: #167146;
-	opacity: 1;
-}
+			input:focus + .slider {
+				box-shadow: 0 0 1px $slider-active;
+			}
 
-.create-account a {
-	font-weight: bold;
-	color: #167146;
-	opacity: 0.7;
-}
-
-.create-account a:hover {
-	color: #167146;
-	opacity: 1;
-}
-
-/* Switch styles */
-
-.switch {
-	position: relative;
-	display: inline-block;
-	width: 60px;
-	height: 30px;
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-	display: none;
-}
-
-/* The slider */
-.slider {
-	position: absolute;
-	cursor: pointer;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: #d8dee4;
-	-webkit-transition: 0.4s;
-	transition: 0.4s;
-	border-radius: 30px;
-}
-
-.slider:before {
-	position: absolute;
-	content: '';
-	height: 22px;
-	width: 22px;
-	left: 4px;
-	bottom: 4px;
-	background-color: white;
-	-webkit-transition: 0.4s;
-	transition: 0.4s;
-	border-radius: 50%;
-}
-
-input:checked + .slider {
-	background-color: #00b72e;
-}
-
-input:focus + .slider {
-	box-shadow: 0 0 1px #00b72e;
-}
-
-input:checked + .slider:before {
-	-webkit-transform: translateX(30px);
-	-ms-transform: translateX(30px);
-	transform: translateX(30px);
-}
-
-/* Media queries */
-@media (max-width: 500px) {
-	.forgot-password {
-		text-align: right;
-		float: left;
-		padding: 20px 0;
+			input:checked + .slider:before {
+				-webkit-transform: translateX(30px);
+				-ms-transform: translateX(30px);
+				transform: translateX(30px);
+			}
+		}
 	}
 
-	#login {
-		padding-top: 50px;
+	/* Media queries */
+	@media (max-width: 500px) {
+		.forgot-password {
+			text-align: right;
+			float: left;
+			padding: 20px 0;
+		}
+
+		#login {
+			padding-top: 50px;
+		}
 	}
 }

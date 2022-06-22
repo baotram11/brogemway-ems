@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { AiOutlineUser } from 'react-icons/ai';
 import { IoSearchOutline, IoHeartOutline } from 'react-icons/io5';
 import { MdOutlineShoppingBag } from 'react-icons/md';
+import { FaBars } from 'react-icons/fa';
 
 // import './Header.scss';
 
@@ -25,17 +27,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 const Header = () => {
 	return (
-		<div className='Header'>
+		<div className='header'>
 			<nav
-				class='navbar navbar-expand-lg navbar-dark fixed-top'
+				className='navbar navbar-expand-lg navbar-dark fixed-top'
 				id='mainNav'
 			>
-				<div class='container'>
-					<a class='navbar-brand' href='/'>
+				<div className='container'>
+					<Link className='navbar-brand' href='/'>
 						BROGEMWAY
-					</a>
+					</Link>
 					<button
-						class='navbar-toggler'
+						className='navbar-toggler'
 						type='button'
 						data-bs-toggle='collapse'
 						data-bs-target='#navbarResponsive'
@@ -44,44 +46,47 @@ const Header = () => {
 						aria-label='Toggle navigation'
 					>
 						Menu
-						<i class='fas fa-bars ms-1'></i>
+						<FaBars />
 					</button>
-					<div class='collapse navbar-collapse' id='navbarResponsive'>
-						<ul class='navbar-nav text-uppercase ms-auto py-4 py-lg-0'>
-							<li class='nav-item'>
-								<a class='nav-link' href='/products'>
+					<div
+						className='collapse navbar-collapse'
+						id='navbarResponsive'
+					>
+						<ul className='navbar-nav text-uppercase ms-auto py-4 py-lg-0'>
+							<li className='nav-item'>
+								<Link className='nav-link' href='/products'>
 									Sản phẩm
-								</a>
+								</Link>
 							</li>
-							<li class='nav-item'>
-								<a class='nav-link' href='/term'>
+							<li className='nav-item'>
+								<Link className='nav-link' href='/term'>
 									Điều khoản
-								</a>
+								</Link>
 							</li>
-							<li class='nav-item'>
-								<a class='nav-link' href='/about'>
+							<li className='nav-item'>
+								<Link className='nav-link' href='/about'>
 									Về chúng tôi
-								</a>
+								</Link>
 							</li>
-							<li class='nav-item'>
-								<a class='nav-link icon' href='/login'>
+							<li className='nav-item'>
+								<Link className='nav-link icon' href='/login'>
 									<AiOutlineUser size={20} />
-								</a>
+								</Link>
 							</li>
-							<li class='nav-item'>
-								<a class='nav-link' href='/search'>
+							<li className='nav-item'>
+								<Link className='nav-link' href='/search'>
 									<IoSearchOutline size={20} />
-								</a>
+								</Link>
 							</li>
-							<li class='nav-item'>
-								<a class='nav-link' href='/favorite'>
+							<li className='nav-item'>
+								<Link className='nav-link' href='/favorite'>
 									<IoHeartOutline size={20} />
-								</a>
+								</Link>
 							</li>
-							<li class='nav-item'>
-								<a class='nav-link' href='/cart'>
+							<li className='nav-item'>
+								<Link className='nav-link' href='/cart'>
 									<MdOutlineShoppingBag size={20} />
-								</a>
+								</Link>
 							</li>
 						</ul>
 					</div>

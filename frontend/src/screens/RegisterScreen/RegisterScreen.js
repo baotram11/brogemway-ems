@@ -1,63 +1,64 @@
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
+import { Link } from 'react-router-dom';
 
 // import './RegisterScreen.scss';
 
 const RegisterScreen = () => {
 	return (
 		<div className='register-screen'>
-			<div class='container-fluid' id='registerContainer'>
-				<div class='row justify-content-center'>
-					<div class='col m-5 '>
-						<div class='registerForm'>
+			<div className='container-fluid' id='registerContainer'>
+				<div className='row justify-content-center'>
+					<div className='col m-5 '>
+						<div className='registerForm'>
 							<h1>Đăng ký</h1>
 
-							<div class='row row-cols-2'>
-								<div class='col-5'>
-									<div class='card'>
-										<button class='btn btn-google btn-block'>
+							<div className='row row-cols-2'>
+								<div className='col-5'>
+									<div className='card'>
+										<button className='btn btn-google btn-block'>
 											<FcGoogle /> Đăng ký với Google
 										</button>
 									</div>
 								</div>
 
-								<div class='col-3'>
+								<div className='col-3'>
 									<form>
-										<div class='form-group mb-4'>
+										<div className='form-group mb-4'>
 											<input
 												type='username'
-												class='form-control'
+												className='form-control'
 												id='inputUsername'
 												placeholder='Tên đăng nhập'
 											/>
 										</div>
 
-										<div class='form-group mb-4'>
+										<div className='form-group mb-4'>
 											<input
 												type='password'
-												class='form-control'
+												className='form-control'
 												id='inputPassword'
 												placeholder='Mật khẩu'
 											/>
 										</div>
 
-										<div class='form-check mb-4'>
-											<label class='switch '>
+										<div className='form-check mb-4'>
+											<label className='switch '>
 												<input type='checkbox' />
-												<span class='slider round'></span>
+												<span className='slider round'></span>
 											</label>
 
 											<label
-												class='form-check-label'
+												className='form-check-label'
 												for='checkRemember'
 											>
 												Ghi nhớ đăng nhập
 											</label>
 
-											<label class='forgot-password'>
-												<a href='/forgot-password'>
+											<label className='forgot-password'>
+												<Link href='/forgot-password'>
 													Quên mật khẩu?
-												</a>
+												</Link>
 											</label>
 
 											<br />
@@ -67,14 +68,14 @@ const RegisterScreen = () => {
 
 										<button
 											type='submit'
-											class='btn btn-lg btn-block btn-success'
+											className='btn btn-lg btn-block btn-success'
 										>
 											Đăng nhập
 										</button>
 										<br />
-										<label class='create-account mt-3'>
+										<label className='create-account mt-3'>
 											<span>Bạn đã có tài khoản? </span>
-											<a href='/login'> Đăng nhập </a>
+											<Link href='/login'> Đăng nhập </Link>
 										</label>
 									</form>
 								</div>
