@@ -33,7 +33,10 @@ const Header = () => {
 				id='mainNav'
 			>
 				<div className='container'>
-					<Link className='navbar-brand' href='/'>
+					<Link
+						className='navbar-brand'
+						to={{ pathname: '/', hash: '#' }}
+					>
 						BROGEMWAY
 					</Link>
 					<button
@@ -54,37 +57,37 @@ const Header = () => {
 					>
 						<ul className='navbar-nav text-uppercase ms-auto py-4 py-lg-0'>
 							<li className='nav-item'>
-								<Link className='nav-link' href='/products'>
+								<Link className='nav-link' to='/products'>
 									Sản phẩm
 								</Link>
 							</li>
 							<li className='nav-item'>
-								<Link className='nav-link' href='/term'>
+								<Link className='nav-link' to='/term'>
 									Điều khoản
 								</Link>
 							</li>
 							<li className='nav-item'>
-								<Link className='nav-link' href='/about'>
+								<Link className='nav-link' to='/about'>
 									Về chúng tôi
 								</Link>
 							</li>
 							<li className='nav-item'>
-								<Link className='nav-link icon' href='/login'>
+								<Link className='nav-link icon' to='/login'>
 									<AiOutlineUser size={20} />
 								</Link>
 							</li>
 							<li className='nav-item'>
-								<Link className='nav-link' href='/search'>
+								<Link className='nav-link' to='/search'>
 									<IoSearchOutline size={20} />
 								</Link>
 							</li>
 							<li className='nav-item'>
-								<Link className='nav-link' href='/favorite'>
+								<Link className='nav-link' to='/favorite'>
 									<IoHeartOutline size={20} />
 								</Link>
 							</li>
 							<li className='nav-item'>
-								<Link className='nav-link' href='/cart'>
+								<Link className='nav-link' to='/cart'>
 									<MdOutlineShoppingBag size={20} />
 								</Link>
 							</li>

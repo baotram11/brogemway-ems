@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 
 // import './ProductListScreen.scss';
@@ -8,7 +9,14 @@ const products = require('../../database/Products.json');
 const ProductListScreen = () => {
 	return (
 		<div className='productlist-screen text-center'>
-			<h2 className='section-heading text-uppercase mb-3 pt-5'>Sản phẩm</h2>
+			<Helmet>
+				<meta charSet='utf-8' />
+				<title>Sản phẩm &#9702; Brogemway</title>
+			</Helmet>
+
+			<h2 className='section-heading text-uppercase mb-3 mt-5'>
+				Sản phẩm
+			</h2>
 
 			<div className='row m-5'>
 				{products.map((product) => (

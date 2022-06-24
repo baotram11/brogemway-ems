@@ -50,7 +50,7 @@ const LoginScreen = () => {
 								</label>
 
 								<label className='forgot-password'>
-									<Link href='/'>Quên mật khẩu?</Link>
+									<Link to='/'>Quên mật khẩu?</Link>
 								</label>
 
 								<br />
@@ -67,7 +67,7 @@ const LoginScreen = () => {
 							<br />
 							<label className='create-account mt-3'>
 								<span>Bạn chưa có tài khoản? </span>
-								<Link href='/register'> Tạo tài khoản </Link>
+								<Link to='/register'> Tạo tài khoản </Link>
 							</label>
 						</form>
 					</div>

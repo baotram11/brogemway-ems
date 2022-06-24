@@ -1,6 +1,10 @@
 @import '/src/assets/styles/variables';
 
 .product-screen {
+	.section-heading {
+		font-family: $font-family-heading;
+		color: $theme-dark-green;
+	}
 	.container {
 		padding-top: 10%;
 

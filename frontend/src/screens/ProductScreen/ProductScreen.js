@@ -1,6 +1,8 @@
 import { AiFillHeart } from 'react-icons/ai';
 import { useParams } from 'react-router-dom';
+import ImageSlider from '../../components/ImageSlider/ImageSlider';
 import CarouselSlider from '../../components/CarouselSlider/CarouselSlider';
+import { Helmet } from 'react-helmet';
 
 // import './ProductScreen.scss';
 
@@ -12,7 +14,12 @@ const ProductScreen = () => {
 
 	return (
 		<div className='product-screen'>
-			<div className='container mt-5 mb-5'>
+			<Helmet>
+				<meta charSet='utf-8' />
+				<title>{products[index].ProName} &#9702; Brogemway</title>
+			</Helmet>
+
+			<div className='container'>
 				<div className='card'>
 					<div className='row g-0'>
 						<div className='col-md-6 border-end'>
@@ -21,12 +28,12 @@ const ProductScreen = () => {
 									<img
 										src={require(`../../assets/images/products/${products[index].ProID}/1.png`)}
 										id='main_product_image'
-										width='500px'
+										width='100%'
 										alt=''
 									/>
 								</div>
 								<div className='thumbnail_images'>
-									<CarouselSlider
+									<ImageSlider
 										index={products[index].ProID}
 									/>
 								</div>
@@ -73,9 +80,11 @@ const ProductScreen = () => {
 			</div>
 
 			<div className='col p-5'>
-				<section className='section'>
-					<div className='heading pb-5'>Bạn có thể thích</div>
-					<CarouselSlider index={products[index].ProID} />
+				<section className='section text-center'>
+					<h3 className='section-heading text-uppercase pb-3 pt-5'>
+						Bạn có thể thích
+					</h3>
+					<CarouselSlider />
 				</section>
 			</div>
 		</div>

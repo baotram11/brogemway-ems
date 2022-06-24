@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
 
@@ -7,6 +8,10 @@ import { Link } from 'react-router-dom';
 const RegisterScreen = () => {
 	return (
 		<div className='register-screen'>
+			<Helmet>
+				<meta charSet='utf-8' />
+				<title>Đăng ký &#9702; Brogemway</title>
+			</Helmet>
 			<div className='container-fluid' id='registerContainer'>
 				<div className='row justify-content-center'>
 					<div className='col m-5 '>
@@ -56,7 +61,7 @@ const RegisterScreen = () => {
 											</label>
 
 											<label className='forgot-password'>
-												<Link href='/forgot-password'>
+												<Link to='/forgot-password'>
 													Quên mật khẩu?
 												</Link>
 											</label>
@@ -75,7 +80,7 @@ const RegisterScreen = () => {
 										<br />
 										<label className='create-account mt-3'>
 											<span>Bạn đã có tài khoản? </span>
-											<Link href='/login'> Đăng nhập </Link>
+											<Link to='/login'> Đăng nhập </Link>
 										</label>
 									</form>
 								</div>
@@ -86,6 +91,12 @@ const RegisterScreen = () => {
 			</div>
 		</div>
 	);
-}
+};
 
 export default RegisterScreen;
+
+// Your password must:
+// Include an UPPER and lowercase letter
+// Include a number
+// Include one or more of these special characters: .@$!%*#?&><)(^-_
+// Be between 8 and 100 characters

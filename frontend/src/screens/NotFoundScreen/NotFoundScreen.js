@@ -25,9 +25,9 @@ const NotFoundScreen = () => {
 					</h4>
 
 					<Link
-						href='/'
-						className='card-footer-item'
 						style={{ fontSize: '2vw', color: 'red' }}
+						to={'/'}
+						className='card-footer-item'
 					>
 						<AiOutlineHome /> Trang chủ
 					</Link>

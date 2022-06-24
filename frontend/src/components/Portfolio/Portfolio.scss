@@ -51,14 +51,4 @@
 			}
 		}
 	}
-
-	.section-heading {
-		@include headingStyle;
-	}
-
-	.section-subheading {
-		font-family: $font-family-normal;
-		font-size: 120%;
-		font-style: italic;
-	}
 }

@@ -1,82 +1,12 @@
 @import '/src/assets/styles/variables';
 
 .productlist-screen {
-	.product-box {
-		height: 120px;
-		max-height: 120px;
-		border-radius: 3px;
-		box-shadow: $box-shadow;
-		transition: $layout-transition-speed;
-
-		&:hover {
-			background-color: $theme-light;
-		}
-	}
 	.item-image {
 		height: 120%;
 		object-fit: cover;
 		border-radius: 3px;
 	}
 	.section-heading {
-		font-family: $font-family-heading;
-		color: $theme-dark-green;
-	}
-
-	.product-detail {
-		.card {
-			border: none;
-			overflow: hidden;
-			margin-top: 10%;
-		}
-		.thumbnail_images {
-			.ul {
-				list-style: none;
-				justify-content: center;
-				display: flex;
-				align-items: center;
-				margin-top: 10px;
-
-				.li {
-					margin: 5px;
-					padding: 10px;
-					border: 2px solid #eee;
-					cursor: pointer;
-					transition: all 0.5s;
-					&:hover {
-						border: 2px solid #000;
-					}
-				}
-			}
-		}
-		.heart {
-			height: 29px;
-			width: 29px;
-			background-color: $theme-light;
-			border-radius: 50%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-		.heart {
-			height: 29px;
-			width: 29px;
-			background-color: $theme-light;
-			border-radius: 50%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-		.content {
-			.p {
-				font-size: 12px;
-			}
-		}
-		.buttons {
-			.btn {
-				height: 50px;
-				width: 150px;
-				border-radius: 0px !important;
-			}
-		}
+		@include headingStyle;
 	}
 }
