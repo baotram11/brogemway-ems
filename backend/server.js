@@ -19,6 +19,15 @@ connection.once('open', () => {
     console.log('EMS database connection established successfully!');
 });
 
+// setup routes
+const productRouter = require('./routes/products');
+const accountRouter = require('./routes/accounts');
+const categoriesRouter = require('./routes/categories');
+
+app.use('/products', productRouter);
+app.use('/accounts', accountRouter);
+app.use('/categories', categoriesRouter);
+
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
 });
