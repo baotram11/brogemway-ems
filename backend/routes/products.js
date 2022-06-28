@@ -9,7 +9,7 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/:id').get((req, res) => {
-    Product.findById(req.params.id)
+    Product.find({ ProID: req.params.id })
         .then((products) => res.json(products))
         .catch((err) => res.status(400).json('Error: ' + err));
 });

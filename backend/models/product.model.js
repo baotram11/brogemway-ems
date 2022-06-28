@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const productSchema = new Schema(
     {
         ProID: {
-            type: Number,
+            type: String,
             required: true,
             unique: true,
         },
@@ -21,7 +21,7 @@ const productSchema = new Schema(
             required: true,
         },
         CatID: {
-            type: Number,
+            type: String,
             required: true,
         },
     },
