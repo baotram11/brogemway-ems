@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const accountSchema = new Schema({
+const accountSchema = new mongoose.Schema({
     PhoneNumber: {
         type: String,
         unique: true,
@@ -11,15 +10,16 @@ const accountSchema = new Schema({
         type: String,
         required: true,
     },
-    Email: { type: String },
-    Address: { type: String },
-    isActive: {
+    Email: String,
+    Address: String,
+    IsActive: {
         type: Boolean,
         required: true,
         default: false,
     },
     Level: {
         type: String,
+        enum: ['bidder', 'admin'],
         required: true,
         default: 'bidder',
     },
@@ -28,7 +28,7 @@ const accountSchema = new Schema({
         required: true,
         default: 'brogemway',
     },
-    DoB: { type: Date },
+    DoB: Date,
 });
 
 const Account = mongoose.model('Account', accountSchema);

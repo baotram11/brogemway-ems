@@ -1,37 +1,20 @@
 const router = require('express').Router();
 
-let Product = require('../models/product.model');
+const ProductController = require('../controllers/product.controller');
 
-router.route('/').get((req, res) => {
-    Product.find()
-        .then((products) => res.json(products))
-        .catch((err) => res.status(400).json('Error: ' + err));
-});
+//Get a list of all products
+router.get('/', ProductController.getAllProducts);
 
-router.route('/:id').get((req, res) => {
-    Product.find({ ProID: req.params.id })
-        .then((products) => res.json(products))
-        .catch((err) => res.status(400).json('Error: ' + err));
-});
+//Get a product by ProID
+router.get('/:id', ProductController.findProductById);
 
-router.route('/add').post((req, res) => {
-    const proID = req.params.ProID;
-    const proName = req.params.ProName;
-    const price = req.params.Price;
-    const description = req.params.Description;
-    const catID = req.params.CatID;
+//Create a new product
+router.post('/', ProductController.createNewProduct);
 
-    const newProduct = new Product({
-        proID,
-        proName,
-        price,
-        description,
-        catID,
-    });
-    console.log(newProduct);
-    newProduct
-        .save()
-        .then(() => res.json('New Product added!'))
-        .catch((err) => res.status(400).json('Error: ' + err));
-});
+//Update a product by ProID
+router.patch('/:id', ProductController.updateAProduct);
+
+//Delete a product by ProID
+router.delete('/:id', ProductController.deleteAProduct);
+
 module.exports = router;
