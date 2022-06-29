@@ -1,11 +1,20 @@
 const router = require('express').Router();
 
-let Category = require('../models/category.model');
+const CategoryController = require('../controllers/category.controller');
 
-router.route('/').get((req, res) => {
-    Category.find()
-        .then((categories) => res.json(categories))
-        .catch((err) => res.status(400).json('Error: ' + err));
-});
+//Get a list of all categories
+router.get('/', CategoryController.getAllCategories);
+
+//Get products by CatID
+router.get('/:id', CategoryController.findProductsByCatId);
+
+//Create a new category
+router.post('/', CategoryController.createNewCategory);
+
+//Update a category by CatID
+router.patch('/:id', CategoryController.updateACategory);
+
+//Delete a category by CatID
+router.delete('/:id', CategoryController.deleteACategory);
 
 module.exports = router;

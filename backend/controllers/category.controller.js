@@ -1,15 +1,16 @@
 const mongoose = require('mongoose');
 const createError = require('http-errors');
 
+const Category = require('../models/category.model');
 const Product = require('../models/product.model');
 
 module.exports = {
-    getAllProducts: async (req, res, next) => {
+    getAllCategories: async (req, res, next) => {
         try {
-            const results = await Product.find();
+            const results = await Category.find();
 
             if (!results) {
-                throw createError(404, 'Products are not found.');
+                throw createError(404, 'Categories are not found.');
             }
 
             res.send(results);
@@ -22,40 +23,34 @@ module.exports = {
         }
     },
 
-    findProductById: async (req, res, next) => {
+    findProductsByCatId: async (req, res, next) => {
         const id = req.params.id;
         try {
-            const product = await Product.find({ ProID: id });
-            if (!product) {
-                throw createError(404, 'Product does not exist.');
+            const products = await Product.find({ CatID: id });
+            if (!products) {
+                throw createError(404, 'Category is empty');
             }
-            res.send(product);
+            res.send(products);
         } catch (error) {
             if (error instanceof mongoose.CastError) {
-                return next(createError(400, 'Invalid Product id'));
+                return next(createError(400, 'Invalid Category id'));
             }
 
             next(error);
         }
     },
 
-    createNewProduct: async (req, res, next) => {
+    createNewCategory: async (req, res, next) => {
         try {
-            const proID = req.body.ProID;
-            const proName = req.body.ProName;
-            const price = req.body.Price;
-            const description = req.body.Description;
             const catID = req.body.CatID;
+            const catName = req.body.CatName;
 
-            const newProduct = new Product({
-                ProID: proID,
-                ProName: proName,
-                Price: price,
-                Description: description,
+            const newCategory = new Category({
                 CatID: catID,
+                CatName: catName,
             });
 
-            const result = await newProduct.save();
+            const result = await newCategory.save();
             res.send(result);
         } catch (error) {
             if (error.name === 'ValidationError') {
@@ -66,19 +61,19 @@ module.exports = {
         }
     },
 
-    updateAProduct: async (req, res, next) => {
+    updateACategory: async (req, res, next) => {
         try {
             const id = req.params.id;
             const updates = req.body;
 
-            const result = await Product.findOneAndUpdate(
-                { ProID: id },
+            const result = await Category.findOneAndUpdate(
+                { CatID: id },
                 updates
             );
             if (!result) {
-                throw createError(404, 'Product does not exist');
+                throw createError(404, 'Category does not exist');
             }
-            res.send('Updated!!');
+            res.send('Updated!');
         } catch (error) {
             console.log(error.message);
 
@@ -90,17 +85,17 @@ module.exports = {
         }
     },
 
-    deleteAProduct: async (req, res, next) => {
+    deleteACategory: async (req, res, next) => {
         const id = req.params.id;
 
         try {
-            const result = await Product.findOneAndDelete({
-                ProID: id,
+            const result = await Category.findOneAndDelete({
+                CatID: id,
             });
             if (!result) {
-                throw createError(404, 'Product does not exist');
+                throw createError(404, 'Category does not exist');
             }
-            res.send(`Deleted the product: ${id} !!`);
+            res.send(`Deleted the category: ${id} !!`);
         } catch (error) {
             console.log(error.message);
 

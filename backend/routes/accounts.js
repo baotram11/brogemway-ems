@@ -1,32 +1,23 @@
 const router = require('express').Router();
 
-let Account = require('../models/account.model');
+const AccountController = require('../controllers/Account.controller');
 
-router.route('/').get((req, res) => {
-    Account.find()
-        .then((accounts) => res.json(accounts))
-        .catch((err) => res.status(400).json('Error: ' + err));
-});
+//Get a list of all Accounts
+router.get('/', AccountController.getAllAccounts);
 
-router.route('/add').post((req, res) => {
-    const phoneNumber = req.body.PhoneNumber;
-    const name = req.body.Name;
-    const email = req.body.Email;
-    const address = req.body.Address;
-    const dob = req.body.DoB;
+//Get a Account by UserID
+router.get('/:id', AccountController.findAccountById);
 
-    const newAccount = new Account({
-        PhoneNumber: phoneNumber,
-        Name: name,
-        Email: email,
-        Address: address,
-        DoB: dob,
-    });
+//Create a new Account
+router.post('/', AccountController.createNewAccount);
 
-    newAccount
-        .save()
-        .then(() => res.json('New Account added!'))
-        .catch((err) => res.status(400).json('Error: ' + err));
-});
+//Update a Account by UserID
+router.patch('/:id', AccountController.updateAccount);
+
+//Lock a Account by UserID
+router.patch('/lock/:id', AccountController.lockAccount);
+
+//Unlock a Account by UserID
+router.patch('/unlock/:id', AccountController.unlockAccount);
 
 module.exports = router;
