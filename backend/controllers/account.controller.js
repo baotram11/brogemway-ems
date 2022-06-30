@@ -1,6 +1,3 @@
-const mongoose = require('mongoose');
-const createError = require('http-errors');
-
 const Account = require('../models/account.model');
 
 module.exports = {
@@ -8,17 +5,16 @@ module.exports = {
         try {
             const results = await Account.find();
 
-            if (!results) {
-                throw createError(404, 'Accounts are not found.');
+            var length = Object.keys(results).length;
+
+            if (!length) {
+                return res.status(404).json('No accounts found!');
             }
 
             res.send(results);
         } catch (error) {
-            if (error instanceof mongoose.CastError) {
-                return next(createError(400, error.message));
-            }
-
-            next(error);
+            res.status(400).json('Error: ' + error);
+            next();
         }
     },
 
@@ -26,16 +22,17 @@ module.exports = {
         const id = req.params.id;
         try {
             const result = await Account.find({ UserID: id });
-            if (!result) {
-                throw createError(404, 'Account does not exist.');
-            }
-            res.send(result);
-        } catch (error) {
-            if (error instanceof mongoose.CastError) {
-                return next(createError(400, 'Invalid Account id'));
+
+            var length = Object.keys(result).length;
+
+            if (!length) {
+                return res.status(404).json('Account does not exist!');
             }
 
-            next(error);
+            res.send(result);
+        } catch (error) {
+            res.status(400).json('Error: ' + error);
+            next();
         }
     },
 
@@ -66,11 +63,8 @@ module.exports = {
             const result = await newAccount.save();
             res.send(result);
         } catch (error) {
-            if (error.name === 'ValidationError') {
-                return next(createError(422, error.message));
-            }
-
-            next(error);
+            res.status(422).json('Validation Error ' + error.message);
+            next();
         }
     },
 
@@ -83,18 +77,15 @@ module.exports = {
                 { UserID: id },
                 updates
             );
+
             if (!result) {
-                throw createError(404, 'Account does not exist');
+                return res.status(404).json('Account does not exist!');
             }
+
             res.send('Updated!!');
         } catch (error) {
-            console.log(error.message);
-
-            if (error instanceof mongoose.CastError) {
-                return next(createError(400, error.message));
-            }
-
-            next(error);
+            res.status(400).json('Error: ' + error);
+            next();
         }
     },
 
@@ -106,18 +97,15 @@ module.exports = {
                 { UserID: id },
                 { IsActive: false }
             );
+
             if (!result) {
-                throw createError(404, 'Account does not exist');
+                return res.status(404).json('Account does not exist!');
             }
+
             res.send(`Locked the Account: ${id} !!`);
         } catch (error) {
-            console.log(error.message);
-
-            if (error instanceof mongoose.CastError) {
-                return next(createError(400, error.message));
-            }
-
-            next(error);
+            res.status(400).json('Error: ' + error);
+            next();
         }
     },
 
@@ -129,18 +117,15 @@ module.exports = {
                 { UserID: id },
                 { IsActive: true }
             );
+
             if (!result) {
-                throw createError(404, 'Account does not exist');
+                return res.status(404).json('Account does not exist!');
             }
+
             res.send(`Activated the account: ${id} !!`);
         } catch (error) {
-            console.log(error.message);
-
-            if (error instanceof mongoose.CastError) {
-                return next(createError(400, error.message));
-            }
-
-            next(error);
+            res.status(400).json('Error: ' + error);
+            next();
         }
     },
 };

@@ -1,6 +1,3 @@
-const mongoose = require('mongoose');
-const createError = require('http-errors');
-
 const Product = require('../models/product.model');
 
 module.exports = {
@@ -8,34 +5,34 @@ module.exports = {
         try {
             const results = await Product.find();
 
-            if (!results) {
-                throw createError(404, 'Products are not found.');
+            var length = Object.keys(results).length;
+
+            if (!length) {
+                return res.status(404).json('No products found!');
             }
 
             res.send(results);
         } catch (error) {
-            if (error instanceof mongoose.CastError) {
-                return next(createError(400, error.message));
-            }
-
-            next(error);
+            res.status(400).json('Error: ' + error);
+            next();
         }
     },
 
     findProductById: async (req, res, next) => {
         const id = req.params.id;
         try {
-            const product = await Product.find({ ProID: id });
-            if (!product) {
-                throw createError(404, 'Product does not exist.');
-            }
-            res.send(product);
-        } catch (error) {
-            if (error instanceof mongoose.CastError) {
-                return next(createError(400, 'Invalid Product id'));
+            const result = await Product.find({ ProID: id });
+
+            var length = Object.keys(result).length;
+
+            if (!length) {
+                return res.status(404).json('Product does not exist!');
             }
 
-            next(error);
+            res.send(result);
+        } catch (error) {
+            res.status(400).json('Error: ' + error);
+            next();
         }
     },
 
@@ -58,11 +55,8 @@ module.exports = {
             const result = await newProduct.save();
             res.send(result);
         } catch (error) {
-            if (error.name === 'ValidationError') {
-                return next(createError(422, error.message));
-            }
-
-            next(error);
+            res.status(422).json('Validation Error! ' + error.message);
+            next();
         }
     },
 
@@ -75,18 +69,17 @@ module.exports = {
                 { ProID: id },
                 updates
             );
-            if (!result) {
-                throw createError(404, 'Product does not exist');
+
+            var length = Object.keys(result).length;
+
+            if (!length) {
+                return res.status(404).json('Product does not exist!');
             }
+
             res.send('Updated!!');
         } catch (error) {
-            console.log(error.message);
-
-            if (error instanceof mongoose.CastError) {
-                return next(createError(400, error.message));
-            }
-
-            next(error);
+            res.status(400).json('Error: ' + error);
+            next();
         }
     },
 
@@ -97,18 +90,17 @@ module.exports = {
             const result = await Product.findOneAndDelete({
                 ProID: id,
             });
-            if (!result) {
-                throw createError(404, 'Product does not exist');
+
+            var length = Object.keys(result).length;
+
+            if (!length) {
+                return res.status(404).json('Product does not exist!');
             }
+
             res.send(`Deleted the product: ${id} !!`);
         } catch (error) {
-            console.log(error.message);
-
-            if (error instanceof mongoose.CastError) {
-                return next(createError(400, error.message));
-            }
-
-            next(error);
+            res.status(400).json('Error: ' + error);
+            next();
         }
     },
 };

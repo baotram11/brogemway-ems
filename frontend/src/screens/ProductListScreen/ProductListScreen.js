@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 
 // import './ProductListScreen.scss';
 
-// const products = require('../../database/Products.json');
-
 const ProductListScreen = (props) => {
     const [products, setProducts] = useState([]);
 
