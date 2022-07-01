@@ -8,7 +8,7 @@ module.exports = {
             var length = Object.keys(results).length;
 
             if (!length) {
-                return res.status(404).json('No accounts found!');
+                return res.status(404).json({ error: 'No accounts found!' });
             }
 
             res.send(results);
@@ -26,7 +26,9 @@ module.exports = {
             var length = Object.keys(result).length;
 
             if (!length) {
-                return res.status(404).json('Account does not exist!');
+                return res
+                    .status(404)
+                    .json({ error: 'Account does not exist!' });
             }
 
             res.send(result);
@@ -63,7 +65,7 @@ module.exports = {
             const result = await newAccount.save();
             res.send(result);
         } catch (error) {
-            res.status(422).json('Validation Error ' + error.message);
+            res.status(422).json({ error: error.message });
             next();
         }
     },
@@ -79,7 +81,9 @@ module.exports = {
             );
 
             if (!result) {
-                return res.status(404).json('Account does not exist!');
+                return res
+                    .status(404)
+                    .json({ error: 'Account does not exist!' });
             }
 
             res.send('Updated!!');
@@ -99,12 +103,14 @@ module.exports = {
             );
 
             if (!result) {
-                return res.status(404).json('Account does not exist!');
+                return res
+                    .status(404)
+                    .json({ error: 'Account does not exist!' });
             }
 
             res.send(`Locked the Account: ${id} !!`);
         } catch (error) {
-            res.status(400).json('Error: ' + error);
+            res.status(400).json({ error: error.message });
             next();
         }
     },
@@ -119,12 +125,14 @@ module.exports = {
             );
 
             if (!result) {
-                return res.status(404).json('Account does not exist!');
+                return res
+                    .status(404)
+                    .json({ error: 'Account does not exist!' });
             }
 
             res.send(`Activated the account: ${id} !!`);
         } catch (error) {
-            res.status(400).json('Error: ' + error);
+            res.status(400).json({ error: error.message });
             next();
         }
     },

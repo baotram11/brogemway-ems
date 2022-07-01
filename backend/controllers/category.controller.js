@@ -9,12 +9,12 @@ module.exports = {
             var length = Object.keys(results).length;
 
             if (!length) {
-                return res.status(404).json('No categories found!');
+                return res.status(404).json({ error: 'No categories found!' });
             }
 
             res.send(results);
         } catch (error) {
-            res.status(400).json('Error: ' + error);
+            res.status(400).json({ error: error.message });
             next();
         }
     },
@@ -27,12 +27,12 @@ module.exports = {
             var length = Object.keys(results).length;
 
             if (!length) {
-                return res.status(404).json('Category is empty!');
+                return res.status(404).json({ error: 'Category is empty!' });
             }
 
             res.send(results);
         } catch (error) {
-            res.status(400).json('Invalid Category id');
+            res.status(400).json({ error: 'Invalid Category id' });
             next();
         }
     },
@@ -50,7 +50,7 @@ module.exports = {
             const result = await newCategory.save();
             res.send(result);
         } catch (error) {
-            res.status(422).json('Validation Error! ' + error.message);
+            res.status(422).json({ error: error.message });
             next();
         }
     },
@@ -66,7 +66,9 @@ module.exports = {
             );
 
             if (!result) {
-                return res.status(404).json('Category does not exist!');
+                return res
+                    .status(404)
+                    .json({ error: 'Category does not exist!' });
             }
 
             res.send('Updated!');
@@ -85,12 +87,14 @@ module.exports = {
             });
 
             if (!result) {
-                return res.status(404).json('Category does not exist!'); 
+                return res
+                    .status(404)
+                    .json({ error: 'Category does not exist!' });
             }
 
             res.send(`Deleted the category: ${id} !!`);
         } catch (error) {
-            res.status(400).json('Error: ' + error);
+            res.status(400).json({ error: error.message });
             next();
         }
     },

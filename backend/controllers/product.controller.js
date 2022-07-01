@@ -8,12 +8,12 @@ module.exports = {
             var length = Object.keys(results).length;
 
             if (!length) {
-                return res.status(404).json('No products found!');
+                return res.status(404).json({ error: 'No products found!' });
             }
 
             res.send(results);
         } catch (error) {
-            res.status(400).json('Error: ' + error);
+            res.status(400).json({ error: error.message });
             next();
         }
     },
@@ -26,12 +26,14 @@ module.exports = {
             var length = Object.keys(result).length;
 
             if (!length) {
-                return res.status(404).json('Product does not exist!');
+                return res
+                    .status(404)
+                    .json({ error: 'Product does not exist!' });
             }
 
             res.send(result);
         } catch (error) {
-            res.status(400).json('Error: ' + error);
+            res.status(400).json({ error: error.message });
             next();
         }
     },
@@ -55,7 +57,7 @@ module.exports = {
             const result = await newProduct.save();
             res.send(result);
         } catch (error) {
-            res.status(422).json('Validation Error! ' + error.message);
+            res.status(422).json({ error: error.message });
             next();
         }
     },
@@ -73,7 +75,9 @@ module.exports = {
             var length = Object.keys(result).length;
 
             if (!length) {
-                return res.status(404).json('Product does not exist!');
+                return res
+                    .status(404)
+                    .json({ error: 'Product does not exist!' });
             }
 
             res.send('Updated!!');
@@ -94,12 +98,14 @@ module.exports = {
             var length = Object.keys(result).length;
 
             if (!length) {
-                return res.status(404).json('Product does not exist!');
+                return res
+                    .status(404)
+                    .json({ error: 'Product does not exist!' });
             }
 
             res.send(`Deleted the product: ${id} !!`);
         } catch (error) {
-            res.status(400).json('Error: ' + error);
+            res.status(400).json({ error: error.message });
             next();
         }
     },
