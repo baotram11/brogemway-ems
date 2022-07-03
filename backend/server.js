@@ -24,9 +24,9 @@ const productRouter = require('./routes/product.router');
 const accountRouter = require('./routes/account.router');
 const categoryRouter = require('./routes/category.router');
 
-app.use('/products', productRouter);
-app.use('/accounts', accountRouter);
-app.use('/categories', categoryRouter);
+app.use('/api/products', productRouter);
+app.use('/api/accounts', accountRouter);
+app.use('/api/categories', categoryRouter);
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
