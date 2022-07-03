@@ -15,17 +15,25 @@
 @import 'mixins';
 
 // components
-@import '/src/components/CarouselSlider/CarouselSlider';
-@import '/src/components/Portfolio/Portfolio';
+@import '../../components/CarouselSlider/style.scss';
+@import '../../components/CategoryList/style.scss';
+@import '../../components/ImageSlider/style.scss';
+@import '../../components/NotFound/style.scss';
+@import '../../components/Portfolio/style.scss';
+@import '../../components/ProductDetail/style.scss';
+@import '../../components/ProductList/style.scss';
 
-@import '/src/layouts/header/Header';
-@import '/src/layouts/footer/Footer';
+@import '../../navigations/Footer/style.scss';
+@import '../../navigations/Header/style.scss';
 
-@import '/src/screens/AccountScreen/AccountScreen';
-@import '/src/screens/CategoryScreen/CategoryScreen';
-@import '/src/screens/HomeScreen/HomeScreen';
-@import '/src/screens/LoginScreen/LoginScreen';
-@import '/src/screens/NotFoundScreen/NotFoundScreen';
-@import '/src/screens/ProductListScreen/ProductListScreen';
-@import '/src/screens/ProductScreen/ProductScreen';
-@import '/src/screens/RegisterScreen/RegisterScreen';
+@import '../../screens/About/style.scss';
+@import '../../screens/Account/style.scss';
+@import '../../screens/AllProducts/style.scss';
+@import '../../screens/Checkout/style.scss';
+@import '../../screens/Home/style.scss';
+@import '../../screens/Login/style.scss';
+@import '../../screens/Order/style.scss';
+@import '../../screens/Page404/style.scss';
+@import '../../screens/Product/style.scss';
+@import '../../screens/Register/style.scss';
+@import '../../screens/Terms/style.scss';

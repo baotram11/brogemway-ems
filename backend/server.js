@@ -20,13 +20,13 @@ connection.once('open', () => {
 });
 
 // setup routes
-const productRouter = require('./routes/products');
-const accountRouter = require('./routes/accounts');
-const categoriesRouter = require('./routes/categories');
+const productRouter = require('./routes/product.router');
+const accountRouter = require('./routes/account.router');
+const categoryRouter = require('./routes/category.router');
 
 app.use('/products', productRouter);
 app.use('/accounts', accountRouter);
-app.use('/categories', categoriesRouter);
+app.use('/categories', categoryRouter);
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);

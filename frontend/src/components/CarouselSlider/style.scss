@@ -1,0 +1,13 @@
+.carousel-slider {
+    .item-image {
+        height: 120%;
+        object-fit: cover;
+        border-radius: 3px;
+    }
+    .card-footer {
+        .text-truncate {
+            text-decoration: none;
+            color: black;
+        }
+    }
+}

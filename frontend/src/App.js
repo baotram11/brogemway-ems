@@ -8,17 +8,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 import Router from './routes/Router';
-import Header from './layouts/header/Header';
-import Footer from './layouts/footer/Footer';
+import Header from './navigations/Header';
+import Footer from './navigations/Footer';
 
 const App = () => {
-	return (
-		<BrowserRouter>
-			<Header />
-			<Router />
-			<Footer />
-		</BrowserRouter>
-	);
+    return (
+        <BrowserRouter>
+            <Header />
+            <Router />
+            <Footer />
+        </BrowserRouter>
+    );
 };
 
 export default App;
