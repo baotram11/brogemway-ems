@@ -1,7 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import Portfolio from '../../components/Portfolio';
-import CarouselSlider from '../../components/CarouselSlider';
+import Portfolio from '../../components/Portfolio/portfolio';
+import CarouselSlider from '../../components/CarouselSlider/carouselSlider';
+import ContactUs from '../../components/ContactUs/contactUs';
 
 const Home = () => {
     return (
@@ -19,6 +20,10 @@ const Home = () => {
 
             <section className='page-section bg-light' id='best-seller'>
                 <CarouselSlider />
+            </section>
+
+            <section className='page-section bg-light' id='contact-us'>
+                <ContactUs />
             </section>
         </div>
     );

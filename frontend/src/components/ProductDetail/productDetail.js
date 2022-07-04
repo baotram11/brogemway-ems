@@ -1,20 +1,9 @@
-import axios from 'axios';
-import React, { useState, useEffect } from 'react';
-import ImageSlider from '../../components/ImageSlider';
+import React from 'react';
+import ImageSlider from '../../components/ImageSlider/imageSlider';
 import { AiFillHeart } from 'react-icons/ai';
 
 const ProductDetail = (props) => {
-    const id = props.id;
-    const [product, setProduct] = useState([]);
-    useEffect(() => {
-        axios
-            .get(`http://localhost:5000/products/${id}`)
-            .then((res) => {
-                setProduct(res.data);
-                console.log('PRODUCT ' + id + ':' + res.data);
-            })
-            .catch((err) => console.log(err));
-    });
+    const product = props.product;
 
     return (
         <div className='product-detail'>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import NotFound from '../../components/NotFound';
+import NotFound from '../../components/NotFound/notFound';
 
 const Page404 = () => {
     return (

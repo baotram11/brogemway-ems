@@ -8,8 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 import Router from './routes/Router';
-import Header from './navigations/Header';
-import Footer from './navigations/Footer';
+import Header from './navigations/Header/Header';
+import Footer from './navigations/Footer/footer';
 
 const App = () => {
     return (

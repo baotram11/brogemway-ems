@@ -8,7 +8,7 @@ const CarouselSlider = () => {
 
     useEffect(() => {
         axios
-            .get('http://localhost:5000/products')
+            .get('http://localhost:5000/api/products')
             .then((res) => {
                 setProducts(res.data);
             })

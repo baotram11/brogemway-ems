@@ -1,0 +1,75 @@
+.contact-us {
+    .card {
+        color: #757575 !important;
+        background-color: #fff !important;
+        align-items: center !important;
+        background: url('https://i.imgur.com/9djv5sH.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    h2 {
+        font-size: calc(
+            25px + (45 - 25) * ((100vw - 360px) / (1600 - 360))
+        ) !important;
+    }
+
+    button {
+        font-size: calc(
+            15px + (14 - 12) * ((100vw - 360px) / (1600 - 360))
+        ) !important;
+        padding-left: calc(
+            20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))
+        ) !important;
+        padding-right: calc(
+            20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))
+        ) !important;
+        padding-top: calc(
+            10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))
+        ) !important;
+        padding-bottom: calc(
+            10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))
+        ) !important;
+
+        &:focus {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            outline-width: 0;
+        }
+    }
+
+    input {
+        border: 2px solid green !important;
+        &.input-group-lg > .custom-select,
+        &.input-group-lg > .form-control:not(textarea) {
+            height: calc(
+                40px + (48 - 40) * ((100vw - 360px) / (1600 - 360))
+            ) !important;
+        }
+        &::-webkit-input-placeholder {
+            padding-left: 5px !important;
+            transform: translate3d(0, -4px, 0);
+        }
+        &::placeholder {
+            vertical-align: middle !important;
+            font-size: calc(
+                12px + (14 - 12) * ((100vw - 360px) / (1600 - 360))
+            ) !important;
+        }
+        &:focus {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            outline-width: 0;
+        }
+    }
+
+    img {
+        vertical-align: middle !important;
+        width: 100%;
+        height: auto;
+        width: calc(17px + 6 * ((100vw - 320px) / 680));
+    }
+}
