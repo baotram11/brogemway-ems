@@ -3,50 +3,49 @@ import axios from 'axios';
 
 const apiUrl = 'http://localhost:5000/api/products/';
 
-export const getAllProducts = createAsyncThunk(
-    'products/all',
-    async (data, { rejectWithValue }) => {
-        const response = await axios.get(apiUrl);
-
-        data = await response.data;
-        console.log(data);
-
-        if (response.status < 200 || response.status >= 300) {
-            return rejectWithValue(data);
+export const fetchProducts = createAsyncThunk(
+    'products/fetchProducts',
+    async () => {
+        try {
+            const response = await axios.get(apiUrl);
+            console.log(response.data);
+            return [...response.data];
+        } catch (error) {
+            return error.message;
         }
-
-        return data;
     }
 );
 
 export const productSlice = createSlice({
-    name: 'product',
+    name: 'products',
     initialState: {
-        products: null,
-        isLoading: false,
-        errorMessage: '',
+        allProducts: [],
+        status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
+        errorMessage: null,
     },
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(getAllProducts.pending, (state) => {
-            state.isLoading = true;
+        builder.addCase(fetchProducts.pending, (state, action) => {
+            state.status = 'loading';
+            console.log(state.status);
         });
 
-        builder.addCase(getAllProducts.fulfilled, (state, action) => {
-            state.isLoading = false;
-            state.isAuthenticated = true;
-            state.products = action.payload;
+        builder.addCase(fetchProducts.fulfilled, (state, action) => {
+            state.status = 'succeeded';
+            state.allProducts = action.payload;
+            console.log(state.allProducts);
         });
 
-        builder.addCase(getAllProducts.rejected, (state, action) => {
-            state.isLoading = false;
-            state.errorMessage = action.payload.message;
+        builder.addCase(fetchProducts.rejected, (state, action) => {
+            state.status = 'failed';
+            console.log(state.status);
+            state.errorMessage = action.error.message;
         });
     },
 });
 
-export const selectProducts = (state) => state.product.products;
-export const selectLoading = (state) => state.product.isLoading;
+export const selectAllProducts = (state) => state.products.allProducts;
+export const selectStatus = (state) => state.product.status;
 export const selectErrorMessage = (state) => state.product.errorMessage;
 
 export default productSlice.reducer;
