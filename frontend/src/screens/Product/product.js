@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    selectProduct,
+    selectStatus,
+    selectErrorMessage,
+    fetchProductByID,
+} from '../../store/slices/productSlice';
 
 import CarouselSlider from '../../components/CarouselSlider/carouselSlider';
 import ProductDetail from '../../components/ProductDetail/productDetail';
-import ProductList from '../../components/ProductList/productList';
 
 const Product = () => {
     const param = useParams();
+    const dispatch = useDispatch();
 
+    const status = useSelector(selectStatus);
+    const errorMessage = useSelector(selectErrorMessage);
+
+    console.log(status);
+
+    useEffect(() => {
+        const promise = dispatch(fetchProductByID(param.id));
+        return () => {
+            promise.abort();
+        };
+    }, []);
     return (
         <div className='product-screen'>
             <Helmet>
@@ -16,18 +34,15 @@ const Product = () => {
                 <title>{param.id} &#9702; Brogemway</title>
             </Helmet>
 
-            {/* <ProductDetail id={param.id} /> */}
-            <h1>{param.id}</h1>
-            <ProductList />
-
-            <div className='col p-5'>
-                <section className='section text-center'>
-                    <h3 className='section-heading text-uppercase pb-3 pt-5'>
-                        Bạn có thể thích
-                    </h3>
-                    <CarouselSlider />
-                </section>
-            </div>
+            {status === 'loading' && (
+                <div class='spinner-border text-secondary' role='status'>
+                    <span class='visually-hidden'>Loading...</span>
+                </div>
+            )}
+            {status === 'failed' && (
+                <h5 style={{ color: 'red' }}>{errorMessage}</h5>
+            )}
+            {status === 'succeeded' && <ProductDetail />}
         </div>
     );
 };

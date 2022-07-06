@@ -5,13 +5,13 @@ const apiUrl = 'http://localhost:5000/api/products/';
 
 export const fetchProductByID = createAsyncThunk(
     'products/fetchProductByID',
-    async (id, thunkAPI) => {
+    async (id = null, { rejectWithValue }) => {
         try {
             console.log('CALL API: ' + apiUrl + id);
             const response = await axios.get(apiUrl + id);
             return [...response.data];
         } catch (error) {
-            return error.message;
+            return rejectWithValue(error.message);
         }
     }
 );
@@ -64,7 +64,7 @@ export const productSlice = createSlice({
 
         builder.addCase(fetchProductByID.rejected, (state, action) => {
             state.status = 'failed';
-            state.errorMessage = action.error.message;
+            state.errorMessage = action.payload;
         });
     },
 });
