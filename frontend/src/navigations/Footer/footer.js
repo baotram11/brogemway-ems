@@ -111,14 +111,14 @@ const Footer = () => {
                                             Cửa hàng
                                         </li>
                                         <li>
-                                            <iframe
+                                            {/* <iframe
                                                 src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.630773293551!2d106.67998301474876!3d10.762912992330719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1c06f4e1dd%3A0x43900f1d4539a3d!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBLaG9hIGjhu41jIFThu7Egbmhpw6puIC0gxJDhuqFpIGjhu41jIFF14buRYyBnaWEgVFAuSENN!5e0!3m2!1svi!2s!4v1641658251544!5m2!1svi!2s'
                                                 width='250'
                                                 style={{ border: 1 }}
                                                 allowfullscreen=''
                                                 loading='lazy'
                                                 title='Địa chỉ'
-                                            ></iframe>
+                                            ></iframe> */}
                                         </li>
                                     </ul>
                                 </div>

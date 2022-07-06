@@ -1,19 +1,16 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout, selectUser } from '../../store/slices/userSlice';
+import { getUsers } from '../../store/slices/userSlice';
 
 const Account = () => {
-    const user = useSelector(selectUser);
     const dispatch = useDispatch();
+    const { users } = useSelector((state) => state.users);
 
-    const handleLogout = () => {
-        dispatch(logout());
-    };
-    // Navigate to login page if user is not exists
-    if (!user) {
-        return <Link to='/login' />;
-    }
+    useEffect(() => {
+        dispatch(getUsers());
+    }, [dispatch]);
+
     return (
         <div className='account'>
             <div className='row'>
@@ -32,11 +29,11 @@ const Account = () => {
                 </div>
                 <div className='col-8'>
                     <h2>
-                        Welcome {user.firstName} {user.lastName}
+                        {users &&
+                            users.map((user, i) => (
+                                <h1 key={i}>{user.Name}</h1>
+                            ))}
                     </h2>
-                    <Link to='#' onClick={handleLogout}>
-                        Log out
-                    </Link>
                 </div>
             </div>
         </div>

@@ -1,12 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    selectAllProducts,
+    selectStatus,
+    selectErrorMessage,
+    fetchProducts,
+} from '../../store/slices/productSlice';
 
-const ProductList = (props) => {
-    const { products } = props;
+const ProductList = () => {
+    const dispatch = useDispatch();
+
+    const allProducts = useSelector(selectAllProducts);
+    const status = useSelector(selectStatus);
+    const errorMessage = useSelector(selectErrorMessage);
+
+    useEffect(() => {
+        if (status === 'idle') {
+            dispatch(fetchProducts());
+        }
+    }, [status, dispatch]);
+
+    if (status === 'loading') {
+        <p>'Loading...'</p>;
+    } else if (status === 'succeeded') {
+        <p>{status}</p>;
+    } else if (status === 'failed') {
+        <p>{errorMessage}</p>;
+    }
+
     return (
         <div className='product-list'>
             <div className='row m-5'>
-                {products.map((product) => (
+                {allProducts.map((product) => (
                     <Link
                         style={{ textDecoration: 'none', color: 'black' }}
                         to={`/products/${product.ProID}`}

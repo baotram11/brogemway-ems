@@ -1,78 +1,35 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-const initialState = {
-  isLoading: false,
-  errorMessage: '',
-  currentUser: null,
-};
+const apiUrl = 'http://localhost:5000/api/accounts/';
 
-// Fetch API
-export const login = createAsyncThunk(
-  'user/login',
-  async (data, { rejectWithValue }) => {
-    const response = await fetch(
-      'https://fake-rest-api-nodejs.herokuapp.com/login',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      }
-    );
-    console.log(data);
-    const jsonData = await response.json();
-    console.log(jsonData);
-    console.log(response.status);
-
-
-    if (response.status < 200 || response.status >= 300) {
-      return rejectWithValue(jsonData);
+export const getUsers = createAsyncThunk(
+    'users/getUsers',
+    async (dispatch, getState) => {
+        return await axios.get(apiUrl).then(
+            (res) => res.json()
+        );
     }
-
-    return jsonData;
-  }
 );
 
-// Config slice
-export const userSlice = createSlice({
-  name: 'user',
-  initialState: {
-    isLoading: false,
-    errorMessage: '',
-    currentUser: null,
-  },
-  reducers: {
-    logout: () => initialState,
-  },
-  extraReducers: (builder) => {
-    // Start login request
-    builder.addCase(login.pending, (state) => {
-      state.isLoading = true;
-    });
-
-    // Request successful
-    builder.addCase(login.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.isAuthenticated = true;
-      state.currentUser = action.payload;
-    });
-
-    // Request error
-    builder.addCase(login.rejected, (state, action) => {
-      state.isLoading = false;
-      state.errorMessage = action.payload.message;
-    });
-  },
+const usersSlice = createSlice({
+    name: 'user',
+    initialState: {
+        users: [],
+        status: null,
+    },
+    extraReducers: {
+        [getUsers.pending]: (state, action) => {
+            state.status = 'loading';
+        },
+        [getUsers.fulfilled]: (state, action) => {
+            state.status = 'success';
+            state.users = action.payload;
+        },
+        [getUsers.rejected]: (state, action) => {
+            state.status = 'failed';
+        },
+    },
 });
 
-// Export actions
-export const { logout } = userSlice.actions;
-
-// Select state currentUser from slice
-export const selectUser = (state) => state.user.currentUser;
-export const selectLoading = (state) => state.user.isLoading;
-export const selectErrorMessage = (state) => state.user.errorMessage;
-
-// Export reducer
-export default userSlice.reducer;
+export default usersSlice.reducer;
