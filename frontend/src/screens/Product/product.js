@@ -1,25 +1,14 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+
 import CarouselSlider from '../../components/CarouselSlider/carouselSlider';
 import ProductDetail from '../../components/ProductDetail/productDetail';
+import ProductList from '../../components/ProductList/productList';
 
 const Product = () => {
     const param = useParams();
-    const apiUrl = 'http://localhost:5000/api/products/';
-    const id = param.id;
-    const [product, setProduct] = useState([]);
 
-    useEffect(() => {
-        axios
-            .get(`http://localhost:5000/api/products/${id}`)
-            .then((res) => {
-                setProduct(res.data[0]);
-                console.log(res.data);
-            })
-            .catch((err) => console.log(err));
-    });
     return (
         <div className='product-screen'>
             <Helmet>
@@ -27,7 +16,9 @@ const Product = () => {
                 <title>{param.id} &#9702; Brogemway</title>
             </Helmet>
 
-            <ProductDetail product={product} />
+            {/* <ProductDetail id={param.id} /> */}
+            <h1>{param.id}</h1>
+            <ProductList />
 
             <div className='col p-5'>
                 <section className='section text-center'>

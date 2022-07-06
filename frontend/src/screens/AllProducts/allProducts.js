@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import ProductList from '../../components/ProductList/productList';
 
 const AllProducts = () => {
-    
     return (
         <div className='all-products'>
             <Helmet>

@@ -1,19 +1,15 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    selectAllProducts,
+    selectStatus,
+    selectErrorMessage,
+    fetchProducts,
+} from '../../store/slices/productSlice';
 import Slider from 'react-slick';
 
 const CarouselSlider = () => {
-    const [products, setProducts] = useState([]);
-
-    useEffect(() => {
-        axios
-            .get('http://localhost:5000/api/products')
-            .then((res) => {
-                setProducts(res.data);
-            })
-            .catch((err) => console.log(err));
-    });
     const settings = {
         className: 'center',
         infinite: true,
@@ -21,6 +17,25 @@ const CarouselSlider = () => {
         slidesToShow: 5,
         swipeToSlide: true,
     };
+
+    const dispatch = useDispatch();
+
+    const allProducts = useSelector(selectAllProducts);
+    const status = useSelector(selectStatus);
+    const errorMessage = useSelector(selectErrorMessage);
+
+    useEffect(() => {
+        if (status === 'idle') {
+            dispatch(fetchProducts());
+        }
+    }, [status, dispatch]);
+
+    if (status === 'loading') {
+        <p>'Loading...'</p>;
+    } else if (status === 'failed') {
+        <p>{errorMessage}</p>;
+    }
+
     return (
         <div className='carousel-slider ml-2 mr-2'>
             <div className='text-center'>
@@ -30,7 +45,7 @@ const CarouselSlider = () => {
             </div>
             <div className='row m-5'>
                 <Slider {...settings}>
-                    {products.map((product) => (
+                    {allProducts.map((product) => (
                         <Link
                             style={{ textDecoration: 'none', color: 'black' }}
                             to={{

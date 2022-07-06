@@ -1,22 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    selectAllCategories,
+    selectStatus,
+    selectErrorMessage,
+    fetchCategories,
+} from '../../store/slices/categorySlice';
 
 const CategoryList = () => {
-    const [categories, setCategories] = useState([]);
+    const dispatch = useDispatch();
+
+    const allCategories = useSelector(selectAllCategories);
+    const status = useSelector(selectStatus);
+    const errorMessage = useSelector(selectErrorMessage);
 
     useEffect(() => {
-        axios
-            .get('http://localhost:5000/categories/')
-            .then((res) => {
-                setCategories(res.data);
-            })
-            .catch((err) => console.log(err));
-    });
+        if (status === 'idle') {
+            dispatch(fetchCategories());
+        }
+    }, [status, dispatch]);
+
+    if (status === 'loading') {
+        <p>'Loading...'</p>;
+    } else if (status === 'failed') {
+        <p>{errorMessage}</p>;
+    }
+    
     return (
         <div>
             <div class='list-group w-50'>
-                {categories.map((category) => (
+                {allCategories.map((category) => (
                     <Link
                         style={{ textDecoration: 'none', color: 'black' }}
                         to={`/categogy/${category.CatID}`}

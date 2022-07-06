@@ -23,8 +23,6 @@ const ProductList = () => {
 
     if (status === 'loading') {
         <p>'Loading...'</p>;
-    } else if (status === 'succeeded') {
-        <p>{status}</p>;
     } else if (status === 'failed') {
         <p>{errorMessage}</p>;
     }

@@ -1,9 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ImageSlider from '../../components/ImageSlider/imageSlider';
 import { AiFillHeart } from 'react-icons/ai';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    selectProduct,
+    selectStatus,
+    selectErrorMessage,
+    fetchProductByID,
+} from '../../store/slices/productSlice';
 
 const ProductDetail = (props) => {
-    const product = props.product;
+    const dispatch = useDispatch();
+    const status = useSelector(selectStatus);
+    const errorMessage = useSelector(selectErrorMessage);
+    const [product] = useSelector(selectProduct);
+
+    console.log(status);
+
+    useEffect(() => {
+        if (status === 'idle') {
+            dispatch(fetchProductByID(props.id));
+        }
+    }, [status, dispatch]);
+
+    if (status === 'loading') {
+        <p>'Loading...'</p>;
+    } else if (status === 'failed') {
+        <p>{errorMessage}</p>;
+    }
 
     return (
         <div className='product-detail'>
