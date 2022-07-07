@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
-import AccountList from '../../components/AccountList/accountList';
+import AccountManager from '../../components/AccountManager/accountManager';
 import CategoryList from '../../components/CategoryList/categoryList';
 
-const Account = () => {
+const Admin = () => {
     return (
-        <div className='account'>
+        <div className='admin'>
             <div className='row pt-5'>
                 <div className='col-md-auto pr-5'>
                     <div className='list-group text-center'>
@@ -21,7 +21,7 @@ const Account = () => {
                     </div>
                 </div>
                 <div className='col'>
-                    <AccountList />
+                    <AccountManager />
                 </div>
             </div>
             <div className='row pt-5'>
@@ -31,4 +31,4 @@ const Account = () => {
     );
 };
 
-export default Account;
+export default Admin;

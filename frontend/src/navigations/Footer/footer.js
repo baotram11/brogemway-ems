@@ -21,7 +21,7 @@ const Footer = () => {
                                     <h5>
                                         <span>
                                             <img
-                                                src={require('../../assets/images/icons/logo.png')}
+                                                src={require('../../assets/images/icons/LOGO.png')}
                                                 alt='...'
                                                 className='img-fluid mb-2'
                                             />

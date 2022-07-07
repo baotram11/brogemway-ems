@@ -29,7 +29,7 @@ const CategoryList = () => {
     
     return (
         <div>
-            <div class='list-group w-50'>
+            <div className='list-group w-50'>
                 {allCategories.map((category) => (
                     <Link
                         style={{ textDecoration: 'none', color: 'black' }}
@@ -38,7 +38,7 @@ const CategoryList = () => {
                         className='list-group-item list-group-item-action'
                     >
                         {category.CatName}
-                        <span class='badge rounded-pill bg-primary float-end'>
+                        <span className='badge rounded-pill bg-primary float-end'>
                             11
                         </span>
                     </Link>

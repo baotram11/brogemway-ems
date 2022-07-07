@@ -7,7 +7,6 @@ export const fetchProductByID = createAsyncThunk(
     'products/fetchProductByID',
     async (id = null, { rejectWithValue }) => {
         try {
-            console.log('CALL API: ' + apiUrl + id);
             const response = await axios.get(apiUrl + id);
             return [...response.data];
         } catch (error) {
@@ -20,7 +19,6 @@ export const fetchProducts = createAsyncThunk(
     'products/fetchProducts',
     async () => {
         try {
-            console.log('CALL API: ' + apiUrl);
             const response = await axios.get(apiUrl);
             return [...response.data];
         } catch (error) {
@@ -35,21 +33,22 @@ export const productSlice = createSlice({
         allProducts: [],
         product: [],
         status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
+        statusList: 'idle',
         errorMessage: null,
     },
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(fetchProducts.pending, (state, action) => {
-            state.status = 'loading';
+            state.statusList = 'loading';
         });
 
         builder.addCase(fetchProducts.fulfilled, (state, action) => {
-            state.status = 'succeeded';
+            state.statusList = 'succeeded';
             state.allProducts = action.payload;
         });
 
         builder.addCase(fetchProducts.rejected, (state, action) => {
-            state.status = 'failed';
+            state.statusList = 'failed';
             state.errorMessage = action.error.message;
         });
 
@@ -72,7 +71,9 @@ export const productSlice = createSlice({
 export const selectAllProducts = (state) => state.product.allProducts;
 export const selectProduct = (state) => state.product.product;
 
+export const selectStatusList = (state) => state.product.statusList;
 export const selectStatus = (state) => state.product.status;
+
 export const selectErrorMessage = (state) => state.product.errorMessage;
 
 export default productSlice.reducer;

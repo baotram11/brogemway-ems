@@ -25,13 +25,15 @@
 @import '../../components/ProductList/productList.scss';
 @import '../../components/LoginForm/loginForm.scss';
 @import '../../components/Navbar/navbar.scss';
-@import '../../components/AccountList/accountList.scss';
+@import '../../components/AccountTable/accountTable.scss';
+@import '../../components/AccountModal/accountModal.scss';
+@import '../../components/AccountManager/accountManager.scss';
 
 @import '../../navigations/Footer/footer.scss';
 @import '../../navigations/Header/header.scss';
 
 @import '../../screens/About/about.scss';
-@import '../../screens/Account/account.scss';
+@import '../../screens/Admin/admin.scss';
 @import '../../screens/AllProducts/allProducts';
 @import '../../screens/Checkout/checkout.scss';
 @import '../../screens/Home/home.scss';

@@ -8,7 +8,6 @@ import {
     fetchProductByID,
 } from '../../store/slices/productSlice';
 
-import CarouselSlider from '../../components/CarouselSlider/carouselSlider';
 import ProductDetail from '../../components/ProductDetail/productDetail';
 
 const Product = () => {
@@ -25,6 +24,7 @@ const Product = () => {
         return () => {
             promise.abort();
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     return (
         <div className='product-screen'>
@@ -43,7 +43,6 @@ const Product = () => {
             )}
             {status === 'succeeded' && <ProductDetail />}
 
-            <CarouselSlider />
         </div>
     );
 };
