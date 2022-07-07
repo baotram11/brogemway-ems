@@ -17,7 +17,6 @@ const AccountModal = (props) => {
                     <div class='wrapper'>
                         <form action=''>
                             <div id='wizard'>
-                                <h4> </h4>
                                 <section>
                                     <div class='form-header'>
                                         <div class='avartar'>
@@ -29,6 +28,7 @@ const AccountModal = (props) => {
                                             </Link>
                                             <div class='avartar-picker'>
                                                 <input
+                                                    readonly
                                                     type='file'
                                                     name='file-1[]'
                                                     id='file-1'
@@ -37,46 +37,61 @@ const AccountModal = (props) => {
                                                     multiple
                                                 />
                                                 <label for='file-1'>
-                                                    <i class='zmdi zmdi-camera'></i>
+                                                    <i class='fa fa-camera'></i>
                                                     <span>Chọn ảnh</span>
                                                 </label>
                                             </div>
+                                            <div class='form-holder'>
+                                        <input
+                                            type='text'
+                                            placeholder={account.IsActive}
+                                            class='form-control'
+                                        />
+                                    </div>
                                         </div>
                                         <div class='form-group'>
                                             <div class='form-holder active'>
-                                                {<input
-                                                    type='text'
-                                                    placeholder='First Name'
-                                                    class='form-control'
-                                                />}
-                                            </div>
-                                            <div class='form-holder'>
                                                 <input
                                                     type='text'
-                                                    placeholder='Last Name'
+                                                    placeholder={account.Name}
                                                     class='form-control'
                                                 />
                                             </div>
                                             <div class='form-holder'>
                                                 <input
                                                     type='text'
-                                                    placeholder='Team Name'
+                                                    placeholder={account.PhoneNumber}
                                                     class='form-control'
                                                 />
                                             </div>
+                                            <div class='form-holder'>
+                                                <input
+                                                    type='text'
+                                                    placeholder={account.Email}
+                                                    class='form-control'
+                                                />
+                                            </div>
+                                            <div class='form-holder'>
+                                        <input
+                                            type='text'
+                                            placeholder={account.DoB}
+                                            class='form-control'
+                                        />
+                                    </div>
                                         </div>
                                     </div>
+                                    
                                     <div class='form-holder'>
                                         <input
                                             type='text'
-                                            placeholder='Email'
+                                            placeholder={account.Address}
                                             class='form-control'
                                         />
                                     </div>
                                     <div class='form-holder'>
                                         <input
                                             type='password'
-                                            placeholder='Create a password'
+                                            placeholder={account.Password}
                                             class='form-control'
                                         />
                                     </div>
