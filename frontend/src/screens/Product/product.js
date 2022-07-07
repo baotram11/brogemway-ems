@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-    selectProduct,
     selectStatus,
     selectErrorMessage,
     fetchProductByID,
@@ -43,6 +42,8 @@ const Product = () => {
                 <h5 style={{ color: 'red' }}>{errorMessage}</h5>
             )}
             {status === 'succeeded' && <ProductDetail />}
+
+            <CarouselSlider />
         </div>
     );
 };

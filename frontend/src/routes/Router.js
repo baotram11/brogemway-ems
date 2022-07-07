@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import ScrollToTop from '../utils/scrollToTop';
 
 import Home from '../screens/Home/home';
 import About from '../screens/About/about';
@@ -14,18 +15,20 @@ import ProductList from '../components/ProductList/productList';
 
 const Router = () => {
     return (
-        <Routes>
-            <Route path='*' element={<Page404 />} />
-            <Route path='/' element={<Home />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/terms' element={<Terms />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/account' element={<Account />} />
-            <Route path='/products' element={<AllProducts />} />
-            <Route path='/products/:id' element={<Product />} />
-            <Route path='/categories/:id' element={<ProductList />} />
-        </Routes>
+        <ScrollToTop>
+            <Routes>
+                <Route path='*' element={<Page404 />} />
+                <Route path='/' element={<Home />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/terms' element={<Terms />} />
+                <Route path='/register' element={<Register />} />
+                <Route path='/account' element={<Account />} />
+                <Route path='/products' element={<AllProducts />} />
+                <Route path='/products/:id' element={<Product />} />
+                <Route path='/categories/:id' element={<ProductList />} />
+            </Routes>
+        </ScrollToTop>
     );
 };
 
