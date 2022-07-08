@@ -49,42 +49,7 @@ img {
     align-items: center;
     justify-content: center;
 }
-.steps {
-    .current-info {
-        display: none;
-    }
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -50px;
-    ul {
-        display: flex;
-        li {
-            a {
-                display: inline-block;
-                width: 10px;
-                height: 10px;
-                background: #fff;
-                border-radius: 50%;
-                margin-right: 8px;
-            }
-        }
-        li.current {
-            a {
-                width: 22px;
-                transition: all 0.5s ease;
-                border-radius: 5.5px;
-            }
-        }
-    }
-}
-.wizard {
-    > .steps {
-        .number {
-            display: none;
-        }
-    }
-}
+
 #wizard {
     position: relative;
     background: #fff;

@@ -86,9 +86,9 @@ module.exports = {
                     .json({ error: 'Account does not exist!' });
             }
 
-            res.send('Updated!!');
+            res.send({ status: 'updated' });
         } catch (error) {
-            res.status(400).json('Error: ' + error);
+            res.status(400).json({ error: error.message });
             next();
         }
     },

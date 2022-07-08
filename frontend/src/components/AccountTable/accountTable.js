@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectAllAccounts } from '../../store/slices/accountSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    selectAllAccounts,
+    selectUpdate,
+    updateAccount,
+} from '../../store/slices/accountSlice';
 import AccountModal from '../AccountModal/accountModal';
 
 const AccountTable = () => {
-    const allAccounts = useSelector(selectAllAccounts);
+    const [selectedUser, setSelectedUser] = useState(null);
+    const dispatch = useDispatch();
 
-    const isActive = (status) => {
-        if (status) {
+    const allAccounts = useSelector(selectAllAccounts);
+    // const status = useSelector(selectUpdate);
+    const isActive = (account) => {
+        if (account.IsActive) {
             return (
                 <span className='badge rounded-pill bg-success '>
                     Đã kích hoạt
@@ -23,9 +30,24 @@ const AccountTable = () => {
         }
     };
 
-    const openUserModal = (param) => {
-        return <AccountModal account={param} />;
+    const openUserModal = (event, param) => {
+        console.log("CLICK");
+        console.log(selectedUser);
+        return setSelectedUser(param);
     };
+
+    const lockUser = (event, param) => {
+        console.log('LOCKED');
+        const update = { Account: param, Update: { IsActive: false } };
+        return dispatch(updateAccount(update));
+    };
+    const unlockUser = (event, param) => {
+        console.log('UNLOCKED');
+        const update = { Account: param, Update: { IsActive: true } };
+        return dispatch(updateAccount(update));
+    };
+
+    useEffect(() => {});
 
     return (
         <div className='account-table'>
@@ -64,8 +86,11 @@ const AccountTable = () => {
                                         className='user-link'
                                         data-bs-toggle='modal'
                                         data-bs-target='#exampleModal'
+                                        onClick={(event) => {
+                                            openUserModal(event, account);
+                                        }}
                                     >
-                                        {openUserModal(account)}
+                                        <AccountModal account={account} />
                                         {account.Name}
                                     </Link>
 
@@ -75,7 +100,7 @@ const AccountTable = () => {
                                 </td>
                                 <td>{account.PhoneNumber}</td>
                                 <td className='text-center'>
-                                    {isActive(account.IsActive)}
+                                    {isActive(account)}
                                 </td>
                                 <td>
                                     <Link
@@ -93,20 +118,35 @@ const AccountTable = () => {
                                         className='table-link'
                                         data-bs-toggle='modal'
                                         data-bs-target='#exampleModal'
+                                        onClick={(event) => {
+                                            openUserModal(event, account);
+                                        }}
                                     >
-                                        {openUserModal(account)}
+                                        <AccountModal account={account} />
                                         <span className='fa-stack'>
                                             <i className='fa fa-square fa-stack-2x'></i>
                                             <i className='fa fa-info fa-stack-1x fa-inverse'></i>
                                         </span>
                                     </Link>
-                                    <Link to='#' className='table-link'>
+                                    <Link
+                                        to='#'
+                                        className='table-link'
+                                        onClick={(event) =>
+                                            unlockUser(event, account)
+                                        }
+                                    >
                                         <span className='fa-stack'>
                                             <i className='fa fa-square fa-stack-2x'></i>
                                             <i className='fa fa-unlock fa-stack-1x fa-inverse'></i>
                                         </span>
                                     </Link>
-                                    <Link to='#' className='table-link danger'>
+                                    <Link
+                                        to='#'
+                                        className='table-link danger'
+                                        onClick={(event) =>
+                                            lockUser(event, account)
+                                        }
+                                    >
                                         <span className='fa-stack'>
                                             <i className='fa fa-square fa-stack-2x'></i>
                                             <i className='fa fa-lock fa-stack-1x fa-inverse'></i>

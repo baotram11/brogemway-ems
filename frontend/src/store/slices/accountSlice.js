@@ -16,12 +16,31 @@ export const fetchAccounts = createAsyncThunk(
     }
 );
 
+export const updateAccount = createAsyncThunk(
+    'accounts/updateAccount',
+    async (data) => {
+        try {
+            const response = await axios.patch(
+                apiUrl + data.Account.UserID,
+                data.Update
+            );
+            if(response.data.status === "updated"){
+                return data.Account;
+            }
+        } catch (error) {
+            return error.message;
+        }
+    }
+);
+
 export const accountSlice = createSlice({
     name: 'account',
     initialState: {
+        update: false,
         allAccounts: [],
         status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
         errorMessage: null,
+        errorUpdate: null
     },
     reducers: {},
     extraReducers: (builder) => {
@@ -38,9 +57,21 @@ export const accountSlice = createSlice({
             state.status = 'failed';
             state.errorMessage = action.error.message;
         });
+
+        builder.addCase(updateAccount.pending, (state) => {
+            state.update = true;
+        });
+        builder.addCase(updateAccount.fulfilled, (state, action) => {
+            state.update = true;
+        });
+        builder.addCase(updateAccount.rejected, (state, action) => {
+            state.update = false;
+            state.errorUpdate = action.payload;
+        });
     },
 });
 
+export const selectUpdate = (state) => state.account.update;
 export const selectAllAccounts = (state) => state.account.allAccounts;
 export const selectStatus = (state) => state.account.status;
 export const selectErrorMessage = (state) => state.account.errorMessage;
