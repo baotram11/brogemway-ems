@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     selectAllAccounts,
-    selectUpdate,
     updateAccount,
 } from '../../store/slices/accountSlice';
 import AccountModal from '../AccountModal/accountModal';
 
 const AccountTable = () => {
-    const [selectedUser, setSelectedUser] = useState(null);
     const dispatch = useDispatch();
 
     const allAccounts = useSelector(selectAllAccounts);
-    // const status = useSelector(selectUpdate);
     const isActive = (account) => {
         if (account.IsActive) {
             return (
@@ -30,12 +27,6 @@ const AccountTable = () => {
         }
     };
 
-    const openUserModal = (event, param) => {
-        console.log("CLICK");
-        console.log(selectedUser);
-        return setSelectedUser(param);
-    };
-
     const lockUser = (event, param) => {
         console.log('LOCKED');
         const update = { Account: param, Update: { IsActive: false } };
@@ -47,7 +38,27 @@ const AccountTable = () => {
         return dispatch(updateAccount(update));
     };
 
-    useEffect(() => {});
+    const [selectedUser, setSelectedUser] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+
+    const [show, setShow] = useState(false);
+
+    const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
+    const toggleTrueFalse = () => {
+        setShowModal(handleShow);
+    };
+
+    const openUserModal = (account) => {
+        setSelectedUser(account);
+        toggleTrueFalse();
+    };
+
+    const info = {
+        account: selectedUser,
+        show: show,
+        handleClose: handleClose,
+    };
 
     return (
         <div className='account-table'>
@@ -84,13 +95,8 @@ const AccountTable = () => {
                                         }}
                                         to='#'
                                         className='user-link'
-                                        data-bs-toggle='modal'
-                                        data-bs-target='#exampleModal'
-                                        onClick={(event) => {
-                                            openUserModal(event, account);
-                                        }}
+                                        onClick={() => openUserModal(account)}
                                     >
-                                        <AccountModal account={account} />
                                         {account.Name}
                                     </Link>
 
@@ -116,13 +122,8 @@ const AccountTable = () => {
                                     <Link
                                         to='#'
                                         className='table-link'
-                                        data-bs-toggle='modal'
-                                        data-bs-target='#exampleModal'
-                                        onClick={(event) => {
-                                            openUserModal(event, account);
-                                        }}
+                                        onClick={() => openUserModal(account)}
                                     >
-                                        <AccountModal account={account} />
                                         <span className='fa-stack'>
                                             <i className='fa fa-square fa-stack-2x'></i>
                                             <i className='fa fa-info fa-stack-1x fa-inverse'></i>
@@ -158,6 +159,7 @@ const AccountTable = () => {
                     </tbody>
                 </table>
             </div>
+            {show ? <AccountModal {...info} /> : null}
         </div>
     );
 };

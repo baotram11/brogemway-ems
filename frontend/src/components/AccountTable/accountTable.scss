@@ -1,4 +1,7 @@
 .account-table {
+    body {
+        margin-top: 20px;
+    }
     .user-list {
         tbody {
             td {
@@ -37,6 +40,27 @@
                         padding: 0 5px;
                         padding-bottom: 5px;
                         font-weight: normal;
+                    }
+                    > Link {
+                        span {
+                            color: #344644;
+                            &:after {
+                                content: '\f0dc';
+                                font-family: FontAwesome;
+                                font-style: normal;
+                                font-weight: normal;
+                                text-decoration: inherit;
+                                margin-left: 5px;
+                                font-size: 0.75em;
+                            }
+                        }
+                        &:hover {
+                            span {
+                                text-decoration: none;
+                                color: #2bb6a3;
+                                border-color: #2bb6a3;
+                            }
+                        }
                     }
                 }
             }
@@ -114,6 +138,72 @@
                     -webkit-transition: background-color 0.15s ease-in-out 0s;
                     transition: background-color 0.15s ease-in-out 0s;
                 }
+            }
+        }
+    }
+    .table-products {
+        tbody {
+            > tr {
+                > td {
+                    background: none;
+                    border: none;
+                    border-bottom: 1px solid #ebebeb;
+                    -webkit-transition: background-color 0.15s ease-in-out 0s;
+                    transition: background-color 0.15s ease-in-out 0s;
+                    position: relative;
+                }
+                &:hover {
+                    > td {
+                        text-decoration: none;
+                        background-color: #f6f6f6;
+                    }
+                }
+            }
+        }
+        .name {
+            display: block;
+            font-weight: 600;
+            padding-bottom: 7px;
+        }
+        .price {
+            display: block;
+            text-decoration: none;
+            width: 50%;
+            float: left;
+            font-size: 0.875em;
+            > i {
+                color: #8dc859;
+            }
+        }
+        .warranty {
+            display: block;
+            text-decoration: none;
+            width: 50%;
+            float: left;
+            font-size: 0.875em;
+            > i {
+                color: #f1c40f;
+            }
+        }
+    }
+    .table-stats {
+        .status-social-icon {
+            font-size: 1.9em;
+            vertical-align: bottom;
+        }
+        .table-line-fb {
+            .status-social-icon {
+                color: #556484;
+            }
+        }
+        .table-line-twitter {
+            .status-social-icon {
+                color: #5885b8;
+            }
+        }
+        .table-line-plus {
+            .status-social-icon {
+                color: #a75d54;
             }
         }
     }
