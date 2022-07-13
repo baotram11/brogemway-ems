@@ -24,15 +24,15 @@ const ProductList = () => {
     return (
         <div className='product-list'>
             {status === 'loading' && (
-                <div class='spinner-border text-secondary' role='status'>
-                    <span class='visually-hidden'>Loading...</span>
+                <div className='spinner-border text-secondary' role='status'>
+                    <span className='visually-hidden'>Loading...</span>
                 </div>
             )}
             {status === 'failed' && (
                 <h5 style={{ color: 'red' }}>{errorMessage}</h5>
             )}
             {status === 'succeeded' && (
-                <div className='row m-5'>
+                <div className='row mt-5'>
                     {allProducts.map((product) => (
                         <Link
                             style={{ textDecoration: 'none', color: 'black' }}

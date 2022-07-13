@@ -33,11 +33,12 @@ export const productSlice = createSlice({
         allProducts: [],
         product: [],
         status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
-        statusList: 'idle',
+        statusList: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
         errorMessage: null,
     },
     reducers: {},
     extraReducers: (builder) => {
+        // fetchProducts
         builder.addCase(fetchProducts.pending, (state, action) => {
             state.statusList = 'loading';
         });
@@ -51,7 +52,8 @@ export const productSlice = createSlice({
             state.statusList = 'failed';
             state.errorMessage = action.error.message;
         });
-
+        
+        //fetchProductByID
         builder.addCase(fetchProductByID.pending, (state, action) => {
             state.status = 'loading';
         });

@@ -11,7 +11,7 @@ import Admin from '../screens/Admin/admin';
 import Page404 from '../screens/Page404/page404';
 import Register from '../screens/Register/register';
 import AllProducts from '../screens/AllProducts/allProducts';
-import ProductList from '../components/ProductList/productList';
+import Category from '../screens/Category/category';
 
 const Router = () => {
     return (
@@ -26,7 +26,7 @@ const Router = () => {
                 <Route path='/admin' element={<Admin />} />
                 <Route path='/products' element={<AllProducts />} />
                 <Route path='/products/:id' element={<Product />} />
-                <Route path='/categories/:id' element={<ProductList />} />
+                <Route path='/category/:id' element={<Category />} />
             </Routes>
         </ScrollToTop>
     );

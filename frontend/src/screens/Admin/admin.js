@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import AccountManager from '../../components/AccountManager/accountManager';
-import CategoryList from '../../components/CategoryList/categoryList';
-
 const Admin = () => {
     return (
         <div className='admin'>
@@ -20,12 +18,9 @@ const Admin = () => {
                         </Link>
                     </div>
                 </div>
-                <div className='col'>
+                <div className='col' id='product'>
                     <AccountManager />
                 </div>
-            </div>
-            <div className='row pt-5'>
-                <CategoryList />
             </div>
         </div>
     );

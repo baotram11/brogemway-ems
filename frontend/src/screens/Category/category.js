@@ -3,32 +3,34 @@ import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-    selectStatus,
+    fetchProductsByCatID,
+    selectStatusPros,
     selectErrorMessage,
-    fetchProductByID,
-} from '../../store/slices/productSlice';
+} from '../../store/slices/categorySlice';
 
-import ProductDetail from '../../components/ProductDetail/productDetail';
+import GroupByCat from '../../components/GroupByCat/groupByCat';
 
-const Product = () => {
+const Category = () => {
     const param = useParams();
-    const dispatch = useDispatch();
 
-    const status = useSelector(selectStatus);
+    const dispatch = useDispatch();
+    const status = useSelector(selectStatusPros);
     const errorMessage = useSelector(selectErrorMessage);
-    
+
+    console.log(status);
+
     useEffect(() => {
-        const promise = dispatch(fetchProductByID(param.id));
+        const promise = dispatch(fetchProductsByCatID(param.id));
         return () => {
             promise.abort();
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     return (
-        <div className='product-screen'>
+        <div className='category-groupBy'>
             <Helmet>
                 <meta charSet='utf-8' />
-                <title>{param.id} &#9702; Brogemway</title>
+                <title>Danh mục &#9702; Brogemway</title>
             </Helmet>
 
             {status === 'loading' && (
@@ -39,10 +41,13 @@ const Product = () => {
             {status === 'failed' && (
                 <h5 style={{ color: 'red' }}>{errorMessage}</h5>
             )}
-            {status === 'succeeded' && <ProductDetail />}
-
+            {status === 'succeeded' && (
+                <div className='container p-5'>
+                    <GroupByCat />
+                </div>
+            )}
         </div>
     );
 };
 
-export default Product;
+export default Category;
