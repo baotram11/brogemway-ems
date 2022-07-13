@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import Portfolio from '../../components/Portfolio/portfolio';
 import CarouselSlider from '../../components/CarouselSlider/carouselSlider';
 import ContactUs from '../../components/ContactUs/contactUs';
-
+import Header from '../../navigations/Header/header'
 const Home = () => {
     return (
         <div className='home'>
@@ -11,7 +11,7 @@ const Home = () => {
                 <meta charSet='utf-8' />
                 <title>Brogemway</title>
             </Helmet>
-
+            <Header />
             <header className='masthead'></header>
 
             <section className='page-section bg-light' id='portfolio'>

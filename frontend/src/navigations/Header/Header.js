@@ -72,7 +72,7 @@ const Header = () => {
                                 </Link>
                             </li>
                             <li className='nav-item'>
-                                <Link className='nav-link icon' to='/account'>
+                                <Link className='nav-link' to='/account'>
                                     <AiOutlineUser size={20} />
                                 </Link>
                             </li>
