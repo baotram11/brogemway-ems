@@ -20,17 +20,17 @@ table,
 th,
 td,
 caption {
-	font-family: 'Source Serif Pro', serif;
-	margin: 0;
-	padding: 0;
+    font-family: 'Source Serif Pro', serif;
+    margin: 0;
+    padding: 0;
 
-	.raw-HTML & {
-		margin: inherit;
-		padding: inherit;
-	}
+    .raw-HTML & {
+        margin: inherit;
+        padding: inherit;
+    }
 }
 
 img {
-	border-style: none;
-	vertical-align: middle;
+    border-style: none;
+    vertical-align: middle;
 }

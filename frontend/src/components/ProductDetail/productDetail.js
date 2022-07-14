@@ -54,12 +54,8 @@ const ProductDetail = () => {
                                     </div>
                                 </div>
                                 <div className='buttons d-flex flex-row mt-5 gap-3'>
-                                    <button className='btn btn-outline-dark'>
-                                        Mua ngay
-                                    </button>
-                                    <button className='btn btn-dark'>
-                                        Thêm vào giỏ
-                                    </button>
+                                    <button className='btn btn-outline-dark'>Mua ngay</button>
+                                    <button className='btn btn-dark'>Thêm vào giỏ</button>
                                 </div>
                             </div>
                         </div>

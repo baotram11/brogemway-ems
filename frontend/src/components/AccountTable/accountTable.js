@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-    selectAllAccounts,
-    updateAccount,
-} from '../../store/slices/accountSlice';
+import { selectAllAccounts, updateAccount } from '../../store/slices/accountSlice';
 import AccountModal from '../AccountModal/accountModal';
 
 const AccountTable = () => {
@@ -13,17 +10,9 @@ const AccountTable = () => {
     const allAccounts = useSelector(selectAllAccounts);
     const isActive = (account) => {
         if (account.IsActive) {
-            return (
-                <span className='badge rounded-pill bg-success '>
-                    Đã kích hoạt
-                </span>
-            );
+            return <span className='badge rounded-pill bg-success '>Đã kích hoạt</span>;
         } else {
-            return (
-                <span className='badge rounded-pill bg-warning text-dark'>
-                    Tạm khoá
-                </span>
-            );
+            return <span className='badge rounded-pill bg-warning text-dark'>Tạm khoá</span>;
         }
     };
 
@@ -100,14 +89,10 @@ const AccountTable = () => {
                                         {account.Name}
                                     </Link>
 
-                                    <span className='user-subhead'>
-                                        {account.Level}
-                                    </span>
+                                    <span className='user-subhead'>{account.Level}</span>
                                 </td>
                                 <td>{account.PhoneNumber}</td>
-                                <td className='text-center'>
-                                    {isActive(account)}
-                                </td>
+                                <td className='text-center'>{isActive(account)}</td>
                                 <td>
                                     <Link
                                         to='#'
@@ -132,9 +117,7 @@ const AccountTable = () => {
                                     <Link
                                         to='#'
                                         className='table-link'
-                                        onClick={(event) =>
-                                            unlockUser(event, account)
-                                        }
+                                        onClick={(event) => unlockUser(event, account)}
                                     >
                                         <span className='fa-stack'>
                                             <i className='fa fa-square fa-stack-2x'></i>
@@ -144,9 +127,7 @@ const AccountTable = () => {
                                     <Link
                                         to='#'
                                         className='table-link danger'
-                                        onClick={(event) =>
-                                            lockUser(event, account)
-                                        }
+                                        onClick={(event) => lockUser(event, account)}
                                     >
                                         <span className='fa-stack'>
                                             <i className='fa fa-square fa-stack-2x'></i>

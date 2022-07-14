@@ -11,8 +11,7 @@ const ContactUs = () => {
                                 <b>Nhận thông tin mới !</b>
                             </h2>
                             <p className='pl-0 ml-0 mb-5'>
-                                Hãy là người đầu tiên nhận tin tức và thông tin
-                                sản phẩm mới của chúng tôi.
+                                Hãy là người đầu tiên nhận tin tức và thông tin sản phẩm mới của chúng tôi.
                             </p>
                             <div className='row text-center justify-content-center'>
                                 <div className='col-auto'>

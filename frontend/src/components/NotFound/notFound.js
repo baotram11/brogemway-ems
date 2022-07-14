@@ -13,17 +13,10 @@ function NotFound() {
                 />
                 <div className='card-body'>
                     <h4 className='card-text'>
-                        <i>
-                            Xin lỗi, Trang web không tìm thấy, vui lòng quay lại
-                            trang chủ
-                        </i>
+                        <i>Xin lỗi, Trang web không tìm thấy, vui lòng quay lại trang chủ</i>
                     </h4>
 
-                    <Link
-                        style={{ fontSize: '2vw', color: 'red' }}
-                        to={'/'}
-                        className='card-footer-item'
-                    >
+                    <Link style={{ fontSize: '2vw', color: 'red' }} to={'/'} className='card-footer-item'>
                         <AiOutlineHome />
                         <h6>Trang chủ</h6>
                     </Link>

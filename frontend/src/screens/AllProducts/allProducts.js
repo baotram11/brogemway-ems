@@ -16,9 +16,7 @@ const AllProducts = () => {
                     <CategoryList />
                 </div>
                 <div className='col'>
-                    <h2 className='section-heading text-uppercase text-center mb-5'>
-                        Sản phẩm
-                    </h2>
+                    <h2 className='section-heading text-uppercase text-center mb-5'>Sản phẩm</h2>
                     <ProductList />
                 </div>
             </div>

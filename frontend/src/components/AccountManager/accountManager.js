@@ -34,9 +34,7 @@ const AccountManager = () => {
                     </div>
                 </div>
             ) : (
-                <div style={{ color: 'red' }}>
-                    No users found. Error: {errorMessage}
-                </div>
+                <div style={{ color: 'red' }}>No users found. Error: {errorMessage}</div>
             )}
         </div>
     );

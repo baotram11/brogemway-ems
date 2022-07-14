@@ -1,109 +1,166 @@
-// import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import { useSelector, useDispatch } from 'react-redux';
-// import {
-//     login,
-//     selectLoading,
-//     selectErrorMessage,
-//     selectUser,
-// } from '../../store/slices/userSlice';
+import React, { useState } from 'react';
+import clsx from 'clsx';
+import { Link } from 'react-router-dom';
 
-// const LoginForm = () => {
-//     const [email, setEmail] = useState('');
-//     const [password, setPassword] = useState('');
+import { UseLoginFormValidator } from '../../utils/useFormValidator';
 
-//     const dispatch = useDispatch();
+const LoginForm = () => {
+    const [passwordType, setPasswordType] = useState('password');
+    const togglePassword = () => {
+        if (passwordType === 'password') {
+            setPasswordType('text');
+            return;
+        }
+        setPasswordType('password');
+    };
 
-//     // Select data from store
-//     const isLoading = useSelector(selectLoading);
-//     const errorMessage = useSelector(selectErrorMessage);
-//     const user = useSelector(selectUser);
+    const [form, setForm] = useState({
+        username: '',
+        password: '',
+    });
 
-//     const handleLogin = async () => {
-//         dispatch(login({ email, password }));
-//     };
+    const { errors, validateForm, onBlurField } = UseLoginFormValidator(form);
 
-//     if (user) {
-//         return <Link to='/' />;
-//     }
-//     return (
-//         <div className='login-form'>
-//             <div className='container-fluid' id='loginContainer'>
-//                 <div className='row justify-content-center'>
-//                     <div className='loginForm col-lg-8'>
-//                         <h1>Đăng nhập</h1>
-//                         {errorMessage && (
-//                             <p style={{ color: 'red' }}>{errorMessage}</p>
-//                         )}
+    const onUpdateField = (event) => {
+        const field = event.target.name;
 
-//                         <form>
-//                             <div className='form-group mb-4'>
-//                                 <input
-//                                     type='text'
-//                                     className='form-control'
-//                                     id='inputEmail'
-//                                     placeholder='Email'
-//                                     value={email}
-//                                     onChange={(event) =>
-//                                         setEmail(event.target.value)
-//                                     }
-//                                 />
-//                             </div>
+        const nextFormState = {
+            ...form,
+            [field]: event.target.value,
+        };
 
-//                             <div className='form-group mb-4'>
-//                                 <input
-//                                     type='password'
-//                                     className='form-control'
-//                                     id='inputPassword'
-//                                     placeholder='Mật khẩu'
-//                                     value={password}
-//                                     onChange={(event) =>
-//                                         setPassword(event.target.value)
-//                                     }
-//                                 />
-//                             </div>
+        setForm(nextFormState);
 
-//                             <div className='form-check mb-4'>
-//                                 <label className='switch '>
-//                                     <input type='checkbox' />
-//                                     <span className='slider round'></span>
-//                                 </label>
+        if (errors[field].dirty) {
+            validateForm({
+                form: nextFormState,
+                errors,
+                field,
+            });
+        }
+    };
 
-//                                 <label
-//                                     className='form-check-label'
-//                                     for='checkRemember'
-//                                 >
-//                                     Ghi nhớ đăng nhập
-//                                 </label>
+    const onSubmitForm = (event) => {
+        event.preventDefault();
+        const { isValid } = validateForm({
+            form,
+            errors,
+            forceTouchErrors: true,
+        });
+        if (!isValid) return;
+        alert(JSON.stringify(form, null, 2));
+    };
 
-//                                 <label className='forgot-password'>
-//                                     <Link to='/'>Quên mật khẩu?</Link>
-//                                 </label>
+    const formFieldError = { border: '1px solid #e11d48' };
 
-//                                 <br />
+    const formFieldErrorMessage = {
+        color: '#e11d48',
+        fontWeight: 'bold',
+        fontSize: '15px',
+        textAlign: 'right',
+    };
 
-//                                 <label></label>
-//                             </div>
+    return (
+        <div className='login-form-area'>
+            <div className='container'>
+                <div className='row justify-content-center'>
+                    <div className='col-xl-7 col-lg-8'>
+                        <form className='login-form' onSubmit={onSubmitForm}>
+                            <div className='login-heading text-center'>
+                                <span>Đăng nhập</span>
+                                <p
+                                    style={{
+                                        fontStyle: 'italic',
+                                        fontWeight: '500',
+                                        fontSize: '15px',
+                                    }}
+                                >
+                                    Để giữ kết nối với chúng tôi, vui lòng đăng nhập bằng tài khoản của bạn
+                                </p>
+                            </div>
 
-//                             <button
-//                                 type='submit'
-//                                 className='btn btn-lg btn-block btn-success'
-//                                 onClick={handleLogin}
-//                                 disabled={isLoading}
-//                             >
-//                                 Đăng nhập
-//                             </button>
-//                             <br />
-//                             <label className='create-account mt-3'>
-//                                 <span>Bạn chưa có tài khoản? </span>
-//                                 <Link to='/register'> Tạo tài khoản </Link>
-//                             </label>
-//                         </form>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
+                            <div className='input-box'>
+                                <div className='single-input-fields'>
+                                    <label>Số Điện Thoại Hoặc Địa Chỉ Email</label>
+                                    <input
+                                        className={clsx(
+                                            errors.username.dirty && errors.username.error && formFieldError
+                                        )}
+                                        name='username'
+                                        type={'text'}
+                                        aria-label='Username field'
+                                        placeholder='Số điện thoại/Email'
+                                        value={form.username}
+                                        onChange={onUpdateField}
+                                        onBlur={onBlurField}
+                                    />
+                                    {errors.username.dirty && errors.username.error ? (
+                                        <p style={formFieldErrorMessage}>{errors.username.message}</p>
+                                    ) : null}
+                                </div>
 
-// export default LoginForm;
+                                <div className='single-input-fields'>
+                                    <label>Mật Khẩu</label>
+                                    <div className='input-group mb-3'>
+                                        <input
+                                            className={clsx(
+                                                errors.password.dirty &&
+                                                    errors.password.error &&
+                                                    formFieldError
+                                            )}
+                                            name='password'
+                                            type={passwordType}
+                                            aria-label='Password field'
+                                            aria-describedby='button-addon'
+                                            placeholder='Nhập mật khẩu'
+                                            value={form.password}
+                                            onChange={onUpdateField}
+                                            onBlur={onBlurField}
+                                        />
+
+                                        <button
+                                            id='button-addon'
+                                            type='button'
+                                            style={{ border: 'none', background: 'transparent' }}
+                                            onClick={togglePassword}
+                                        >
+                                            {passwordType === 'password' ? (
+                                                <i className='fa-solid fa-eye-slash'></i>
+                                            ) : (
+                                                <i className='fa-solid fa-eye'></i>
+                                            )}
+                                        </button>
+                                    </div>
+                                    {errors.password.dirty && errors.password.error ? (
+                                        <p style={formFieldErrorMessage}>{errors.password.message}</p>
+                                    ) : null}
+                                </div>
+
+                                <div className='single-input-fields login-check'>
+                                    <input type={'checkbox'} id='fruit1' name='keep-log' />
+                                    <label htmlFor='fruit1'> Ghi nhớ đăng nhập</label>
+                                    <Link to='#' className='link f-right'>
+                                        Quên mật khẩu?
+                                    </Link>
+                                </div>
+                            </div>
+
+                            <div className='login-footer'>
+                                <p>
+                                    Bạn chưa có tài khoản?{' '}
+                                    <Link className='link' to='/register'>
+                                        Đăng ký
+                                    </Link>{' '}
+                                    ở đây
+                                </p>
+                                <button className='submit-btn1'>Đăng nhập</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default LoginForm;

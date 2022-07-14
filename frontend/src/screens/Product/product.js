@@ -2,11 +2,7 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-    selectStatus,
-    selectErrorMessage,
-    fetchProductByID,
-} from '../../store/slices/productSlice';
+import { selectStatus, selectErrorMessage, fetchProductByID } from '../../store/slices/productSlice';
 
 import ProductDetail from '../../components/ProductDetail/productDetail';
 
@@ -16,7 +12,7 @@ const Product = () => {
 
     const status = useSelector(selectStatus);
     const errorMessage = useSelector(selectErrorMessage);
-    
+
     useEffect(() => {
         const promise = dispatch(fetchProductByID(param.id));
         return () => {
@@ -36,11 +32,8 @@ const Product = () => {
                     <span className='visually-hidden'>Loading...</span>
                 </div>
             )}
-            {status === 'failed' && (
-                <h5 style={{ color: 'red' }}>{errorMessage}</h5>
-            )}
+            {status === 'failed' && <h5 style={{ color: 'red' }}>{errorMessage}</h5>}
             {status === 'succeeded' && <ProductDetail />}
-
         </div>
     );
 };

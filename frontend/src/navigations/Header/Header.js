@@ -22,18 +22,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 const Header = () => {
-    
     return (
         <div className='header'>
-            <nav
-                className='navbar navbar-expand-lg navbar-dark fixed-top'
-                id='mainNav'
-            >
+            <nav className='navbar navbar-expand-lg navbar-dark fixed-top' id='mainNav'>
                 <div className='container'>
-                    <Link
-                        className='navbar-brand'
-                        to={{ pathname: '/', hash: '#' }}
-                    >
+                    <Link className='navbar-brand' to={{ pathname: '/', hash: '#' }}>
                         BROGEMWAY
                     </Link>
                     <button
@@ -48,16 +41,10 @@ const Header = () => {
                         Menu
                         <FaBars />
                     </button>
-                    <div
-                        className='collapse navbar-collapse'
-                        id='navbarResponsive'
-                    >
+                    <div className='collapse navbar-collapse' id='navbarResponsive'>
                         <ul className='navbar-nav text-uppercase ms-auto py-4 py-lg-0'>
                             <li className='nav-item'>
-                                <Link
-                                    className='nav-link'
-                                    to='/products'
-                                >
+                                <Link className='nav-link' to='/products'>
                                     Sản phẩm
                                 </Link>
                             </li>

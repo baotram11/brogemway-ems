@@ -3,18 +3,15 @@ import axios from 'axios';
 
 const apiUrl = 'http://localhost:5000/api/categories/';
 
-export const fetchCategories = createAsyncThunk(
-    'accounts/fetchCategories',
-    async () => {
-        try {
-            console.log('CALL API: ' + apiUrl);
-            const response = await axios.get(apiUrl);
-            return [...response.data];
-        } catch (error) {
-            return error.message;
-        }
+export const fetchCategories = createAsyncThunk('accounts/fetchCategories', async () => {
+    try {
+        console.log('CALL API: ' + apiUrl);
+        const response = await axios.get(apiUrl);
+        return [...response.data];
+    } catch (error) {
+        return error.message;
     }
-);
+});
 
 export const fetchProductsByCatID = createAsyncThunk(
     'accounts/fetchProductsByCatID',

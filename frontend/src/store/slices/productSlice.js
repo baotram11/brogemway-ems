@@ -15,17 +15,14 @@ export const fetchProductByID = createAsyncThunk(
     }
 );
 
-export const fetchProducts = createAsyncThunk(
-    'products/fetchProducts',
-    async () => {
-        try {
-            const response = await axios.get(apiUrl);
-            return [...response.data];
-        } catch (error) {
-            return error.message;
-        }
+export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
+    try {
+        const response = await axios.get(apiUrl);
+        return [...response.data];
+    } catch (error) {
+        return error.message;
     }
-);
+});
 
 export const productSlice = createSlice({
     name: 'product',
@@ -52,7 +49,7 @@ export const productSlice = createSlice({
             state.statusList = 'failed';
             state.errorMessage = action.error.message;
         });
-        
+
         //fetchProductByID
         builder.addCase(fetchProductByID.pending, (state, action) => {
             state.status = 'loading';

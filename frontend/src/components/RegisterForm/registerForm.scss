@@ -1,4 +1,4 @@
-.login-form-area {
+.register-form-area {
     position: relative;
     top: 50%;
     left: 50%;
@@ -45,7 +45,7 @@
         }
     }
 
-    .login-form {
+    .register-form {
         font-family: $text-fontfamily;
         background: #fff;
         padding: 55px 60px 50px 50px;
@@ -58,13 +58,13 @@
             text-decoration: none;
         }
 
-        .login-heading {
+        .register-heading {
             text-align: center;
         }
 
         .input-box {
-            padding-top: 5%;
-            padding-bottom: 10%;
+            padding-top: 3%;
+            padding-bottom: 7%;
 
             .single-input-fields {
                 label {
@@ -85,44 +85,29 @@
                     color: #000;
                     border-radius: 0.5em;
                 }
-                &.login-check {
+                &.register-check {
                     display: flex;
                     justify-content: space-between;
                     padding-top: 8px;
                     overflow: hidden;
 
-                    input[type='checkbox'] {
-                        display: none;
-                    }
-                    input[type='checkbox'] + label {
-                        display: inline-block;
-                        margin: 0.2em;
-                        cursor: pointer;
-                        padding: 0;
-                        margin: 0 0 13px 0;
-                    }
+                    // input + span {
+                    //     padding-right: 30px;
+                    // }
 
-                    input[type='checkbox'] + label::before {
-                        content: '\2714';
-                        border: 0.1em solid #e4e4e4;
-                        border-radius: 0.2em;
-                        display: inline-block;
-                        width: 22px;
-                        height: 22px;
-                        padding-left: 0.2em;
-                        padding-bottom: 0.3em;
-                        margin-right: 10px;
-                        vertical-align: top;
-                        color: transparent;
-                        transition: 0.2s;
-                    }
+                    // input:invalid + span:after {
+                    //     position: absolute;
+                    //     content: '✖';
+                    //     padding-left: 5px;
+                    //     color: #8b0000;
+                    // }
 
-                    input[type='checkbox']:checked + label:before {
-                        background-color: $button-color;
-                        border-color: $button-color;
-                        color: #fff;
-                        line-height: 18px;
-                    }
+                    // input:valid + span:after {
+                    //     position: absolute;
+                    //     content: '✓';
+                    //     padding-left: 5px;
+                    //     color: #009000;
+                    // }
 
                     .link {
                         font-size: 17px;
@@ -135,7 +120,7 @@
             }
         }
 
-        .login-footer {
+        .register-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;

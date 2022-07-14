@@ -3,35 +3,26 @@ import axios from 'axios';
 
 const apiUrl = 'http://localhost:5000/api/accounts/';
 
-export const fetchAccounts = createAsyncThunk(
-    'accounts/fetchAccounts',
-    async () => {
-        try {
-            console.log('CALL API: ' + apiUrl);
-            const response = await axios.get(apiUrl);
-            return [...response.data];
-        } catch (error) {
-            return error.message;
-        }
+export const fetchAccounts = createAsyncThunk('accounts/fetchAccounts', async () => {
+    try {
+        console.log('CALL API: ' + apiUrl);
+        const response = await axios.get(apiUrl);
+        return [...response.data];
+    } catch (error) {
+        return error.message;
     }
-);
+});
 
-export const updateAccount = createAsyncThunk(
-    'accounts/updateAccount',
-    async (data) => {
-        try {
-            const response = await axios.patch(
-                apiUrl + data.Account.UserID,
-                data.Update
-            );
-            if(response.data.status === "updated"){
-                return data.Account;
-            }
-        } catch (error) {
-            return error.message;
+export const updateAccount = createAsyncThunk('accounts/updateAccount', async (data) => {
+    try {
+        const response = await axios.patch(apiUrl + data.Account.UserID, data.Update);
+        if (response.data.status === 'updated') {
+            return data.Account;
         }
+    } catch (error) {
+        return error.message;
     }
-);
+});
 
 export const accountSlice = createSlice({
     name: 'account',
@@ -40,7 +31,7 @@ export const accountSlice = createSlice({
         allAccounts: [],
         status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
         errorMessage: null,
-        errorUpdate: null
+        errorUpdate: null,
     },
     reducers: {},
     extraReducers: (builder) => {

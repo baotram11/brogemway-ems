@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import Portfolio from '../../components/Portfolio/portfolio';
 import CarouselSlider from '../../components/CarouselSlider/carouselSlider';
 import ContactUs from '../../components/ContactUs/contactUs';
-import Header from '../../navigations/Header/header'
+import Header from '../../navigations/Header/header';
 const Home = () => {
     return (
         <div className='home'>

@@ -53,8 +53,12 @@ const Admin = () => {
                     <Col sm={9}>
                         <Tab.Content>
                             <Tab.Pane eventKey='tab1'>first</Tab.Pane>
-                            <Tab.Pane eventKey='tab2'><CategoryList /></Tab.Pane>
-                            <Tab.Pane eventKey='tab3'><AccountManager /></Tab.Pane>
+                            <Tab.Pane eventKey='tab2'>
+                                <CategoryList />
+                            </Tab.Pane>
+                            <Tab.Pane eventKey='tab3'>
+                                <AccountManager />
+                            </Tab.Pane>
                         </Tab.Content>
                     </Col>
                 </Row>

@@ -25,12 +25,8 @@ const GroupByCat = () => {
                             />
 
                             <div className='card-footer'>
-                                <h4 className='text-truncate align-text-center'>
-                                    {product.ProName}
-                                </h4>
-                                <p className='mb-2 pl-4 text-truncate align-text-center'>
-                                    {product.Price}
-                                </p>
+                                <h4 className='text-truncate align-text-center'>{product.ProName}</h4>
+                                <p className='mb-2 pl-4 text-truncate align-text-center'>{product.Price}</p>
                             </div>
                         </div>
                     </Link>

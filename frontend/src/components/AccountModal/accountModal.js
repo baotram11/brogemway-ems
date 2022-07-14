@@ -20,9 +20,7 @@ const AccountModal = (props) => {
                 <Modal.Header closeButton>
                     <Modal.Title>
                         <span>Mã tài khoản: </span>
-                        <span style={{ fontWeight: 'bold', color: '#167146' }}>
-                            {account.UserID}
-                        </span>
+                        <span style={{ fontWeight: 'bold', color: '#167146' }}>{account.UserID}</span>
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body className='modal-body'>
@@ -56,9 +54,7 @@ const AccountModal = (props) => {
                                             <input
                                                 disabled={true}
                                                 type='text'
-                                                placeholder={
-                                                    account.PhoneNumber
-                                                }
+                                                placeholder={account.PhoneNumber}
                                                 className='form-control'
                                             />
                                         </div>

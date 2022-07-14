@@ -1,110 +1,106 @@
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
 .footer {
-	background-color: $theme-light;
-	body {
-		font-family: $font-family-normal;
-		height: 100% !important;
-		background-color: #fff !important;
-		padding: 0 !important;
-		margin: 0 !important;
-	}
+    background-color: $theme-light;
+    body {
+        font-family: $font-family-normal;
+        height: 100% !important;
+        background-color: #fff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
 
-	.container-fluid {
-		margin-top: 100px;
-		color: #000 !important;
-	}
+    .container-fluid {
+        margin-top: 100px;
+        color: #000 !important;
+    }
 
-	.text-brand {
-		@include fontBrand;
-		color: $theme-medium-green;
-	}
+    .text-brand {
+        @include fontBrand;
+        color: $theme-medium-green;
+    }
 
-	h5 {
-		font-size: calc(
-			20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))
-		) !important;
-	}
+    h5 {
+        font-size: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important;
+    }
 
-	.fa {
-		cursor: pointer;
-		font-size: 21px;
-		margin: 5px 10px 5px 10px !important;
-	}
+    .fa {
+        cursor: pointer;
+        font-size: 21px;
+        margin: 5px 10px 5px 10px !important;
+    }
 
-	li {
-		margin-top: 10px;
-		margin-bottom: 10px;
-		&:first-child {
-			font-size: 21px !important;
-			font-weight: bold;
-			margin-bottom: calc(
-				40px + (48 - 40) * ((100vw - 360px) / (1600 - 360))
-			) !important;
-			color: #757575 !important;
-		}
-	}
+    li {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        &:first-child {
+            font-size: 21px !important;
+            font-weight: bold;
+            margin-bottom: calc(40px + (48 - 40) * ((100vw - 360px) / (1600 - 360))) !important;
+            color: #757575 !important;
+        }
+    }
 
-	footer {
-		color: #757575 !important;
-	}
+    footer {
+        color: #757575 !important;
+    }
 
-	.social {
-		position: relative;
-		left: -10px;
-	}
+    .social {
+        position: relative;
+        left: -10px;
+    }
 
-	.cursor-pointer {
-		cursor: pointer !important;
-		color: $theme-medium-green;
-		font-weight: bold;
-	}
+    .cursor-pointer {
+        cursor: pointer !important;
+        color: $theme-medium-green;
+        font-weight: bold;
+    }
 
-	.astrodivider {
-		margin: 64px auto;
-		width: 400px;
-		max-width: 100%;
-		position: relative;
+    .astrodivider {
+        margin: 64px auto;
+        width: 400px;
+        max-width: 100%;
+        position: relative;
 
-		.astrodividermask {
-			overflow: hidden;
-			height: 20px;
-			&:after {
-				content: '';
-				display: block;
-				margin: -25px auto 0;
-				width: 100%;
-				height: 25px;
-				border-radius: 125px / 12px;
-				box-shadow: 0 0 8px green;
-			}
-		}
+        .astrodividermask {
+            overflow: hidden;
+            height: 20px;
+            &:after {
+                content: '';
+                display: block;
+                margin: -25px auto 0;
+                width: 100%;
+                height: 25px;
+                border-radius: 125px / 12px;
+                box-shadow: 0 0 8px green;
+            }
+        }
 
-		span {
-			width: 50px;
-			height: 50px;
-			position: absolute;
-			bottom: 100%;
-			margin-bottom: -25px;
-			left: 50%;
-			margin-left: -25px;
-			border-radius: 100%;
-			box-shadow: 0 2px 4px $theme-milky-green;
-			background: #fff;
-		}
+        span {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            bottom: 100%;
+            margin-bottom: -25px;
+            left: 50%;
+            margin-left: -25px;
+            border-radius: 100%;
+            box-shadow: 0 2px 4px $theme-milky-green;
+            background: #fff;
+        }
 
-		i {
-			position: absolute;
-			top: 4px;
-			bottom: 4px;
-			left: 4px;
-			right: 4px;
-			border-radius: 100%;
-			border: 1px dashed green;
-			text-align: center;
-			line-height: 40px;
-			font-style: normal;
-			color: $theme-medium-green;
-		}
-	}
+        i {
+            position: absolute;
+            top: 4px;
+            bottom: 4px;
+            left: 4px;
+            right: 4px;
+            border-radius: 100%;
+            border: 1px dashed green;
+            text-align: center;
+            line-height: 40px;
+            font-style: normal;
+            color: $theme-medium-green;
+        }
+    }
 }

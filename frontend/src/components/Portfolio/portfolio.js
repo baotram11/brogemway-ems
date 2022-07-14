@@ -7,12 +7,9 @@ const Portfolio = () => {
         <div className='portfolio'>
             <div className='container'>
                 <div className='text-center'>
-                    <h2 className='section-heading text-uppercase mb-3 pt-5'>
-                        Sản phẩm
-                    </h2>
+                    <h2 className='section-heading text-uppercase mb-3 pt-5'>Sản phẩm</h2>
                     <h3 className='section-subheading text-muted mb-4'>
-                        Bao gồm các sản phẩm thuộc thiết bị số, thời trang, giày
-                        và túi xách
+                        Bao gồm các sản phẩm thuộc thiết bị số, thời trang, giày và túi xách
                     </h3>
                 </div>
                 <div>
@@ -32,9 +29,7 @@ const Portfolio = () => {
                                     />
                                 </Link>
                                 <div className='portfolio-caption'>
-                                    <div className='portfolio-caption-heading'>
-                                        Thiết bị số
-                                    </div>
+                                    <div className='portfolio-caption-heading'>Thiết bị số</div>
                                     <div className='portfolio-caption-subheading text-muted'>
                                         Điện thoại, máy tính
                                     </div>
@@ -56,9 +51,7 @@ const Portfolio = () => {
                                     />
                                 </Link>
                                 <div className='portfolio-caption'>
-                                    <div className='portfolio-caption-heading'>
-                                        Giày tây
-                                    </div>
+                                    <div className='portfolio-caption-heading'>Giày tây</div>
                                     <div className='portfolio-caption-subheading text-muted'>
                                         Giày tây nam
                                     </div>
@@ -80,9 +73,7 @@ const Portfolio = () => {
                                     />
                                 </Link>
                                 <div className='portfolio-caption'>
-                                    <div className='portfolio-caption-heading'>
-                                        Túi xách
-                                    </div>
+                                    <div className='portfolio-caption-heading'>Túi xách</div>
                                     <div className='portfolio-caption-subheading text-muted'>
                                         Túi xách thời trang
                                     </div>
@@ -104,9 +95,7 @@ const Portfolio = () => {
                                     />
                                 </Link>
                                 <div className='portfolio-caption'>
-                                    <div className='portfolio-caption-heading'>
-                                        Áo
-                                    </div>
+                                    <div className='portfolio-caption-heading'>Áo</div>
                                     <div className='portfolio-caption-subheading text-muted'>
                                         Áo thun, áo sơ mi, áo khoác
                                     </div>
@@ -128,9 +117,7 @@ const Portfolio = () => {
                                     />
                                 </Link>
                                 <div className='portfolio-caption'>
-                                    <div className='portfolio-caption-heading'>
-                                        Quần
-                                    </div>
+                                    <div className='portfolio-caption-heading'>Quần</div>
                                     <div className='portfolio-caption-subheading text-muted'>
                                         Quần tây, quần jean
                                     </div>
@@ -152,9 +139,7 @@ const Portfolio = () => {
                                     />
                                 </Link>
                                 <div className='portfolio-caption'>
-                                    <div className='portfolio-caption-heading'>
-                                        Giày thể thao
-                                    </div>
+                                    <div className='portfolio-caption-heading'>Giày thể thao</div>
                                     <div className='portfolio-caption-subheading text-muted'>
                                         Giày thể thao nam, nữ
                                     </div>

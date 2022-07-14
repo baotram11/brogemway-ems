@@ -28,9 +28,7 @@ const ProductList = () => {
                     <span className='visually-hidden'>Loading...</span>
                 </div>
             )}
-            {status === 'failed' && (
-                <h5 style={{ color: 'red' }}>{errorMessage}</h5>
-            )}
+            {status === 'failed' && <h5 style={{ color: 'red' }}>{errorMessage}</h5>}
             {status === 'succeeded' && (
                 <div className='row mt-5'>
                     {allProducts.map((product) => (
@@ -40,10 +38,7 @@ const ProductList = () => {
                             key={product.ProID}
                             className='col d-flex align-items-stretch'
                         >
-                            <div
-                                className='card mb-4'
-                                style={{ width: '18rem' }}
-                            >
+                            <div className='card mb-4' style={{ width: '18rem' }}>
                                 <img
                                     style={{ height: '120%' }}
                                     className='item-image card-img-center img-fluid'
@@ -52,9 +47,7 @@ const ProductList = () => {
                                 />
 
                                 <div className='card-footer'>
-                                    <h4 className='text-truncate align-text-center'>
-                                        {product.ProName}
-                                    </h4>
+                                    <h4 className='text-truncate align-text-center'>{product.ProName}</h4>
                                     <p className='mb-2 pl-4 text-truncate align-text-center'>
                                         {product.Price}
                                     </p>

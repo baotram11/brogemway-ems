@@ -16,7 +16,7 @@ const CategoryList = () => {
     const errorMessage = useSelector(selectErrorMessage);
 
     useEffect(() => {
-        if (statusCats=== 'idle') {
+        if (statusCats === 'idle') {
             dispatch(fetchCategories());
         }
     }, [statusCats, dispatch]);
