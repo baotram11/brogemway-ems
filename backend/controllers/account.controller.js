@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
 const Account = require('../models/account.model');
 
 module.exports = {
@@ -43,8 +45,11 @@ module.exports = {
             const address = req.body.Address;
             const isActive = req.body.IsActive;
             const level = req.body.Level;
-            const password = req.body.Password;
+            const rawPassword = req.body.Password;
             const dob = req.body.DoB;
+
+            const salt = await bcrypt.genSalt(10);
+            const hash = await bcrypt.hash(rawPassword, salt);
 
             const newAccount = new Account({
                 PhoneNumber: phoneNumber,
@@ -53,7 +58,7 @@ module.exports = {
                 Address: address,
                 IsActive: isActive,
                 Level: level,
-                Password: password,
+                Password: hash,
                 DoB: dob,
             });
 
@@ -61,6 +66,49 @@ module.exports = {
             res.send(result);
         } catch (error) {
             res.status(422).json({ status: 422, error: error.message });
+            next();
+        }
+    },
+
+    loginAccount: async (req, res, next) => {
+        try {
+            const { username, password } = req.body;
+
+            var user = null;
+
+            if (username.includes('@')) {
+                user = await Account.findOne({ Email: username });
+            } else {
+                user = await Account.findOne({ PhoneNumber: username });
+            }
+
+            const isMatch = await bcrypt.compare(password, user.Password);
+            if (!isMatch) {
+                return res.status(400).json({
+                    success: false,
+                    error: 'Mật khẩu chưa chính xác',
+                });
+            }
+
+            if (!user) {
+                return res.status(400).send({ error: 'Không tìm thấy tài khoản phù hợp' });
+            }
+
+            return res.status(200).json({
+                success: true,
+                account: {
+                    PhoneNumber: user.PhoneNumber,
+                    Name: user.Name,
+                    Email: user.Email,
+                    IsActive: user.IsActive,
+                    Level: user.Level,
+                    Password: user.Password,
+                },
+            });
+        } catch (error) {
+            res.status(400).json({
+                error: 'Yêu cầu của bạn không thể được xử lý. Vui lòng thử lại.',
+            });
             next();
         }
     },

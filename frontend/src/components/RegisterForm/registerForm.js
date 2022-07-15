@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addAccount, selectAdd, selectErrorCreate, selectNewAccount } from '../../store/slices/accountSlice';
 
 const RegisterForm = (props) => {
+    const navigate = useNavigate();
+
     const dispatch = useDispatch();
     const add = useSelector(selectAdd);
     const newAccount = useSelector(selectNewAccount);
@@ -78,19 +80,16 @@ const RegisterForm = (props) => {
         fontWeight: 'bold',
         fontSize: '15px',
         textAlign: 'right',
+        width: '100%',
     };
 
-    const navigate = useNavigate();
-
     useEffect(() => {
-        if (add === 'added' && !newAccount) {
-            console.log('added');
+        if (add === 'added') {
             return navigate('/');
-        } else if (add === 'added' && newAccount) {
-            //Thay doi canh bao
+        } else if (add === 'failed') {
             alert(JSON.stringify('Đăng ký chưa thành công!', null, 2));
         }
-    });
+    }, [add, navigate]);
 
     return (
         <div className='register-form-area'>

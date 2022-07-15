@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { UseLoginFormValidator } from '../../utils/useFormValidator';
 
 const LoginForm = () => {
+    const navigate = useNavigate();
+
     const [passwordType, setPasswordType] = useState('password');
     const togglePassword = () => {
         if (passwordType === 'password') {
@@ -49,6 +51,8 @@ const LoginForm = () => {
         });
         if (!isValid) return;
         alert(JSON.stringify(form, null, 2));
+
+        return navigate('/');
     };
 
     const formFieldError = { border: '1px solid #e11d48' };

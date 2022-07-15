@@ -4,7 +4,8 @@ import { AiOutlineUser } from 'react-icons/ai';
 import { IoSearchOutline, IoHeartOutline } from 'react-icons/io5';
 import { MdOutlineShoppingBag } from 'react-icons/md';
 import { FaBars } from 'react-icons/fa';
-
+import { selectNewAccount } from '../../store/slices/accountSlice';
+import { useSelector } from 'react-redux';
 
 window.addEventListener('DOMContentLoaded', (event) => {
     var navbarShrink = function () {
@@ -23,6 +24,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 const Header = () => {
+    const user = useSelector(selectNewAccount);
+
     return (
         <div className='header'>
             <nav className='navbar navbar-expand-lg navbar-dark fixed-top' id='mainNav'>
@@ -30,7 +33,7 @@ const Header = () => {
                     <Link className='navbar-brand' to={{ pathname: '/', hash: '#' }}>
                         BROGEMWAY
                     </Link>
-                    
+
                     <button
                         className='navbar-toggler'
                         type='button'
@@ -61,9 +64,12 @@ const Header = () => {
                                 </Link>
                             </li>
                             <li className='nav-item'>
-                                <Link className='nav-link' to='/account'>
+                                <Link className='nav-link' to='/register'>
                                     <AiOutlineUser size={20} />
                                 </Link>
+                            </li>
+                            <li className='nav-item'>
+                                <span style={{ color: 'red' }}>{user.Name}</span>
                             </li>
                             <li className='nav-item'>
                                 <Link className='nav-link' to='/search'>

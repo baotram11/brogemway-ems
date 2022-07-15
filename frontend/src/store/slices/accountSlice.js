@@ -31,14 +31,14 @@ export const addAccount = createAsyncThunk('account/addAccount', async (data, { 
 
         const response = await axios.post(apiUrl, newAccount);
         console.log(response);
+
         if (response.status < 200 || response.status >= 300) {
             return rejectWithValue(response.data);
         }
 
         return response.data;
     } catch (error) {
-        console.log(error.message);
-        return error.message;
+        return rejectWithValue(error.message);
     }
 });
 
@@ -53,34 +53,57 @@ export const updateAccount = createAsyncThunk('account/updateAccount', async (da
     }
 });
 
+export const loginAccount = createAsyncThunk('account/addAccount', async (data, { rejectWithValue }) => {
+    try {
+        console.log('CALL API: ' + apiUrl + 'login');
+
+        const response = await axios.post(apiUrl, data);
+        
+        console.log(response);
+
+        if (response.status < 200 || response.status >= 300) {
+            return rejectWithValue(response.data);
+        }
+
+        return response.data;
+    } catch (error) {
+        return rejectWithValue(error.message);
+    }
+});
+
 export const accountSlice = createSlice({
     name: 'account',
     initialState: {
         update: false,
         add: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
         status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
+        login: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
+
         newAccount: [],
+        currentAccount: [],
         allAccounts: [],
+
         errorMessage: null,
         errorUpdate: null,
         errorCreate: null,
+        errorLogin: null,
     },
     reducers: {},
     extraReducers: (builder) => {
+        // account/fetchAccounts
         builder.addCase(fetchAccounts.pending, (state, action) => {
             state.status = 'loading';
         });
-
         builder.addCase(fetchAccounts.fulfilled, (state, action) => {
             state.status = 'succeeded';
             state.allAccounts = action.payload;
         });
-
         builder.addCase(fetchAccounts.rejected, (state, action) => {
             state.status = 'failed';
             state.errorMessage = action.error.message;
         });
 
+        // account/updateAccount
         builder.addCase(updateAccount.pending, (state) => {
             state.update = true;
         });
@@ -92,6 +115,7 @@ export const accountSlice = createSlice({
             state.errorUpdate = action.payload;
         });
 
+        // account/addAccount
         builder.addCase(addAccount.pending, (state) => {
             state.add = 'idle';
         });
@@ -107,9 +131,10 @@ export const accountSlice = createSlice({
 });
 
 export const selectUpdate = (state) => state.account.update;
+export const selectErrorUpdate = (state) => state.account.errorUpdate;
 
-export const selectAllAccounts = (state) => state.account.allAccounts;
 export const selectStatus = (state) => state.account.status;
+export const selectAllAccounts = (state) => state.account.allAccounts;
 export const selectErrorMessage = (state) => state.account.errorMessage;
 
 export const selectAdd = (state) => state.account.add;
