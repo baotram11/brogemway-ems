@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+// import brcypt from 'bcrypt';
 
 const apiUrl = 'http://localhost:5000/api/accounts/';
 
-export const fetchAccounts = createAsyncThunk('accounts/fetchAccounts', async () => {
+export const fetchAccounts = createAsyncThunk('account/fetchAccounts', async () => {
     try {
         console.log('CALL API: ' + apiUrl);
         const response = await axios.get(apiUrl);
@@ -13,9 +14,37 @@ export const fetchAccounts = createAsyncThunk('accounts/fetchAccounts', async ()
     }
 });
 
-export const updateAccount = createAsyncThunk('accounts/updateAccount', async (data) => {
+export const addAccount = createAsyncThunk('account/addAccount', async (data, { rejectWithValue }) => {
     try {
-        const response = await axios.patch(apiUrl + data.Account.UserID, data.Update);
+        console.log('CALL API: ' + apiUrl);
+
+        const rawPassword = data.password;
+        // const salt = brcypt.genSaltSync(10);
+        // const hash = brcypt.hashSync(rawPassword, salt);
+
+        const newAccount = {
+            Name: data.name,
+            PhoneNumber: data.telephone,
+            Email: data.email,
+            Password: rawPassword,
+        };
+
+        const response = await axios.post(apiUrl, newAccount);
+        console.log(response);
+        if (response.status < 200 || response.status >= 300) {
+            return rejectWithValue(response.data);
+        }
+
+        return response.data;
+    } catch (error) {
+        console.log(error.message);
+        return error.message;
+    }
+});
+
+export const updateAccount = createAsyncThunk('account/updateAccount', async (data) => {
+    try {
+        const response = await axios.patch(apiUrl + data.Account._id, data.Update);
         if (response.data.status === 'updated') {
             return data.Account;
         }
@@ -28,10 +57,13 @@ export const accountSlice = createSlice({
     name: 'account',
     initialState: {
         update: false,
-        allAccounts: [],
+        add: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
         status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
+        newAccount: [],
+        allAccounts: [],
         errorMessage: null,
         errorUpdate: null,
+        errorCreate: null,
     },
     reducers: {},
     extraReducers: (builder) => {
@@ -59,12 +91,29 @@ export const accountSlice = createSlice({
             state.update = false;
             state.errorUpdate = action.payload;
         });
+
+        builder.addCase(addAccount.pending, (state) => {
+            state.add = 'idle';
+        });
+        builder.addCase(addAccount.fulfilled, (state, action) => {
+            state.add = 'added';
+            state.newAccount = action.payload;
+        });
+        builder.addCase(addAccount.rejected, (state, action) => {
+            state.add = 'failed';
+            state.errorCreate = action.payload;
+        });
     },
 });
 
 export const selectUpdate = (state) => state.account.update;
+
 export const selectAllAccounts = (state) => state.account.allAccounts;
 export const selectStatus = (state) => state.account.status;
 export const selectErrorMessage = (state) => state.account.errorMessage;
+
+export const selectAdd = (state) => state.account.add;
+export const selectNewAccount = (state) => state.account.newAccount;
+export const selectErrorCreate = (state) => state.account.errorCreate;
 
 export default accountSlice.reducer;

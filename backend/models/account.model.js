@@ -4,8 +4,7 @@ const accountSchema = new mongoose.Schema(
     {
         UserID: {
             type: String,
-            unique: true,
-            required: true,
+            required: false,
         },
         PhoneNumber: {
             type: String,

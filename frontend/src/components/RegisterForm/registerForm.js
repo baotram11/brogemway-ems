@@ -1,10 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { UseRegisterFormValidator } from '../../utils/useFormValidator';
+import { useDispatch, useSelector } from 'react-redux';
+import { addAccount, selectAdd, selectErrorCreate, selectNewAccount } from '../../store/slices/accountSlice';
 
 const RegisterForm = (props) => {
+    const dispatch = useDispatch();
+    const add = useSelector(selectAdd);
+    const newAccount = useSelector(selectNewAccount);
+    const errorCreate = useSelector(selectErrorCreate);
+
+    const [passwordType, setPasswordType] = useState('password');
+    const [confirmPasswordType, setConfirmPasswordType] = useState('password');
+
+    const togglePassword = () => {
+        if (passwordType === 'password') {
+            setPasswordType('text');
+            return;
+        }
+        setPasswordType('password');
+    };
+    const toggleConfirmPassword = () => {
+        if (confirmPasswordType === 'password') {
+            setConfirmPasswordType('text');
+            return;
+        }
+        setConfirmPasswordType('password');
+    };
+
     const [form, setForm] = useState({
         name: '',
         email: '',
@@ -42,7 +67,8 @@ const RegisterForm = (props) => {
             forceTouchErrors: true,
         });
         if (!isValid) return;
-        alert(JSON.stringify(form, null, 2));
+
+        if (add === 'idle') dispatch(addAccount(form));
     };
 
     const formFieldError = { border: '1px solid #e11d48' };
@@ -53,6 +79,18 @@ const RegisterForm = (props) => {
         fontSize: '15px',
         textAlign: 'right',
     };
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (add === 'added' && !newAccount) {
+            console.log('added');
+            return navigate('/');
+        } else if (add === 'added' && newAccount) {
+            //Thay doi canh bao
+            alert(JSON.stringify('Đăng ký chưa thành công!', null, 2));
+        }
+    });
 
     return (
         <div className='register-form-area'>
@@ -129,26 +167,41 @@ const RegisterForm = (props) => {
                                     ) : null}
                                 </div>
 
-                                <div className='single-input-fields'>
+                                <div className='single-input-fields input-group'>
                                     <label>Mật Khẩu</label>
                                     <input
                                         className={clsx(
                                             errors.password.dirty && errors.password.error && formFieldError
                                         )}
                                         name='password'
-                                        type={'password'}
+                                        type={passwordType}
                                         aria-label='Password field'
+                                        aria-describedby='button-addon1'
                                         placeholder='Nhập mật khẩu'
                                         value={form.password}
                                         onChange={onUpdateField}
                                         onBlur={onBlurField}
                                     />
+
+                                    <button
+                                        className='input-group-btn border-left-0'
+                                        id='button-addon1'
+                                        type='button'
+                                        onClick={togglePassword}
+                                    >
+                                        {passwordType === 'password' ? (
+                                            <i className='fa-solid fa-eye-slash'></i>
+                                        ) : (
+                                            <i className='fa-solid fa-eye'></i>
+                                        )}
+                                    </button>
+
                                     {errors.password.dirty && errors.password.error ? (
                                         <p style={formFieldErrorMessage}>{errors.password.message}</p>
                                     ) : null}
                                 </div>
 
-                                <div className='single-input-fields'>
+                                <div className='single-input-fields input-group'>
                                     <label>Xác nhận mật khẩu</label>
                                     <input
                                         className={clsx(
@@ -157,13 +210,26 @@ const RegisterForm = (props) => {
                                                 formFieldError
                                         )}
                                         name='confirmPassword'
-                                        type={'password'}
+                                        type={confirmPasswordType}
                                         aria-label='Confirm password field'
+                                        aria-describedby='button-addon2'
                                         placeholder='Nhập lại mật khẩu'
                                         value={form.confirmPassword}
                                         onChange={onUpdateField}
                                         onBlur={onBlurField}
                                     />
+                                    <button
+                                        className='input-group-btn border-left-0'
+                                        id='button-addon2'
+                                        type='button'
+                                        onClick={toggleConfirmPassword}
+                                    >
+                                        {confirmPasswordType === 'password' ? (
+                                            <i className='fa-solid fa-eye-slash'></i>
+                                        ) : (
+                                            <i className='fa-solid fa-eye'></i>
+                                        )}
+                                    </button>
                                     {errors.confirmPassword.dirty && errors.confirmPassword.error ? (
                                         <p style={formFieldErrorMessage}>{errors.confirmPassword.message}</p>
                                     ) : null}

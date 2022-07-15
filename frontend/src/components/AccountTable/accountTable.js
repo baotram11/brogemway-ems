@@ -8,6 +8,7 @@ const AccountTable = () => {
     const dispatch = useDispatch();
 
     const allAccounts = useSelector(selectAllAccounts);
+
     const isActive = (account) => {
         if (account.IsActive) {
             return <span className='badge rounded-pill bg-success '>Đã kích hoạt</span>;
@@ -72,10 +73,12 @@ const AccountTable = () => {
                     </thead>
                     <tbody>
                         {allAccounts.map((account) => (
-                            <tr key={account.UserID}>
+                            <tr key={account._id}>
                                 <td>
                                     <img
-                                        src={require(`../../assets/images/avatars/${account.UserID}.png`)}
+                                        src={require(`../../assets/images/avatars/${
+                                            Math.floor(Math.random() * 45) + 1
+                                        }.png`)}
                                         alt='https://bootdey.com/img/Content/avatar/avatar1.png'
                                     />
                                     <Link

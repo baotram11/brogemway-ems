@@ -85,6 +85,31 @@
                     color: #000;
                     border-radius: 0.5em;
                 }
+                &.input-group {
+                    input {
+                        border: $input-border;
+                        width: 90%;
+                        border-right-color: #fff;
+                        height: 50px;
+                        margin-bottom: 20px;
+                        padding: 0 25px;
+                        color: #000;
+                    }
+                    button {
+                        border: $input-border;
+                        background: transparent;
+                        height: 50px;
+                        margin-bottom: 20px;
+                        padding: 0;
+                        color: #000;
+                        border-bottom-left-radius: 0;
+                        border-top-left-radius: 0;
+                        border-top-right-radius: 0.5em;
+                        border-bottom-right-radius: 0.5em;
+                        width: 10%;
+                        border-left: #fff;
+                    }
+                }
                 &.login-check {
                     display: flex;
                     justify-content: space-between;

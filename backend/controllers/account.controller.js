@@ -10,7 +10,6 @@ module.exports = {
             if (!length) {
                 return res.status(404).json({ error: 'No accounts found!' });
             }
-
             res.send(results);
         } catch (error) {
             res.status(400).json('Error: ' + error);
@@ -26,9 +25,7 @@ module.exports = {
             var length = Object.keys(result).length;
 
             if (!length) {
-                return res
-                    .status(404)
-                    .json({ error: 'Account does not exist!' });
+                return res.status(404).json({ error: 'Account does not exist!' });
             }
 
             res.send(result);
@@ -40,7 +37,6 @@ module.exports = {
 
     createNewAccount: async (req, res, next) => {
         try {
-            const userID = req.body.UserID;
             const phoneNumber = req.body.PhoneNumber;
             const name = req.body.Name;
             const email = req.body.Email;
@@ -51,7 +47,6 @@ module.exports = {
             const dob = req.body.DoB;
 
             const newAccount = new Account({
-                UserID: userID,
                 PhoneNumber: phoneNumber,
                 Name: name,
                 Email: email,
@@ -65,7 +60,7 @@ module.exports = {
             const result = await newAccount.save();
             res.send(result);
         } catch (error) {
-            res.status(422).json({ error: error.message });
+            res.status(422).json({ status: 422, error: error.message });
             next();
         }
     },
@@ -75,15 +70,10 @@ module.exports = {
             const id = req.params.id;
             const updates = req.body;
 
-            const result = await Account.findOneAndUpdate(
-                { UserID: id },
-                updates
-            );
+            const result = await Account.findByIdAndUpdate(id, updates);
 
             if (!result) {
-                return res
-                    .status(404)
-                    .json({ error: 'Account does not exist!' });
+                return res.status(404).json({ error: 'Account does not exist!' });
             }
 
             res.send({ status: 'updated' });
@@ -97,15 +87,10 @@ module.exports = {
         const id = req.params.id;
 
         try {
-            const result = await Account.findOneAndUpdate(
-                { UserID: id },
-                { IsActive: false }
-            );
+            const result = await Account.findByIdAndUpdate(id, { IsActive: false });
 
             if (!result) {
-                return res
-                    .status(404)
-                    .json({ error: 'Account does not exist!' });
+                return res.status(404).json({ error: 'Account does not exist!' });
             }
 
             res.send(`Locked the Account: ${id} !!`);
@@ -119,15 +104,10 @@ module.exports = {
         const id = req.params.id;
 
         try {
-            const result = await Account.findOneAndUpdate(
-                { UserID: id },
-                { IsActive: true }
-            );
+            const result = await Account.findByIdAndUpdate(id, { IsActive: true });
 
             if (!result) {
-                return res
-                    .status(404)
-                    .json({ error: 'Account does not exist!' });
+                return res.status(404).json({ error: 'Account does not exist!' });
             }
 
             res.send(`Activated the account: ${id} !!`);

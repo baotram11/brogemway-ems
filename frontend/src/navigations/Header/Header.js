@@ -5,6 +5,7 @@ import { IoSearchOutline, IoHeartOutline } from 'react-icons/io5';
 import { MdOutlineShoppingBag } from 'react-icons/md';
 import { FaBars } from 'react-icons/fa';
 
+
 window.addEventListener('DOMContentLoaded', (event) => {
     var navbarShrink = function () {
         const navbarCollapsible = document.body.querySelector('#mainNav');
@@ -29,6 +30,7 @@ const Header = () => {
                     <Link className='navbar-brand' to={{ pathname: '/', hash: '#' }}>
                         BROGEMWAY
                     </Link>
+                    
                     <button
                         className='navbar-toggler'
                         type='button'

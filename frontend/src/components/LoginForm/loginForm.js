@@ -99,38 +99,34 @@ const LoginForm = () => {
                                     ) : null}
                                 </div>
 
-                                <div className='single-input-fields'>
+                                <div className='single-input-fields input-group'>
                                     <label>Mật Khẩu</label>
-                                    <div className='input-group mb-3'>
-                                        <input
-                                            className={clsx(
-                                                errors.password.dirty &&
-                                                    errors.password.error &&
-                                                    formFieldError
-                                            )}
-                                            name='password'
-                                            type={passwordType}
-                                            aria-label='Password field'
-                                            aria-describedby='button-addon'
-                                            placeholder='Nhập mật khẩu'
-                                            value={form.password}
-                                            onChange={onUpdateField}
-                                            onBlur={onBlurField}
-                                        />
+                                    <input
+                                        className={clsx(
+                                            errors.password.dirty && errors.password.error && formFieldError
+                                        )}
+                                        name='password'
+                                        type={passwordType}
+                                        aria-label='Password field'
+                                        aria-describedby='button-addon'
+                                        placeholder='Nhập mật khẩu'
+                                        value={form.password}
+                                        onChange={onUpdateField}
+                                        onBlur={onBlurField}
+                                    />
 
-                                        <button
-                                            id='button-addon'
-                                            type='button'
-                                            style={{ border: 'none', background: 'transparent' }}
-                                            onClick={togglePassword}
-                                        >
-                                            {passwordType === 'password' ? (
-                                                <i className='fa-solid fa-eye-slash'></i>
-                                            ) : (
-                                                <i className='fa-solid fa-eye'></i>
-                                            )}
-                                        </button>
-                                    </div>
+                                    <button
+                                        className='input-group-btn border-left-0'
+                                        id='button-addon'
+                                        type='button'
+                                        onClick={togglePassword}
+                                    >
+                                        {passwordType === 'password' ? (
+                                            <i className='fa-solid fa-eye-slash'></i>
+                                        ) : (
+                                            <i className='fa-solid fa-eye'></i>
+                                        )}
+                                    </button>
                                     {errors.password.dirty && errors.password.error ? (
                                         <p style={formFieldErrorMessage}>{errors.password.message}</p>
                                     ) : null}
