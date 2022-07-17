@@ -1,18 +1,25 @@
 // Font-family
 @import 'https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap';
+
+// primary-color
+$bg-primary: #f2e1d9;
 
 // text
+$text-title: #1a1a1a;
 $text-heading: #140c40;
 $text-body: #646d77;
-$text-fontfamily: 'Lora', serif;
+$text-fontfamily: 'Quicksand', sans-serif; //'Lora', serif;
+$text-normal: 500;
 
 // components
 $input-border: 1px solid #c9c9c9;
 $button-color: #fd8f5f;
+$button-bg: #e9855a;
 
 // heros
-$login-bg: url(../../assets/images/hero/hero-login.png);
-$register-bg: url(../../assets/images/hero/hero-backup5.png);
+$login-bg: url(../../assets/images/heros/hero-login.png);
+$register-bg: url(../../assets/images/heros/hero-backup5.png);
 
 // Theme colors
 $theme-light: #f8f9fa;

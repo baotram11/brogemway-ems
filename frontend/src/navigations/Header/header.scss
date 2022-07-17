@@ -1,0 +1,276 @@
+.header-area {
+    background: $bg-primary;
+    .main-header {
+        padding-left: 270px;
+        padding-right: 50px;
+    }
+
+    .menu-wrapper {
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+        &.row {
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+        .logo {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+        }
+        .logo-sm {
+            position: absolute;
+            z-index: 2;
+            top: 10px;
+            left: 15px;
+            display: none;
+        }
+        .main-menu {
+            &.header-sticky.sticky-bar {
+                background: #f2e1d9;
+                padding-left: 85px;
+                padding-right: 30px;
+                box-shadow: none;
+            }
+            &.header-sticky.sticky-bar.sticky {
+                .main-menu {
+                    ul {
+                        li {
+                            .link {
+                                text-decoration: none;
+                                padding: 20px 20px !important;
+                            }
+                        }
+                    }
+                }
+            }
+            &.header-sticky.sticky-bar {
+                .menu-wrapper {
+                    .header-left {
+                        .logo {
+                            display: none !important;
+                        }
+                        .logo2 {
+                            display: block;
+                        }
+                    }
+                }
+            }
+            
+            ul {
+                li {
+                    display: inline-block;
+                    position: relative;
+                    z-index: 1;
+                    .link {
+                        color: #1d2547;
+                        font-weight: 600;
+                        padding: 39px 19px;
+                        display: block;
+                        font-size: 14px;
+                        font-family: 'Poppins', sans-serif;
+                        -webkit-transition: 0.3s;
+                        -moz-transition: 0.3s;
+                        -o-transition: 0.3s;
+                        transition: 0.3s;
+                        text-transform: capitalize;
+                    }
+                    &:hover {
+                        > .link {
+                            text-decoration: none;
+                            color: $button-color;
+                        }
+                        > ul.submenu {
+                            visibility: visible;
+                            opacity: 1;
+                            top: 100%;
+                            &::before {
+                                top: -8px;
+                            }
+                        }
+                    }
+                }
+                ul.submenu {
+                    position: absolute;
+                    width: 170px;
+                    background: #fff;
+                    left: 0;
+                    top: 90%;
+                    visibility: hidden;
+                    opacity: 0;
+                    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.05);
+                    padding: 17px 0;
+                    border-top: 3px solid $button-color;
+                    -webkit-transition: 0.3s;
+                    -moz-transition: 0.3s;
+                    -o-transition: 0.3s;
+                    transition: 0.3s;
+                    border-radius: 5px 5px 0 0;
+                    > li {
+                        margin-left: 7px;
+                        display: block;
+                        > .link {
+                            text-decoration: none;
+                            padding: 6px 10px !important;
+                            font-size: 16px;
+                            text-transform: capitalize;
+                            &:hover {
+                                padding-left: 13px !important;
+                            }
+                        }
+                    }
+                    &::before {
+                        border-style: solid;
+                        border-width: 0 6px 6px 6px;
+                        border-color: transparent transparent $button-color transparent;
+                        content: '';
+                        top: -5px;
+                        left: 13%;
+                        position: absolute;
+                        transition: 0.3s;
+                        z-index: -1;
+                        overflow: hidden;
+                        -webkit-transition: 0.3s;
+                        -moz-transition: 0.3s;
+                        -o-transition: 0.3s;
+                        transition: 0.3s;
+                    }
+                }
+            }
+        }
+
+        .mobile-menu {
+            position: absolute;
+            right: 0px;
+            width: 100%;
+            z-index: 99;
+        }
+        .header-right {
+            .form-box {
+                position: relative;
+                input {
+                    background: none;
+                    padding: 0px;
+                    width: 260px;
+                    height: 42px;
+                    border: 0;
+                    border-bottom: 1px solid #c2b6bb;
+                    color: #010a44;
+                    &::placeholder {
+                        font-size: 15px;
+                        font-weight: 400;
+                        color: #010a44;
+                    }
+                }
+                .search-icon {
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    transform: translateY(-50%);
+                    i {
+                        color: #010a44;
+                        cursor: pointer;
+                        font-size: 19px;
+                    }
+                }
+            }
+            .card-stor {
+                position: relative;
+                img {
+                    width: 21px;
+                    height: 26px;
+                    cursor: pointer;
+                }
+                span {
+                    color: #fff;
+                    font-size: 14px;
+                    font-weight: 400;
+                    background: $button-color;
+                    border-radius: 30px;
+                    cursor: pointer;
+                    width: 22px;
+                    display: inline-block;
+                    text-align: center;
+                    height: 22px;
+                    line-height: 22px;
+                    position: absolute;
+                    left: 10px;
+                    bottom: -9px;
+                }
+            }
+            .account-btn {
+                padding: 0 44px;
+                color: #010a44;
+                font-size: 14px;
+                font-weight: 600;
+                &:hover {
+                    color: $button-color;
+                }
+            }
+        }
+    }
+    @media only screen and (min-width: 1200px) and (max-width: 1600px) {
+        .header-area {
+            .main-header {
+                padding-left: 165px;
+                padding-right: 50px;
+                .menu-wrapper {
+                    .logo {
+                        img {
+                            width: 165px;
+                        }
+                    }
+                    .header-right {
+                        .form-box {
+                            input {
+                                width: 265px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+        .header-area {
+            .main-header {
+                padding-left: 159px;
+                padding-right: 28px;
+                .menu-wrapper {
+                    .logo {
+                        img {
+                            width: 148px;
+                        }
+                    }
+                    .main-menu {
+                        ul {
+                            li {
+                                .link {
+                                    text-decoration: none;
+                                    padding: 39px 9px;
+                                }
+                            }
+                        }
+                        .header-sticky.sticky-bar {
+                            padding-left: 114px;
+                            padding-right: 30px;
+                        }
+                        .header-right {
+                            .form-box {
+                                input {
+                                    width: 210px;
+                                }
+                            }
+                            .account-btn {
+                                padding: 0 24px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
