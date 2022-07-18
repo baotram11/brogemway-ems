@@ -11,8 +11,8 @@ const RegisterForm = (props) => {
 
     const dispatch = useDispatch();
     const add = useSelector(selectAdd);
-    const newAccount = useSelector(selectNewAccount);
-    const errorCreate = useSelector(selectErrorCreate);
+    // const newAccount = useSelector(selectNewAccount);
+    // const errorCreate = useSelector(selectErrorCreate);
 
     const [passwordType, setPasswordType] = useState('password');
     const [confirmPasswordType, setConfirmPasswordType] = useState('password');

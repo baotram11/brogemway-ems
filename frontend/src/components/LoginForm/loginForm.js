@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { UseLoginFormValidator } from '../../utils/useFormValidator';
 
+import { loginAccount, selectLogin } from '../../store/slices/accountSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
 const LoginForm = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const login = useSelector(selectLogin);
 
     const [passwordType, setPasswordType] = useState('password');
     const togglePassword = () => {
@@ -50,9 +55,8 @@ const LoginForm = () => {
             forceTouchErrors: true,
         });
         if (!isValid) return;
-        alert(JSON.stringify(form, null, 2));
 
-        return navigate('/');
+        if (login === 'idle') dispatch(loginAccount(form));
     };
 
     const formFieldError = { border: '1px solid #e11d48' };
@@ -62,7 +66,16 @@ const LoginForm = () => {
         fontWeight: 'bold',
         fontSize: '15px',
         textAlign: 'right',
+        width: '100%',
     };
+
+    useEffect(() => {
+        if (login === 'added') {
+            return navigate('/');
+        } else if (login === 'failed') {
+            alert(JSON.stringify('Đăng nhập chưa thành công!', null, 2));
+        }
+    }, [login, navigate]);
 
     return (
         <div className='login-form-area'>

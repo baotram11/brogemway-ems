@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
     selectAllCategories,
     selectStatusCats,
-    selectErrorMessage,
+    // selectErrorMessage,
     fetchCategories,
 } from '../../store/slices/categorySlice';
 
@@ -13,7 +13,7 @@ const Submenu = () => {
 
     const allCategories = useSelector(selectAllCategories);
     const statusCats = useSelector(selectStatusCats);
-    const errorMessage = useSelector(selectErrorMessage);
+    // const errorMessage = useSelector(selectErrorMessage);
 
     useEffect(() => {
         if (statusCats === 'idle') {
@@ -22,25 +22,20 @@ const Submenu = () => {
     }, [statusCats, dispatch]);
 
     return (
-        <div className='submenu-area'>
-            {statusCats === 'loading' && (
-                <div className='spinner-border text-secondary' role='status'>
-                    <span className='visually-hidden'>Loading...</span>
-                </div>
-            )}
-            {statusCats === 'failed' && <h5 style={{ color: 'red' }}>{errorMessage}</h5>}
-            {statusCats === 'succeeded' && (
-                <ul className='submenu'>
-                    {allCategories.map((category) => (
-                        <li>
-                            <Link to={`/category/${category.CatID}`} key={category.CatID}>
-                                {category.CatName}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-            )}
-        </div>
+        <ul className='submenu'>
+            {allCategories.map((category) => (
+                <li key={category.CatID}>
+                    <Link
+                        className='link'
+                        style={{ textDecoration: 'none' }}
+                        to={`/category/${category.CatID}`}
+                        key={category.CatID}
+                    >
+                        {category.CatName}
+                    </Link>
+                </li>
+            ))}
+        </ul>
     );
 };
 

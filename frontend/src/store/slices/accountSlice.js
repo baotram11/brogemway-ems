@@ -56,9 +56,8 @@ export const updateAccount = createAsyncThunk('account/updateAccount', async (da
 export const loginAccount = createAsyncThunk('account/addAccount', async (data, { rejectWithValue }) => {
     try {
         console.log('CALL API: ' + apiUrl + 'login');
-
-        const response = await axios.post(apiUrl, data);
-        
+        console.log(data);
+        const response = await axios.post(apiUrl + 'login', data);
         console.log(response);
 
         if (response.status < 200 || response.status >= 300) {
@@ -140,5 +139,8 @@ export const selectErrorMessage = (state) => state.account.errorMessage;
 export const selectAdd = (state) => state.account.add;
 export const selectNewAccount = (state) => state.account.newAccount;
 export const selectErrorCreate = (state) => state.account.errorCreate;
+
+export const selectLogin = (state) => state.account.login;
+export const selectErrorLogin = (state) => state.account.errorLogin;
 
 export default accountSlice.reducer;

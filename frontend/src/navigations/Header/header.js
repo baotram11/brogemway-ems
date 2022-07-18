@@ -5,7 +5,7 @@ import Submenu from '../../components/Submenu/submenu';
 const Header = () => {
     return (
         <div className='header-area'>
-            <div className='main-header header-sticky sticky-bar'>
+            <div className='main-header header-sticky'>
                 <div className='container-fluid'>
                     <div className='row menu-wrapper align-items-center justify-content-between'>
                         <div className='header-left d-flex align-items-center'>
@@ -17,14 +17,14 @@ const Header = () => {
                                     />
                                 </Link>
                             </div>
-                            {/* <div className='logo-sm'>
+                            <div className='logo2'>
                                 <Link className='link' style={{ textDecoration: 'none' }}  to='/'>
-                                    <img
+                                    <img width={'77px'} height={'77px'}
                                         src={require('../../assets/images/logos/bgw-transparent.png')}
                                         alt='brogemway'
                                     />
                                 </Link>
-                            </div> */}
+                            </div>
                             <div className='main-menu d-none d-lg-block'>
                                 <nav>
                                     <ul id='navigation'>
@@ -83,9 +83,8 @@ const Header = () => {
                                 </nav>
                             </div>
                         </div>
-                        <div className='header-right d-flex align-items-center'>
-                            <div className='search'>
-                                <ul className='d-flex align-items-center'>
+                        <div className='header-right1 d-flex align-items-center'>
+                                <ul className=' search d-flex align-items-center'>
                                     <li>
                                         <form action='#' className='form-box f-right'>
                                             <input
@@ -99,9 +98,8 @@ const Header = () => {
                                         </form>
                                     </li>
                                     <li>
-                                        <Link
+                                        <Link className='link account-btn'
                                             to='login'
-                                            className='link account-btn'
                                             style={{ textDecoration: 'none' }}
                                         >
                                             ĐĂNG NHẬP
@@ -117,7 +115,6 @@ const Header = () => {
                                         </div>
                                     </li>
                                 </ul>
-                            </div>
                         </div>
                         <div className='col-12'>
                             <div className='mobile-menu d-block d-lg-none'>
@@ -130,7 +127,7 @@ const Header = () => {
                                         className='link slicknav-btn slicknav-collapsed'
                                         style={{ textDecoration: 'none' }}
                                     >
-                                        <span className='slicknav-menu-text'>MENU</span>
+                                        <span className='slicknav-menu'>MENU</span>
                                         <span className='slicknav-icon'>
                                             <span className='slicknav-icon-bar'></span>
                                             <span className='slicknav-icon-bar'></span>

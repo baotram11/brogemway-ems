@@ -41,18 +41,18 @@ export const confirmPasswordValidator = (confirmPassword, form) => {
     return '';
 };
 
-export const nameLoginValidator = (username) => {
+export const nameLoginValidator = (username, status) => {
     if (!username) {
         return 'Nhập email hoặc số điện thoại';
-    } else if (!(username === 'brogemway@gmail.com')) {
+    } else if (!status) {
         return 'Email/Số điện thoại chưa chính xác!';
     }
 };
 
-export const passwordLoginValidator = (password) => {
+export const passwordLoginValidator = (password, status) => {
     if (!password) {
         return 'Nhập mật khẩu';
-    } else if (!(password === 'brogemway')) {
+    } else if (!status) {
         return 'Mật khẩu chưa chính xác!';
     }
 };

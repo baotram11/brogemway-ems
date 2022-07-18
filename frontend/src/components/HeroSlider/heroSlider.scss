@@ -1,0 +1,404 @@
+.hero-btn {
+    background: $button-color;
+    text-transform: uppercase;
+    padding: 27px 44px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    display: inline-block;
+    line-height: 1;
+    user-select: none;
+    -moz-user-select: none;
+    letter-spacing: 1px;
+    line-height: 0;
+    margin-bottom: 0;
+    cursor: pointer;
+    transition: color 0.4s linear;
+    position: relative;
+    z-index: 1;
+    border: 0;
+    overflow: hidden;
+    margin: 0;
+    border-radius: 0px;
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 101%;
+        height: 101%;
+        background: $button-bg;
+        z-index: 1;
+        border-radius: 0px;
+        transition: transform 0.5s;
+        transition-timing-function: ease;
+        transform-origin: 0 0;
+        transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+        transform: scaleX(0);
+        border-radius: 0px;
+        color: #fff;
+    }
+    &:hover {
+        &::before {
+            transform: scaleX(1);
+            color: #fff !important;
+            z-index: -1;
+        }
+    }
+    &:focus {
+        color: #fff;
+        outline: 0;
+        box-shadow: none;
+        outline: 0;
+        box-shadow: none;
+    }
+}
+
+.slider-height {
+    min-height: 820px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.slider-height2 {
+    min-height: 275px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.slider-bg1 {
+    background-image: url(../../assets/images/heros/h1_hero.png);
+}
+.slider-bg2 {
+    background-image: url(../../assets/images/heros/hero-login-sm.png);
+}
+.slider-area {
+    margin-top: -1px;
+    padding-right: 50px;
+    padding-bottom: 90px;
+    background: $bg-primary;
+    position: relative;
+    &::before {
+        position: absolute;
+        content: '';
+        width: 180px;
+        height: 100px;
+        background: #fff;
+        bottom: 0;
+        left: 0;
+    }
+    .hero__caption {
+        padding: 39px 70px 56px 68px;
+        margin-left: -25px;
+        margin-right: 25px;
+        position: relative;
+        overflow: hidden;
+        background: #fff;
+        span {
+            color: #7f85a8;
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+            text-transform: uppercase;
+        }
+        h1 {
+            font-size: 70px;
+            font-weight: 900;
+            margin-bottom: 14px;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+        p {
+            font-size: 18px;
+            line-height: 30px;
+            margin-bottom: 39px;
+            margin-bottom: 25px;
+            padding-right: 49px;
+        }
+    }
+    .hero__caption.hero__caption2 {
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+        position: unset;
+        background: none;
+        h1 {
+            color: #fff;
+            font-size: 50px;
+        }
+    }
+}
+.hero-overly1 {
+    position: relative;
+    z-index: 1;
+    &::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        right: 0;
+        z-index: -1;
+        background-repeat: no-repeat;
+        background: -moz-linear-gradient(
+            top,
+            rgba(139, 129, 129, 0.4) 0%,
+            rgba(141, 128, 130, 0.38) 1%,
+            rgba(140, 129, 132, 0.36) 2%,
+            rgba(142, 130, 130, 0.34) 3%,
+            rgba(140, 128, 131, 0.32) 4%,
+            rgba(142, 129, 132, 0.3) 5%,
+            rgba(140, 129, 133, 0.28) 6%,
+            rgba(143, 131, 131, 0.26) 7%,
+            rgba(142, 130, 130, 0.24) 8%,
+            rgba(143, 130, 130, 0.22) 9%,
+            rgba(144, 130, 134, 0.2) 10%,
+            rgba(143, 128, 133, 0.18) 11%,
+            rgba(139, 128, 128, 0.16) 12%,
+            rgba(137, 131, 131, 0.14) 13%,
+            rgba(143, 128, 128, 0.12) 14%,
+            rgba(136, 127, 127, 0.1) 15%,
+            rgba(143, 133, 133, 0.08) 16%,
+            rgba(146, 134, 134, 0.06) 17%,
+            rgba(143, 128, 128, 0.05) 18%,
+            rgba(139, 139, 139, 0.03) 19%,
+            rgba(146, 146, 146, 0.02) 20%,
+            rgba(0, 0, 0, 0) 21%,
+            rgba(0, 0, 0, 0) 22%,
+            rgba(0, 0, 0, 0) 100%
+        );
+        background: -webkit-linear-gradient(
+            top,
+            rgba(139, 129, 129, 0.4) 0%,
+            rgba(141, 128, 130, 0.38) 1%,
+            rgba(140, 129, 132, 0.36) 2%,
+            rgba(142, 130, 130, 0.34) 3%,
+            rgba(140, 128, 131, 0.32) 4%,
+            rgba(142, 129, 132, 0.3) 5%,
+            rgba(140, 129, 133, 0.28) 6%,
+            rgba(143, 131, 131, 0.26) 7%,
+            rgba(142, 130, 130, 0.24) 8%,
+            rgba(143, 130, 130, 0.22) 9%,
+            rgba(144, 130, 134, 0.2) 10%,
+            rgba(143, 128, 133, 0.18) 11%,
+            rgba(139, 128, 128, 0.16) 12%,
+            rgba(137, 131, 131, 0.14) 13%,
+            rgba(143, 128, 128, 0.12) 14%,
+            rgba(136, 127, 127, 0.1) 15%,
+            rgba(143, 133, 133, 0.08) 16%,
+            rgba(146, 134, 134, 0.06) 17%,
+            rgba(143, 128, 128, 0.05) 18%,
+            rgba(139, 139, 139, 0.03) 19%,
+            rgba(146, 146, 146, 0.02) 20%,
+            rgba(0, 0, 0, 0) 21%,
+            rgba(0, 0, 0, 0) 22%,
+            rgba(0, 0, 0, 0) 100%
+        );
+        background: linear-gradient(
+            to bottom,
+            rgba(139, 129, 129, 0.4) 0%,
+            rgba(141, 128, 130, 0.38) 1%,
+            rgba(140, 129, 132, 0.36) 2%,
+            rgba(142, 130, 130, 0.34) 3%,
+            rgba(140, 128, 131, 0.32) 4%,
+            rgba(142, 129, 132, 0.3) 5%,
+            rgba(140, 129, 133, 0.28) 6%,
+            rgba(143, 131, 131, 0.26) 7%,
+            rgba(142, 130, 130, 0.24) 8%,
+            rgba(143, 130, 130, 0.22) 9%,
+            rgba(144, 130, 134, 0.2) 10%,
+            rgba(143, 128, 133, 0.18) 11%,
+            rgba(139, 128, 128, 0.16) 12%,
+            rgba(137, 131, 131, 0.14) 13%,
+            rgba(143, 128, 128, 0.12) 14%,
+            rgba(136, 127, 127, 0.1) 15%,
+            rgba(143, 133, 133, 0.08) 16%,
+            rgba(146, 134, 134, 0.06) 17%,
+            rgba(143, 128, 128, 0.05) 18%,
+            rgba(139, 139, 139, 0.03) 19%,
+            rgba(146, 146, 146, 0.02) 20%,
+            rgba(0, 0, 0, 0) 21%,
+            rgba(0, 0, 0, 0) 22%,
+            rgba(0, 0, 0, 0) 100%
+        );
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#668b8181', endColorstr='#00000000',GradientType=0 );
+    }
+}
+.hero-overly2 {
+    position: relative;
+    z-index: 1;
+    &::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        right: 0;
+        z-index: -1;
+        background-repeat: no-repeat;
+        background: -moz-linear-gradient(
+            top,
+            rgba(140, 130, 130, 0.4) 0%,
+            rgba(143, 130, 133, 0.4) 46%,
+            rgba(141, 128, 130, 0.38) 48%,
+            rgba(141, 130, 133, 0.37) 49%,
+            rgba(140, 129, 129, 0.36) 50%,
+            rgba(139, 128, 130, 0.35) 51%,
+            rgba(142, 130, 130, 0.34) 52%,
+            rgba(143, 131, 131, 0.32) 55%,
+            rgba(141, 129, 132, 0.31) 56%,
+            rgba(142, 129, 132, 0.3) 57%,
+            rgba(139, 129, 129, 0.28) 59%,
+            rgba(140, 129, 133, 0.27) 60%,
+            rgba(142, 131, 131, 0.26) 61%,
+            rgba(140, 129, 129, 0.25) 62%,
+            rgba(141, 129, 129, 0.24) 63%,
+            rgba(143, 131, 131, 0.23) 64%,
+            rgba(142, 130, 130, 0.22) 65%,
+            rgba(142, 130, 130, 0.21) 66%,
+            rgba(140, 127, 132, 0.2) 67%,
+            rgba(139, 130, 130, 0.19) 68%,
+            rgba(139, 130, 130, 0.18) 69%,
+            rgba(142, 128, 128, 0.17) 70%,
+            rgba(140, 130, 130, 0.16) 71%,
+            rgba(141, 130, 135, 0.15) 72%,
+            rgba(143, 128, 133, 0.14) 73%,
+            rgba(142, 125, 130, 0.13) 74%,
+            rgba(142, 130, 130, 0.12) 75%,
+            rgba(140, 128, 134, 0.11) 76%,
+            rgba(137, 124, 131, 0.1) 77%,
+            rgba(145, 131, 131, 0.09) 78%,
+            rgba(142, 128, 135, 0.09) 79%,
+            rgba(139, 124, 131, 0.08) 80%,
+            rgba(140, 132, 132, 0.08) 81%,
+            rgba(144, 127, 127, 0.07) 82%,
+            rgba(142, 123, 132, 0.07) 83%,
+            rgba(143, 133, 133, 0.06) 84%,
+            rgba(138, 128, 128, 0.05) 85%,
+            rgba(134, 121, 121, 0.05) 86%,
+            rgba(148, 134, 134, 0.05) 87%,
+            rgba(142, 128, 128, 0.04) 88%,
+            rgba(136, 119, 119, 0.04) 89%,
+            rgba(137, 137, 137, 0.03) 90%,
+            rgba(128, 128, 128, 0.03) 91%,
+            rgba(142, 113, 113, 0.02) 92%,
+            rgba(146, 146, 146, 0.02) 93%,
+            rgba(128, 128, 128, 0.01) 94%,
+            rgba(128, 128, 128, 0.01) 95%,
+            rgba(255, 255, 255, 0) 96%,
+            rgba(0, 0, 0, 0) 97%,
+            rgba(0, 0, 0, 0) 100%
+        );
+        background: -webkit-linear-gradient(
+            top,
+            rgba(140, 130, 130, 0.4) 0%,
+            rgba(143, 130, 133, 0.4) 46%,
+            rgba(141, 128, 130, 0.38) 48%,
+            rgba(141, 130, 133, 0.37) 49%,
+            rgba(140, 129, 129, 0.36) 50%,
+            rgba(139, 128, 130, 0.35) 51%,
+            rgba(142, 130, 130, 0.34) 52%,
+            rgba(143, 131, 131, 0.32) 55%,
+            rgba(141, 129, 132, 0.31) 56%,
+            rgba(142, 129, 132, 0.3) 57%,
+            rgba(139, 129, 129, 0.28) 59%,
+            rgba(140, 129, 133, 0.27) 60%,
+            rgba(142, 131, 131, 0.26) 61%,
+            rgba(140, 129, 129, 0.25) 62%,
+            rgba(141, 129, 129, 0.24) 63%,
+            rgba(143, 131, 131, 0.23) 64%,
+            rgba(142, 130, 130, 0.22) 65%,
+            rgba(142, 130, 130, 0.21) 66%,
+            rgba(140, 127, 132, 0.2) 67%,
+            rgba(139, 130, 130, 0.19) 68%,
+            rgba(139, 130, 130, 0.18) 69%,
+            rgba(142, 128, 128, 0.17) 70%,
+            rgba(140, 130, 130, 0.16) 71%,
+            rgba(141, 130, 135, 0.15) 72%,
+            rgba(143, 128, 133, 0.14) 73%,
+            rgba(142, 125, 130, 0.13) 74%,
+            rgba(142, 130, 130, 0.12) 75%,
+            rgba(140, 128, 134, 0.11) 76%,
+            rgba(137, 124, 131, 0.1) 77%,
+            rgba(145, 131, 131, 0.09) 78%,
+            rgba(142, 128, 135, 0.09) 79%,
+            rgba(139, 124, 131, 0.08) 80%,
+            rgba(140, 132, 132, 0.08) 81%,
+            rgba(144, 127, 127, 0.07) 82%,
+            rgba(142, 123, 132, 0.07) 83%,
+            rgba(143, 133, 133, 0.06) 84%,
+            rgba(138, 128, 128, 0.05) 85%,
+            rgba(134, 121, 121, 0.05) 86%,
+            rgba(148, 134, 134, 0.05) 87%,
+            rgba(142, 128, 128, 0.04) 88%,
+            rgba(136, 119, 119, 0.04) 89%,
+            rgba(137, 137, 137, 0.03) 90%,
+            rgba(128, 128, 128, 0.03) 91%,
+            rgba(142, 113, 113, 0.02) 92%,
+            rgba(146, 146, 146, 0.02) 93%,
+            rgba(128, 128, 128, 0.01) 94%,
+            rgba(128, 128, 128, 0.01) 95%,
+            rgba(255, 255, 255, 0) 96%,
+            rgba(0, 0, 0, 0) 97%,
+            rgba(0, 0, 0, 0) 100%
+        );
+        background: linear-gradient(
+            to bottom,
+            rgba(140, 130, 130, 0.4) 0%,
+            rgba(143, 130, 133, 0.4) 46%,
+            rgba(141, 128, 130, 0.38) 48%,
+            rgba(141, 130, 133, 0.37) 49%,
+            rgba(140, 129, 129, 0.36) 50%,
+            rgba(139, 128, 130, 0.35) 51%,
+            rgba(142, 130, 130, 0.34) 52%,
+            rgba(143, 131, 131, 0.32) 55%,
+            rgba(141, 129, 132, 0.31) 56%,
+            rgba(142, 129, 132, 0.3) 57%,
+            rgba(139, 129, 129, 0.28) 59%,
+            rgba(140, 129, 133, 0.27) 60%,
+            rgba(142, 131, 131, 0.26) 61%,
+            rgba(140, 129, 129, 0.25) 62%,
+            rgba(141, 129, 129, 0.24) 63%,
+            rgba(143, 131, 131, 0.23) 64%,
+            rgba(142, 130, 130, 0.22) 65%,
+            rgba(142, 130, 130, 0.21) 66%,
+            rgba(140, 127, 132, 0.2) 67%,
+            rgba(139, 130, 130, 0.19) 68%,
+            rgba(139, 130, 130, 0.18) 69%,
+            rgba(142, 128, 128, 0.17) 70%,
+            rgba(140, 130, 130, 0.16) 71%,
+            rgba(141, 130, 135, 0.15) 72%,
+            rgba(143, 128, 133, 0.14) 73%,
+            rgba(142, 125, 130, 0.13) 74%,
+            rgba(142, 130, 130, 0.12) 75%,
+            rgba(140, 128, 134, 0.11) 76%,
+            rgba(137, 124, 131, 0.1) 77%,
+            rgba(145, 131, 131, 0.09) 78%,
+            rgba(142, 128, 135, 0.09) 79%,
+            rgba(139, 124, 131, 0.08) 80%,
+            rgba(140, 132, 132, 0.08) 81%,
+            rgba(144, 127, 127, 0.07) 82%,
+            rgba(142, 123, 132, 0.07) 83%,
+            rgba(143, 133, 133, 0.06) 84%,
+            rgba(138, 128, 128, 0.05) 85%,
+            rgba(134, 121, 121, 0.05) 86%,
+            rgba(148, 134, 134, 0.05) 87%,
+            rgba(142, 128, 128, 0.04) 88%,
+            rgba(136, 119, 119, 0.04) 89%,
+            rgba(137, 137, 137, 0.03) 90%,
+            rgba(128, 128, 128, 0.03) 91%,
+            rgba(142, 113, 113, 0.02) 92%,
+            rgba(146, 146, 146, 0.02) 93%,
+            rgba(128, 128, 128, 0.01) 94%,
+            rgba(128, 128, 128, 0.01) 95%,
+            rgba(255, 255, 255, 0) 96%,
+            rgba(0, 0, 0, 0) 97%,
+            rgba(0, 0, 0, 0) 100%
+        );
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#668c8282', endColorstr='#00000000',GradientType=0 );
+    }
+}

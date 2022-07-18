@@ -1,106 +1,120 @@
-@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
-
-.footer {
-    background-color: $theme-light;
-    body {
-        font-family: $font-family-normal;
-        height: 100% !important;
-        background-color: #fff !important;
-        padding: 0 !important;
-        margin: 0 !important;
+.footer-wrapper {
+    position: relative;
+    &::before {
+        position: absolute;
+        content: '';
+        width: 50px;
+        height: 100%;
+        background: $bg-primary;
+        bottom: 0;
+        left: 0;
+        top: 0;
     }
-
-    .container-fluid {
-        margin-top: 100px;
-        color: #000 !important;
-    }
-
-    .text-brand {
-        @include fontBrand;
-        color: $theme-medium-green;
-    }
-
-    h5 {
-        font-size: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important;
-    }
-
-    .fa {
-        cursor: pointer;
-        font-size: 21px;
-        margin: 5px 10px 5px 10px !important;
-    }
-
-    li {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        &:first-child {
-            font-size: 21px !important;
-            font-weight: bold;
-            margin-bottom: calc(40px + (48 - 40) * ((100vw - 360px) / (1600 - 360))) !important;
-            color: #757575 !important;
+}
+.footer-area {
+    background: $footer-bg;
+    padding-left: 7%;
+    padding-right: 7%;
+    .footer-pera {
+        p {
+            color: #c2c5db;
+            padding-left: 5px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            text-align: justify;
         }
     }
-
-    footer {
-        color: #757575 !important;
-    }
-
-    .social {
-        position: relative;
-        left: -10px;
-    }
-
-    .cursor-pointer {
-        cursor: pointer !important;
-        color: $theme-medium-green;
-        font-weight: bold;
-    }
-
-    .astrodivider {
-        margin: 64px auto;
-        width: 400px;
-        max-width: 100%;
-        position: relative;
-
-        .astrodividermask {
-            overflow: hidden;
-            height: 20px;
-            &:after {
-                content: '';
-                display: block;
-                margin: -25px auto 0;
-                width: 100%;
-                height: 25px;
-                border-radius: 125px / 12px;
-                box-shadow: 0 0 8px green;
+    .footer-tittle {
+        h4 {
+            color: #fff;
+            font-size: 17px;
+            margin-bottom: 40px;
+            font-weight: 500;
+            font-family: 'Quicksand', sans-serif;
+        }
+        ul {
+            padding-left: 5%;
+            li {
+                margin-bottom: 15px;
+                .link {
+                    color: #c2c5db;
+                    font-weight: normal;
+                    font-size: 16px;
+                    text-decoration: underline transparent;
+                    &:hover {
+                        color: $button-color;
+                        text-decoration: underline;
+                    }
+                }
             }
         }
-
-        span {
-            width: 50px;
-            height: 50px;
-            position: absolute;
-            bottom: 100%;
-            margin-bottom: -25px;
-            left: 50%;
-            margin-left: -25px;
-            border-radius: 100%;
-            box-shadow: 0 2px 4px $theme-milky-green;
-            background: #fff;
+        p {
+            color: #c2c5db;
+            font-size: 14px;
         }
+    }
+    .info.error {
+        color: $button-color;
+    }
+}
+.footer-bottom-area {
+    background: $footer-bg;
+    .footer-border {
+        padding: 33px 0px 20px;
+    }
+    .footer-copy-right {
+        p {
+            color: #c2c5db;
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 2;
+            margin-bottom: 12px;
+            i {
+                color: $button-color;
+            }
+            .link {
+                color: $button-color;
+            }
+        }
+    }
+}
+.footer-social {
 
+    a {
+        color: #fff;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 14px;
+        line-height: 40px;
+        display: inline-block;
+        text-align: center;
+        margin-right: 8px;
+        border: 1px solid #fff;
+        &:hover {
+            color: #fff;
+            border: 1px solid transparent;
+            background: $button-color;
+            i {
+                transform: rotateY(180deg);
+                -webkit-transform: rotateY(180deg);
+                -moz-transform: rotateY(180deg);
+                -ms-transform: rotateY(180deg);
+                -o-transform: rotateY(180deg);
+            }
+        }
         i {
-            position: absolute;
-            top: 4px;
-            bottom: 4px;
-            left: 4px;
-            right: 4px;
-            border-radius: 100%;
-            border: 1px dashed green;
-            text-align: center;
-            line-height: 40px;
-            font-style: normal;
-            color: $theme-medium-green;
+            -webkit-transition: 0.4s;
+            -moz-transition: 0.4s;
+            -o-transition: 0.4s;
+            transition: 0.4s;
+            display: inline-block;
+            transform: rotateY(0deg);
+            -webkit-transform: rotateY(0deg);
+            -moz-transform: rotateY(0deg);
+            -ms-transform: rotateY(0deg);
+            -o-transform: rotateY(0deg);
         }
     }
 }

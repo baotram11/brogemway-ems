@@ -1,80 +1,80 @@
-@import '/src/assets/styles/variables';
+@import './variables.scss';
 
 body {
-    font-family: $text-fontfamily;
+    font-family: 'Quicksand', sans-serif;
     font-weight: normal;
     font-style: normal;
     font-size: 16px;
 }
 h1 {
-    font-family: $text-fontfamily;
-    color: $text-title;
+    font-family: 'Quicksand', sans-serif;
+    color: #1a1a1a;
     margin-top: 0px;
     font-style: normal;
-    font-weight: $text-normal;
+    font-weight: 500;
     text-transform: normal;
-    Link {
+    .link {
         color: inherit;
     }
 }
 h2 {
-    font-family: $text-fontfamily;
-    color: $text-title;
+    font-family: 'Quicksand', sans-serif;
+    color: #1a1a1a;
     margin-top: 0px;
     font-style: normal;
-    font-weight: $text-normal;
+    font-weight: 500;
     text-transform: normal;
-    Link {
+    .link {
         color: inherit;
     }
 }
 h3 {
-    font-family: $text-fontfamily;
-    color: $text-title;
+    font-family: 'Quicksand', sans-serif;
+    color: #1a1a1a;
     margin-top: 0px;
     font-style: normal;
-    font-weight: $text-normal;
+    font-weight: 500;
     text-transform: normal;
-    Link {
+    .link {
         color: inherit;
     }
 }
 h4 {
-    font-family: $text-fontfamily;
-    color: $text-title;
+    font-family: 'Quicksand', sans-serif;
+    color: #1a1a1a;
     margin-top: 0px;
     font-style: normal;
-    font-weight: $text-normal;
+    font-weight: 500;
     text-transform: normal;
-    Link {
+    .link {
         color: inherit;
     }
 }
 h5 {
-    font-family: $text-fontfamily;
-    color: $text-title;
+    font-family: 'Quicksand', sans-serif;
+    color: #1a1a1a;
     margin-top: 0px;
     font-style: normal;
-    font-weight: $text-normal;
+    font-weight: 500;
     text-transform: normal;
-    Link {
+    .link {
         color: inherit;
     }
 }
 h6 {
-    font-family: $text-fontfamily;
-    color: $text-title;
+    font-family: 'Quicksand', sans-serif;
+    color: #1a1a1a;
     margin-top: 0px;
     font-style: normal;
-    font-weight: $text-normal;
+    font-weight: 500;
     text-transform: normal;
-    Link {
+    .link {
         color: inherit;
     }
 }
 p {
-    font-family: $text-fontfamily;
-    color: $text-body;
+    font-family: 'Quicksand', sans-serif;
+    color: $text-subcaption;
     font-size: 14px;
     line-height: 30px;
     margin-bottom: 15px;
@@ -161,61 +161,13 @@ li {
     padding-top: 120px;
     padding-bottom: 120px;
 }
-.owl-carousel {
-    .owl-nav {
-        div {
-            background: rgba(255, 255, 255, 0.8) none repeat scroll 0 0;
-            height: 40px;
-            left: 20px;
-            line-height: 40px;
-            font-size: 22px;
-            color: #646464;
-            opacity: 1;
-            visibility: visible;
-            position: absolute;
-            text-align: center;
-            top: 50%;
-            transform: translateY(-50%);
-            transition: all 0.3s ease 0s;
-            width: 40px;
-        }
-        div.owl-next {
-            left: auto;
-            right: -30px;
-            i {
-                position: relative;
-                right: 0;
-                top: 1px;
-            }
-        }
-        div.owl-prev {
-            i {
-                position: relative;
-                right: 1px;
-                top: 0px;
-            }
-        }
-    }
-    &:hover {
-        .owl-nav {
-            div {
-                opacity: 1;
-                visibility: visible;
-                &:hover {
-                    color: #fff;
-                    background: #ff3$text-normal;
-                }
-            }
-        }
-    }
-}
 .btn {
     background: $button-color;
     text-transform: uppercase;
     padding: 27px 44px;
     color: #fff;
     cursor: pointer;
-    font-weight: $text-normal;
+    font-weight: bold;
     font-size: 15px;
     display: inline-block;
     line-height: 1;
@@ -281,7 +233,7 @@ li {
     cursor: pointer;
     display: inline-block;
     font-size: 16px;
-    font-weight: $text-normal;
+    font-weight: 500;
     letter-spacing: 1px;
     margin-bottom: 0;
     position: relative;
@@ -324,3 +276,57 @@ li {
     }
 }
 
+.footer-padding {
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+    margin-top: 10px;
+}
+.mt-20 {
+    margin-top: 20px;
+}
+.mt-30 {
+    margin-top: 30px;
+}
+.mt-40 {
+    margin-top: 40px;
+}
+.mt-50 {
+    margin-top: 50px;
+}
+.mb-5 {
+    margin-bottom: 5px;
+}
+.mb-20 {
+    margin-bottom: 20px;
+}
+.mb-30 {
+    margin-bottom: 30px;
+}
+.mb-35 {
+    margin-bottom: 35px;
+}
+.mb-40 {
+    margin-bottom: 40px;
+}
+.mb-45 {
+    margin-bottom: 45px;
+}
+.mb-50 {
+    margin-bottom: 50px;
+}
+.mb-60 {
+    margin-bottom: 60px;
+}
+.ml-5 {
+    margin-left: 5px;
+}
+.pt-10 {
+    padding-top: 10px;
+}
+.pl-35 {
+    padding-left: 35px;
+}

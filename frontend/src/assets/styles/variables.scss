@@ -7,15 +7,18 @@ $bg-primary: #f2e1d9;
 
 // text
 $text-title: #1a1a1a;
-$text-heading: #140c40;
-$text-body: #646d77;
+$text-span: #140c40;
+$text-subcaption: #646d77;
+$text-input: #010a44;
 $text-fontfamily: 'Quicksand', sans-serif; //'Lora', serif;
 $text-normal: 500;
+$text-bold: 800;
 
 // components
 $input-border: 1px solid #c9c9c9;
 $button-color: #fd8f5f;
 $button-bg: #e9855a;
+$footer-bg: #1d2547;
 
 // heros
 $login-bg: url(../../assets/images/heros/hero-login.png);

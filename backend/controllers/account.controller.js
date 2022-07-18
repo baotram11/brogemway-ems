@@ -82,19 +82,22 @@ module.exports = {
                 user = await Account.findOne({ PhoneNumber: username });
             }
 
+            if (!user) {
+                return res
+                    .status(404)
+                    .send({ success: false, type: 'username', error: 'Không tìm thấy tài khoản phù hợp' });
+            }
+
             const isMatch = await bcrypt.compare(password, user.Password);
             if (!isMatch) {
-                return res.status(400).json({
+                return res.status(404).send({
                     success: false,
+                    type: 'password',
                     error: 'Mật khẩu chưa chính xác',
                 });
             }
 
-            if (!user) {
-                return res.status(400).send({ error: 'Không tìm thấy tài khoản phù hợp' });
-            }
-
-            return res.status(200).json({
+            return res.status(200).send({
                 success: true,
                 account: {
                     PhoneNumber: user.PhoneNumber,
@@ -106,8 +109,8 @@ module.exports = {
                 },
             });
         } catch (error) {
-            res.status(400).json({
-                error: 'Yêu cầu của bạn không thể được xử lý. Vui lòng thử lại.',
+            res.status(400).send({
+                error: error.message,
             });
             next();
         }

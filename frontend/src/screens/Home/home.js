@@ -1,9 +1,11 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import Portfolio from '../../components/Portfolio/portfolio';
-import CarouselSlider from '../../components/CarouselSlider/carouselSlider';
-import ContactUs from '../../components/ContactUs/contactUs';
+// import Portfolio from '../../components/Portfolio/portfolio';
+// import CarouselSlider from '../../components/CarouselSlider/carouselSlider';
+// import ContactUs from '../../components/ContactUs/contactUs';
 import Header from '../../navigations/Header/header';
+import HeroSlider from '../../components/HeroSlider/heroSlider';
+import Footer from '../../navigations/Footer/footer';
 
 const Home = () => {
     return (
@@ -12,8 +14,13 @@ const Home = () => {
                 <meta charSet='utf-8' />
                 <title>Brogemway</title>
             </Helmet>
+
             <Header />
-            <header className='masthead'></header>
+
+            <HeroSlider />
+
+            <Footer />
+            {/* <header className='masthead'></header>
             <section className='page-section bg-light' id='portfolio'>
                 <Portfolio />
             </section>
@@ -24,7 +31,7 @@ const Home = () => {
 
             <section className='page-section bg-light' id='contact-us'>
                 <ContactUs />
-            </section>
+            </section> */}
         </div>
     );
 };

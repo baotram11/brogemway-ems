@@ -1,123 +1,141 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaFacebook, FaLinkedinIn, FaTwitter, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
     return (
-        <div className='footer'>
-            <div className='container-fluid justify-content-center'>
-                <div className='astrodivider'>
-                    <div className='astrodividermask'></div>
-                    <span>
-                        <i>&#10038;</i>
-                    </span>
-                </div>
-
-                <footer>
-                    <div className='row justify-content-around mb-0 pb-0 '>
-                        <div className=' col-11'>
-                            <div className='row justify-content-center'>
-                                <div className='col-md-3 col-12 font-italic align-items-center mt-md-3 mt-4'>
-                                    <h5>
-                                        <span>
+        <div className='footer-wapper'>
+            <div className='footer-area footer-padding'>
+                <div className='container'>
+                    <div className='row justify-content-between'>
+                        <div className='col-xl-4 col-lg-3 col-md-8 col-sm-8'>
+                            <div className='single-footer-caption mb-50'>
+                                <div className='single-footer-caption mb-30'>
+                                    <div className='footer-logo'>
+                                        <Link className='link' to='/'>
                                             <img
-                                                src={require('../../assets/images/icons/LOGO.png')}
+                                                width={'200px'}
+                                                height={'200px'}
+                                                src={require('../../assets/images/logos/bgw-transparent.png')}
                                                 alt='...'
-                                                className='img-fluid mb-2'
                                             />
-                                        </span>
-                                        <b className='text-brand'>BROGEMWAY</b>
-                                    </h5>
-                                    <p className='social mt-md-3 mt-2'>
-                                        <span className='fa'>
-                                            <FaFacebook color='#4267B2' />
-                                        </span>
-                                        <span className='fa'>
-                                            <FaYoutube color='#FF0000' />
-                                        </span>
-                                        <span className='fa'>
-                                            <FaLinkedinIn color='#0072b1' />
-                                        </span>
-                                        <span className='fa'>
-                                            <FaTwitter color='#00acee' />
-                                        </span>
-                                    </p>
-                                    <small className='copy-rights cursor-pointer'>
-                                        &#9400; 2022 Brogemway
-                                    </small>
-                                    <br />
-                                    <small>Copyright. All Rights Resered.</small>
+                                        </Link>
+                                    </div>
+                                    <div className='footer-title'>
+                                        <div className='footer-pera'>
+                                            <p>
+                                                Brogemway giới thiệu đến các bạn những sản phẩm thuộc các mặt
+                                                hàng như thiết bị số, thời trang nam nữ như quần áo, giày tây,
+                                                giày thể thao, và túi xách. Chúc bạn có một trải nghiệm tốt
+                                                khi sử dụng dịch vụ của chúng tôi.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className='footer-social pl-35'>
+                                        <Link className='link' to='#'>
+                                            <i class='fa-brands fa-facebook-f'></i>
+                                        </Link>
+                                        <Link className='link' to='#'>
+                                            <i class='fa-brands fa-youtube'></i>
+                                        </Link>
+                                        <Link className='link' to='#'>
+                                            <i class='fa-brands fa-instagram'></i>
+                                        </Link>
+                                    </div>
                                 </div>
-                                <div className='col-md-3 col-12 my-sm-0 mt-5'>
-                                    <ul className='list-unstyled'>
-                                        <li className='mt-md-3 mt-4'>Giới thiệu</li>
+                            </div>
+                        </div>
+                        <div className='col-xl-2 col-lg-2 col-md-4 col-sm-4'>
+                            <div className='single-footer-caption mb-50 mt-50'>
+                                <div className='footer-tittle'>
+                                    <h4>Tìm hiểu thêm</h4>
+                                    <ul>
                                         <li>
-                                            <Link
-                                                style={{
-                                                    textDecoration: 'none',
-                                                    color: '#757575',
-                                                }}
-                                                to={'/about'}
-                                                className='d-flex align-items-stretch'
-                                            >
+                                            <Link className='link' to='/'>
+                                                Trang chủ
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link className='link' to='/about'>
                                                 Về chúng tôi
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link
-                                                style={{
-                                                    textDecoration: 'none',
-                                                    color: '#757575',
-                                                }}
-                                                to={'/terms'}
-                                                className='d-flex align-items-stretch'
-                                            >
-                                                Điều khoản sử dụng
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link
-                                                style={{
-                                                    textDecoration: 'none',
-                                                    color: '#757575',
-                                                }}
-                                                to={'/products'}
-                                                className='d-flex align-items-stretch'
-                                            >
-                                                Sản phẩm
+                                            <Link className='link' to='/contact'>
+                                                Liên hệ
                                             </Link>
                                         </li>
                                     </ul>
                                 </div>
-                                <div className='col-md-3 col-12 my-sm-0 mt-5'>
-                                    <ul className='list-unstyled'>
-                                        <li className='mt-md-3 mt-4'>Danh mục</li>
-                                        <li>Thiết bị số</li>
-                                        <li>Giày</li>
-                                        <li>Áo</li>
-                                        <li>Quần</li>
-                                        <li>Túi xách</li>
+                            </div>
+                        </div>
+                        <div className='col-xl-2 col-lg-2 col-md-4 col-sm-4'>
+                            <div className='single-footer-caption mb-50 mt-50'>
+                                <div className='footer-tittle'>
+                                    <h4>Danh mục</h4>
+                                    <ul>
+                                        <li>
+                                            <Link className='link' to='/category/1'>
+                                                Thiết bị số
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link className='link' to='/category/3'>
+                                                Thời trang
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link className='link' to='/category/4'>
+                                                Túi xách
+                                            </Link>
+                                        </li>
                                     </ul>
                                 </div>
-                                <div className='col-xl-auto col-md-3 col-12 my-sm-0 mt-5'>
-                                    <ul className='list-unstyled'>
-                                        <li className='mt-md-3 mt-4'>Cửa hàng</li>
+                            </div>
+                        </div>
+                        <div className='col-xl-2 col-lg-2 col-md-4 col-sm-4'>
+                            <div className='single-footer-caption mb-50 mt-50'>
+                                <div className='footer-tittle'>
+                                    <h4>Điều khoản</h4>
+                                    <ul>
                                         <li>
-                                            {/* <iframe
-                                                src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.630773293551!2d106.67998301474876!3d10.762912992330719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1c06f4e1dd%3A0x43900f1d4539a3d!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBLaG9hIGjhu41jIFThu7Egbmhpw6puIC0gxJDhuqFpIGjhu41jIFF14buRYyBnaWEgVFAuSENN!5e0!3m2!1svi!2s!4v1641658251544!5m2!1svi!2s'
-                                                width='250'
-                                                style={{ border: 1 }}
-                                                allowfullscreen=''
-                                                loading='lazy'
-                                                title='Địa chỉ'
-                                            ></iframe> */}
+                                            <Link className='link' to='/term'>
+                                                Điều khoản
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link className='link' to='/about'>
+                                                Cửa hàng
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link className='link' to='/contact'>
+                                                Dịch vụ
+                                            </Link>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </footer>
+                </div>
+            </div>
+
+            <div className='footer-bottom-area'>
+                <div className='container'>
+                    <div className='footer-border'>
+                        <div className='row d-flex align-items-center'>
+                            <div className='col-xl-12'>
+                                <div className='footer-copy-right text-center'>
+                                    <p>
+                                        Copyright ©2022 All rights reserved | Brogemway{' '}
+                                        <i class="fa-solid fa-meteor"></i>
+                                        {' '}2019
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
