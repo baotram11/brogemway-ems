@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-// import brcypt from 'bcrypt';
 
 const apiUrl = 'http://localhost:5000/api/accounts/';
 
@@ -18,15 +17,11 @@ export const addAccount = createAsyncThunk('account/addAccount', async (data, { 
     try {
         console.log('CALL API: ' + apiUrl);
 
-        const rawPassword = data.password;
-        // const salt = brcypt.genSaltSync(10);
-        // const hash = brcypt.hashSync(rawPassword, salt);
-
         const newAccount = {
             Name: data.name,
             PhoneNumber: data.telephone,
             Email: data.email,
-            Password: rawPassword,
+            Password: data.password,
         };
 
         const response = await axios.post(apiUrl, newAccount);
@@ -53,30 +48,12 @@ export const updateAccount = createAsyncThunk('account/updateAccount', async (da
     }
 });
 
-export const loginAccount = createAsyncThunk('account/addAccount', async (data, { rejectWithValue }) => {
-    try {
-        console.log('CALL API: ' + apiUrl + 'login');
-        console.log(data);
-        const response = await axios.post(apiUrl + 'login', data);
-        console.log(response);
-
-        if (response.status < 200 || response.status >= 300) {
-            return rejectWithValue(response.data);
-        }
-
-        return response.data;
-    } catch (error) {
-        return rejectWithValue(error.message);
-    }
-});
-
 export const accountSlice = createSlice({
     name: 'account',
     initialState: {
         update: false,
         add: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
         status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
-        login: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
 
         newAccount: [],
         currentAccount: [],
@@ -85,7 +62,6 @@ export const accountSlice = createSlice({
         errorMessage: null,
         errorUpdate: null,
         errorCreate: null,
-        errorLogin: null,
     },
     reducers: {},
     extraReducers: (builder) => {
@@ -116,10 +92,10 @@ export const accountSlice = createSlice({
 
         // account/addAccount
         builder.addCase(addAccount.pending, (state) => {
-            state.add = 'idle';
+            state.add = 'loading';
         });
         builder.addCase(addAccount.fulfilled, (state, action) => {
-            state.add = 'added';
+            state.add = 'succeeded';
             state.newAccount = action.payload;
         });
         builder.addCase(addAccount.rejected, (state, action) => {
@@ -139,8 +115,5 @@ export const selectErrorMessage = (state) => state.account.errorMessage;
 export const selectAdd = (state) => state.account.add;
 export const selectNewAccount = (state) => state.account.newAccount;
 export const selectErrorCreate = (state) => state.account.errorCreate;
-
-export const selectLogin = (state) => state.account.login;
-export const selectErrorLogin = (state) => state.account.errorLogin;
 
 export default accountSlice.reducer;

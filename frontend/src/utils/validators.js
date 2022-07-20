@@ -41,18 +41,16 @@ export const confirmPasswordValidator = (confirmPassword, form) => {
     return '';
 };
 
-export const nameLoginValidator = (username, status) => {
+export const nameLoginValidator = (username) => {
     if (!username) {
         return 'Nhập email hoặc số điện thoại';
-    } else if (!status) {
-        return 'Email/Số điện thoại chưa chính xác!';
     }
 };
 
-export const passwordLoginValidator = (password, status) => {
+export const passwordLoginValidator = (password) => {
     if (!password) {
         return 'Nhập mật khẩu';
-    } else if (!status) {
-        return 'Mật khẩu chưa chính xác!';
+    } else if (password.length < 8) {
+        return 'Mật khẩu phải có ít nhất 8 ký tự';
     }
 };

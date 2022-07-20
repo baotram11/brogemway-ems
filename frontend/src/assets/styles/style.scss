@@ -2,7 +2,7 @@
 @import 'utils/fonts.scss';
 
 // Import Bootstrap source files
-@import '/node_modules/bootstrap/scss/bootstrap';
+// @import '/node_modules/bootstrap/scss/bootstrap';
 
 @import '~slick-carousel/slick/slick.css';
 @import '~slick-carousel/slick/slick-theme.css';
@@ -32,6 +32,7 @@
 @import '../../components/ProductList/productList.scss';
 @import '../../components/RegisterForm/registerForm.scss';
 @import '../../components/Submenu/submenu.scss';
+@import '../../components/UserMenu/userMenu.scss';
 
 @import '../../navigations/Footer/footer.scss';
 @import '../../navigations/Header/header.scss';

@@ -63,7 +63,19 @@ module.exports = {
             });
 
             const result = await newAccount.save();
-            res.send(result);
+
+            return res.status(200).send({
+                success: true,
+                account: {
+                    ID: result._id,
+                    PhoneNumber: result.PhoneNumber,
+                    Name: result.Name,
+                    Email: result.Email,
+                    IsActive: result.IsActive,
+                    Level: result.Level,
+                    Password: result.Password,
+                },
+            });
         } catch (error) {
             res.status(422).json({ status: 422, error: error.message });
             next();
@@ -100,6 +112,7 @@ module.exports = {
             return res.status(200).send({
                 success: true,
                 account: {
+                    ID: user._id,
                     PhoneNumber: user.PhoneNumber,
                     Name: user.Name,
                     Email: user.Email,

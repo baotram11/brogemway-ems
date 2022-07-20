@@ -6,12 +6,11 @@ const HeroSlider = () => {
         <div className='slider-area'>
             <div className='slider-active slick-initialized slick-slider'>
                 <div className='slider-list draggable'>
-                    <div className='slick-track' style={{ opacity: '1', width: '966px' }}>
+                    <div className='slick-track' style={{ opacity: '1'}}>
                         <div
-                            className='single-slider hero-overly1 slider-height d-flex align-items-center slider-bg1 slick-slide slick-current slick-active'
+                            className='w-100 single-slider hero-overly1 slider-height d-flex align-items-center slider-bg1 slick-slide slick-current slick-active'
                             tabIndex={'0'}
                             style={{
-                                width: '966px',
                                 position: 'relative',
                                 left: '0px',
                                 top: '0px',

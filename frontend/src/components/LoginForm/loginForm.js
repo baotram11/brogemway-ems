@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
 import { Link, useNavigate } from 'react-router-dom';
-
 import { UseLoginFormValidator } from '../../utils/useFormValidator';
 
-import { loginAccount, selectLogin } from '../../store/slices/accountSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { loginUser, selectErrorLogin, selectLogin } from '../../store/slices/authSlice';
 
 const LoginForm = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
     const login = useSelector(selectLogin);
+    const errorMessage = useSelector(selectErrorLogin);
 
     const [passwordType, setPasswordType] = useState('password');
     const togglePassword = () => {
@@ -47,7 +48,7 @@ const LoginForm = () => {
         }
     };
 
-    const onSubmitForm = (event) => {
+    const onSubmitForm = async (event) => {
         event.preventDefault();
         const { isValid } = validateForm({
             form,
@@ -56,7 +57,7 @@ const LoginForm = () => {
         });
         if (!isValid) return;
 
-        if (login === 'idle') dispatch(loginAccount(form));
+        if (login !== 'succeeded') dispatch(loginUser(form));
     };
 
     const formFieldError = { border: '1px solid #e11d48' };
@@ -70,12 +71,15 @@ const LoginForm = () => {
     };
 
     useEffect(() => {
-        if (login === 'added') {
+        console.log(login);
+
+        if (login === 'succeeded') {
             return navigate('/');
         } else if (login === 'failed') {
-            alert(JSON.stringify('Đăng nhập chưa thành công!', null, 2));
+            // alert(JSON.stringify(errorMessage, null, 2));
+            console.log(errorMessage);
         }
-    }, [login, navigate]);
+    }, [login, errorMessage, navigate]);
 
     return (
         <div className='login-form-area'>
@@ -114,6 +118,10 @@ const LoginForm = () => {
                                     {errors.username.dirty && errors.username.error ? (
                                         <p style={formFieldErrorMessage}>{errors.username.message}</p>
                                     ) : null}
+
+                                    {errorMessage && errorMessage.type === 'username' ? (
+                                        <p style={formFieldErrorMessage}>{errorMessage.error}</p>
+                                    ) : null}
                                 </div>
 
                                 <div className='single-input-fields input-group'>
@@ -144,8 +152,13 @@ const LoginForm = () => {
                                             <i className='fa-solid fa-eye'></i>
                                         )}
                                     </button>
+                                    
                                     {errors.password.dirty && errors.password.error ? (
                                         <p style={formFieldErrorMessage}>{errors.password.message}</p>
+                                    ) : null}
+
+                                    {errorMessage && errorMessage.type === 'password' ? (
+                                        <p style={formFieldErrorMessage}>{errorMessage.error}</p>
                                     ) : null}
                                 </div>
 

@@ -32,13 +32,13 @@ const Footer = () => {
                                     </div>
                                     <div className='footer-social pl-35'>
                                         <Link className='link' to='#'>
-                                            <i class='fa-brands fa-facebook-f'></i>
+                                            <i className='fa-brands fa-facebook-f'></i>
                                         </Link>
                                         <Link className='link' to='#'>
-                                            <i class='fa-brands fa-youtube'></i>
+                                            <i className='fa-brands fa-youtube'></i>
                                         </Link>
                                         <Link className='link' to='#'>
-                                            <i class='fa-brands fa-instagram'></i>
+                                            <i className='fa-brands fa-instagram'></i>
                                         </Link>
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@ const Footer = () => {
                                 <div className='footer-copy-right text-center'>
                                     <p>
                                         Copyright ©2022 All rights reserved | Brogemway{' '}
-                                        <i class="fa-solid fa-meteor"></i>
+                                        <i className="fa-solid fa-meteor"></i>
                                         {' '}2019
                                     </p>
                                 </div>

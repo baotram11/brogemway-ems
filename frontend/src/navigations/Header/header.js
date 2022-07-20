@@ -1,14 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Submenu from '../../components/Submenu/submenu';
+import UserMenu from '../../components/UserMenu/userMenu';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCurrentUser, logout } from '../../store/slices/authSlice';
 
 const Header = () => {
+    const dispatch = useDispatch();
+
+    const user = useSelector(selectCurrentUser);
+    console.log(user);
+
     return (
         <div className='header-area'>
             <div className='main-header header-sticky'>
                 <div className='container-fluid'>
                     <div className='row menu-wrapper align-items-center justify-content-between'>
-                        <div className='header-left d-flex align-items-center'>
+                        <div className='header-left d-inline-flex align-items-center'>
                             <div className='logo'>
                                 <Link className='link' style={{ textDecoration: 'none' }} to='/'>
                                     <img
@@ -18,21 +26,18 @@ const Header = () => {
                                 </Link>
                             </div>
                             <div className='logo2'>
-                                <Link className='link' style={{ textDecoration: 'none' }}  to='/'>
-                                    <img width={'77px'} height={'77px'}
+                                <Link className='link' style={{ textDecoration: 'none' }} to='/'>
+                                    <img
+                                        width={'77px'}
+                                        height={'77px'}
                                         src={require('../../assets/images/logos/bgw-transparent.png')}
                                         alt='brogemway'
                                     />
                                 </Link>
                             </div>
-                            <div className='main-menu d-none d-lg-block'>
+                            <div className='main-menu'>
                                 <nav>
                                     <ul id='navigation'>
-                                        <li>
-                                            <Link className='link' style={{ textDecoration: 'none' }} to='/'>
-                                                Trang chủ
-                                            </Link>
-                                        </li>
                                         <li>
                                             <Link
                                                 className='link'
@@ -70,52 +75,53 @@ const Header = () => {
                                                 Về chúng tôi
                                             </Link>
                                         </li>
-                                        <li>
-                                            <Link
-                                                className='link'
-                                                style={{ textDecoration: 'none' }}
-                                                to='/contact'
-                                            >
-                                                Liên lạc
-                                            </Link>
-                                        </li>
                                     </ul>
                                 </nav>
                             </div>
                         </div>
-                        <div className='header-right1 d-flex align-items-center'>
-                                <ul className=' search d-flex align-items-center'>
-                                    <li>
-                                        <form action='#' className='form-box f-right'>
-                                            <input
-                                                type={'text'}
-                                                name='Search'
-                                                placeholder='Tìm kiếm sản phẩm'
-                                            />
-                                            <div className='search-icon'>
-                                                <i className='fa-solid fa-magnifying-glass'></i>
-                                            </div>
-                                        </form>
-                                    </li>
-                                    <li>
-                                        <Link className='link account-btn'
+
+                        <div className='header-right1 d-inline-flex align-items-center'>
+                            <ul className='search d-flex align-items-center'>
+                                <li>
+                                    <form action='#' className='form-box f-right'>
+                                        <input type={'text'} name='Search' placeholder='Tìm kiếm sản phẩm' />
+                                        <div className='search-icon'>
+                                            <i className='fa-solid fa-magnifying-glass'></i>
+                                        </div>
+                                    </form>
+                                </li>
+                                <li>
+                                    {user !== null ? (
+                                        <Link
+                                            className='link'
+                                            to={`/account/${user.account.ID}`}
+                                            style={{ textDecoration: 'none' }}
+                                        >
+                                            {user.account.Name}
+                                            {/* <UserMenu /> */}
+                                        </Link>
+                                    ) : (
+                                        <Link
+                                            className='link account-btn'
                                             to='login'
                                             style={{ textDecoration: 'none' }}
                                         >
                                             ĐĂNG NHẬP
                                         </Link>
-                                    </li>
-                                    <li>
-                                        <div className='card-stor'>
-                                            <img
-                                                src={require('../../assets/images/icons/hand-bag.png')}
-                                                alt='...'
-                                            />
-                                            <span>0</span>
-                                        </div>
-                                    </li>
-                                </ul>
+                                    )}
+                                </li>
+                                <li>
+                                    <div className='card-stor'>
+                                        <img
+                                            src={require('../../assets/images/icons/hand-bag.png')}
+                                            alt='...'
+                                        />
+                                        <span>0</span>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
+
                         <div className='col-12'>
                             <div className='mobile-menu d-block d-lg-none'>
                                 <div className='slicknav-menu'>

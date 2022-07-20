@@ -70,7 +70,7 @@ const RegisterForm = (props) => {
         });
         if (!isValid) return;
 
-        if (add === 'idle') dispatch(addAccount(form));
+        if (add !== 'succeeded') dispatch(addAccount(form));
     };
 
     const formFieldError = { border: '1px solid #e11d48' };
@@ -84,7 +84,9 @@ const RegisterForm = (props) => {
     };
 
     useEffect(() => {
-        if (add === 'added') {
+        console.log(add);
+
+        if (add === 'succeeded') {
             return navigate('/');
         } else if (add === 'failed') {
             alert(JSON.stringify('Đăng ký chưa thành công!', null, 2));
