@@ -1,5 +1,7 @@
 .header-area {
     background: $bg-primary;
+    font-family: $text-fontfamily;
+
     .row > * {
         width: auto;
         max-width: 100%;
@@ -27,6 +29,85 @@
         flex-wrap: wrap;
         align-items: center;
 
+        ul {
+            li {
+                display: inline-block;
+                position: relative;
+                z-index: 1;
+                .link {
+                    color: $footer-bg;
+                    font-weight: bold;
+                    padding: 39px 19px;
+                    display: block;
+                    font-size: 14px;
+                    font-family: 'Quicksand', sans-serif;
+                    -webkit-transition: 0.3s;
+                    -moz-transition: 0.3s;
+                    -o-transition: 0.3s;
+                    transition: 0.3s;
+                    text-transform: capitalize;
+                }
+                &:hover {
+                    > .link {
+                        color: $button-color;
+                    }
+                    > ul.submenu {
+                        visibility: visible;
+                        opacity: 1;
+                        top: 100%;
+                        &::before {
+                            top: -8px;
+                        }
+                    }
+                }
+            }
+            ul.submenu {
+                position: absolute;
+                width: 170px;
+                background: #fff;
+                left: 0;
+                top: 90%;
+                visibility: hidden;
+                opacity: 0;
+                box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.05);
+                padding: 17px 0;
+                border-top: 3px solid $button-color;
+                -webkit-transition: 0.3s;
+                -moz-transition: 0.3s;
+                -o-transition: 0.3s;
+                transition: 0.3s;
+                border-radius: 5px 5px 0 0;
+                > li {
+                    margin-left: 7px;
+                    display: block;
+                    > .link {
+                        padding: 6px 10px !important;
+                        font-size: 16px;
+                        text-transform: capitalize;
+                        &:hover {
+                            padding-left: 13px !important;
+                        }
+                    }
+                }
+                &::before {
+                    border-style: solid;
+                    border-width: 0 6px 6px 6px;
+                    border-color: transparent transparent $button-color transparent;
+                    content: '';
+                    top: -5px;
+                    left: 13%;
+                    position: absolute;
+                    transition: 0.3s;
+                    z-index: -1;
+                    overflow: hidden;
+                    -webkit-transition: 0.3s;
+                    -moz-transition: 0.3s;
+                    -o-transition: 0.3s;
+                    transition: 0.3s;
+                }
+            }
+        }
+
         .header-left {
             .logo {
                 position: absolute;
@@ -40,86 +121,6 @@
                 top: 10px;
                 left: 15px;
                 display: none;
-            }
-            .main-menu {
-                ul {
-                    li {
-                        display: inline-block;
-                        position: relative;
-                        z-index: 1;
-                        .link {
-                            color: $footer-bg;
-                            font-weight: bold;
-                            padding: 39px 19px;
-                            display: block;
-                            font-size: 14px;
-                            font-family: 'Quicksand', sans-serif;
-                            -webkit-transition: 0.3s;
-                            -moz-transition: 0.3s;
-                            -o-transition: 0.3s;
-                            transition: 0.3s;
-                            text-transform: capitalize;
-                        }
-                        &:hover {
-                            > .link {
-                                color: $button-color;
-                            }
-                            > ul.submenu {
-                                visibility: visible;
-                                opacity: 1;
-                                top: 100%;
-                                &::before {
-                                    top: -8px;
-                                }
-                            }
-                        }
-                    }
-                    ul.submenu {
-                        position: absolute;
-                        width: 170px;
-                        background: #fff;
-                        left: 0;
-                        top: 90%;
-                        visibility: hidden;
-                        opacity: 0;
-                        box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.05);
-                        padding: 17px 0;
-                        border-top: 3px solid $button-color;
-                        -webkit-transition: 0.3s;
-                        -moz-transition: 0.3s;
-                        -o-transition: 0.3s;
-                        transition: 0.3s;
-                        border-radius: 5px 5px 0 0;
-                        > li {
-                            margin-left: 7px;
-                            display: block;
-                            > .link {
-                                padding: 6px 10px !important;
-                                font-size: 16px;
-                                text-transform: capitalize;
-                                &:hover {
-                                    padding-left: 13px !important;
-                                }
-                            }
-                        }
-                        &::before {
-                            border-style: solid;
-                            border-width: 0 6px 6px 6px;
-                            border-color: transparent transparent $button-color transparent;
-                            content: '';
-                            top: -5px;
-                            left: 13%;
-                            position: absolute;
-                            transition: 0.3s;
-                            z-index: -1;
-                            overflow: hidden;
-                            -webkit-transition: 0.3s;
-                            -moz-transition: 0.3s;
-                            -o-transition: 0.3s;
-                            transition: 0.3s;
-                        }
-                    }
-                }
             }
         }
 

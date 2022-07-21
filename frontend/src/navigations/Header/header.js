@@ -2,18 +2,32 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Submenu from '../../components/Submenu/submenu';
 import UserMenu from '../../components/UserMenu/userMenu';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrentUser, logout } from '../../store/slices/authSlice';
+import { useSelector } from 'react-redux';
+import { selectCurrentUser } from '../../store/slices/authSlice';
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    var navbarShrink = function () {
+        const navbarCollapsible = document.body.querySelector('#mainHeader');
+        if (!navbarCollapsible) {
+            return;
+        }
+        if (window.scrollY === 0) {
+            navbarCollapsible.classList.remove('sticky-bar');
+        } else {
+            navbarCollapsible.classList.add('sticky-bar');
+        }
+    };
+
+    document.addEventListener('scroll', navbarShrink);
+});
 
 const Header = () => {
-    const dispatch = useDispatch();
-
     const user = useSelector(selectCurrentUser);
     console.log(user);
 
     return (
         <div className='header-area'>
-            <div className='main-header header-sticky'>
+            <div className='main-header header-sticky' id='mainHeader'>
                 <div className='container-fluid'>
                     <div className='row menu-wrapper align-items-center justify-content-between'>
                         <div className='header-left d-inline-flex align-items-center'>
@@ -28,8 +42,7 @@ const Header = () => {
                             <div className='logo2'>
                                 <Link className='link' style={{ textDecoration: 'none' }} to='/'>
                                     <img
-                                        width={'77px'}
-                                        height={'77px'}
+                                        style={{ height: '7em' }}
                                         src={require('../../assets/images/logos/bgw-transparent.png')}
                                         alt='brogemway'
                                     />
@@ -90,17 +103,20 @@ const Header = () => {
                                         </div>
                                     </form>
                                 </li>
-                                <li>
-                                    {user !== null ? (
+
+                                {user !== null ? (
+                                    <li>
                                         <Link
                                             className='link'
                                             to={`/account/${user.account.ID}`}
                                             style={{ textDecoration: 'none' }}
                                         >
                                             {user.account.Name}
-                                            {/* <UserMenu /> */}
                                         </Link>
-                                    ) : (
+                                        <UserMenu />
+                                    </li>
+                                ) : (
+                                    <li>
                                         <Link
                                             className='link account-btn'
                                             to='login'
@@ -108,8 +124,9 @@ const Header = () => {
                                         >
                                             ĐĂNG NHẬP
                                         </Link>
-                                    )}
-                                </li>
+                                    </li>
+                                )}
+
                                 <li>
                                     <div className='card-stor'>
                                         <img

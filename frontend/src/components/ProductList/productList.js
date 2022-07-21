@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { CurrencyConverter } from '../../utils/CurrencyConverter';
 import {
     selectAllProducts,
     selectStatusList,
@@ -22,7 +23,7 @@ const ProductList = () => {
     }, [status, dispatch]);
 
     return (
-        <div className='product-list'>
+        <div className='new-arrival new-arrival3'>
             {status === 'loading' && (
                 <div className='spinner-border text-secondary' role='status'>
                     <span className='visually-hidden'>Loading...</span>
@@ -30,33 +31,38 @@ const ProductList = () => {
             )}
             {status === 'failed' && <h5 style={{ color: 'red' }}>{errorMessage}</h5>}
             {status === 'succeeded' && (
-                <div className='row mt-5'>
+                <div className='row'>
                     {allProducts.map((product) => (
-                        <Link
-                            style={{ textDecoration: 'none', color: 'black' }}
-                            to={`/products/${product.ProID}`}
-                            key={product.ProID}
-                            className='col d-flex align-items-stretch'
-                        >
-                            <div className='card mb-4' style={{ width: '18rem' }}>
-                                <img
-                                    style={{ height: '120%' }}
-                                    className='item-image card-img-center img-fluid'
-                                    src={require(`../../assets/images/products/${product.ProID}/1.png`)}
-                                    alt='...'
-                                />
-
-                                <div className='card-footer'>
-                                    <h4 className='text-truncate align-text-center'>{product.ProName}</h4>
-                                    <p className='mb-2 pl-4 text-truncate align-text-center'>
-                                        {product.Price}
-                                    </p>
+                        <div className='col-xl-4 col-lg-6 col-md-6 col-sm-6'>
+                            <div className='single-new-arrival mb-50 text-center'>
+                                <div className='popular-img'>
+                                    <img
+                                        src={require(`../../assets/images/products/${product.ProID}/1.png`)}
+                                        alt='...'
+                                    />
+                                </div>
+                                <div className='popular-caption'>
+                                    <h3>
+                                        <Link className='link' to={`/products/${product.ProID}`}>
+                                            {product.ProName}
+                                        </Link>
+                                    </h3>
+                                    <span>{CurrencyConverter(product.Price)}</span>
                                 </div>
                             </div>
-                        </Link>
+                        </div>
                     ))}
                 </div>
             )}
+            {allProducts ? (
+                <div className='row justify-content-center'>
+                    <div className='room-btn mt-20'>
+                        <Link to='/products' className='link border-btn' style={{ textDecoration: 'none' }}>
+                            Xem thêm
+                        </Link>
+                    </div>
+                </div>
+            ) : null}
         </div>
     );
 };

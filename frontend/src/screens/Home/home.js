@@ -1,11 +1,11 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-// import Portfolio from '../../components/Portfolio/portfolio';
-// import CarouselSlider from '../../components/CarouselSlider/carouselSlider';
-// import ContactUs from '../../components/ContactUs/contactUs';
+
+import PopularProducts from '../../components/PopularProducts/popularProducts';
 import Header from '../../navigations/Header/header';
 import HeroSlider from '../../components/HeroSlider/heroSlider';
 import Footer from '../../navigations/Footer/footer';
+import LikedProducts from '../../components/LikedProducts/likedProducts';
 
 const Home = () => {
     return (
@@ -18,6 +18,10 @@ const Home = () => {
             <Header />
 
             <HeroSlider />
+
+            <PopularProducts />
+
+            <LikedProducts />
 
             <Footer />
             {/* <header className='masthead'></header>

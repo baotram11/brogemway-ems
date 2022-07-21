@@ -1,79 +1,5 @@
-.hero-btn {
-    background: $button-color;
-    text-transform: uppercase;
-    padding: 27px 44px;
-    color: #fff;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 15px;
-    display: inline-block;
-    line-height: 1;
-    user-select: none;
-    -moz-user-select: none;
-    letter-spacing: 1px;
-    line-height: 0;
-    margin-bottom: 0;
-    cursor: pointer;
-    transition: color 0.4s linear;
-    position: relative;
-    z-index: 1;
-    border: 0;
-    overflow: hidden;
-    margin: 0;
-    border-radius: 0px;
-    &::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 101%;
-        height: 101%;
-        background: $button-bg;
-        z-index: 1;
-        border-radius: 0px;
-        transition: transform 0.5s;
-        transition-timing-function: ease;
-        transform-origin: 0 0;
-        transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
-        transform: scaleX(0);
-        border-radius: 0px;
-        color: #fff;
-    }
-    &:hover {
-        &::before {
-            transform: scaleX(1);
-            color: #fff !important;
-            z-index: -1;
-        }
-    }
-    &:focus {
-        color: #fff;
-        outline: 0;
-        box-shadow: none;
-        outline: 0;
-        box-shadow: none;
-    }
-}
-
-.slider-height {
-    min-height: 820px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-}
-.slider-height2 {
-    min-height: 275px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-}
-.slider-bg1 {
-    background-image: url(../../assets/images/heros/h1_hero.png);
-}
-.slider-bg2 {
-    background-image: url(../../assets/images/heros/hero-login-sm.png);
-}
 .slider-area {
+    font-family: $text-fontfamily;
     margin-top: -1px;
     padding-right: 50px;
     padding-bottom: 90px;
@@ -402,3 +328,70 @@
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#668c8282', endColorstr='#00000000',GradientType=0 );
     }
 }
+.hero-btn {
+    background: $button-color;
+    text-transform: uppercase;
+    padding: 27px 44px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    display: inline-block;
+    line-height: 1;
+    user-select: none;
+    -moz-user-select: none;
+    letter-spacing: 1px;
+    line-height: 0;
+    margin-bottom: 0;
+    cursor: pointer;
+    transition: color 0.4s linear;
+    position: relative;
+    z-index: 1;
+    border: 0;
+    overflow: hidden;
+    margin: 0;
+    border-radius: 0px;
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 101%;
+        height: 101%;
+        background: $button-bg;
+        z-index: 1;
+        border-radius: 0px;
+        transition: transform 0.5s;
+        transition-timing-function: ease;
+        transform-origin: 0 0;
+        transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+        transform: scaleX(0);
+        border-radius: 0px;
+        color: #fff;
+    }
+    &:hover {
+        &::before {
+            transform: scaleX(1);
+            color: #fff !important;
+            z-index: -1;
+        }
+    }
+    &:focus {
+        color: #fff;
+        outline: 0;
+        box-shadow: none;
+        outline: 0;
+        box-shadow: none;
+    }
+}
+
+.slider-height {
+    min-height: 820px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.slider-bg1 {
+    background-image: $home-bg;
+}
+

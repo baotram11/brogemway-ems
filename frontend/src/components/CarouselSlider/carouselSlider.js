@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectAllProducts } from '../../store/slices/productSlice';
 import Slider from 'react-slick';
+import ProductList from '../../components/ProductList/productList';
 
 const CarouselSlider = () => {
     const settings = {
@@ -22,7 +23,8 @@ const CarouselSlider = () => {
             </div>
             <div className='row m-5'>
                 <Slider {...settings}>
-                    {allProducts.map((product) => (
+                    <ProductList />
+                    {/* {allProducts.map((product) => (
                         <Link
                             style={{
                                 textDecoration: 'none',
@@ -51,7 +53,7 @@ const CarouselSlider = () => {
                                 </div>
                             </div>
                         </Link>
-                    ))}
+                    ))} */}
                 </Slider>
             </div>
         </div>
