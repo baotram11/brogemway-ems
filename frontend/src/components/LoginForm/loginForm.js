@@ -74,7 +74,7 @@ const LoginForm = () => {
         console.log(login);
 
         if (login === 'succeeded') {
-            return navigate('/');
+            return navigate(-1);
         } else if (login === 'failed') {
             // alert(JSON.stringify(errorMessage, null, 2));
             console.log(errorMessage);

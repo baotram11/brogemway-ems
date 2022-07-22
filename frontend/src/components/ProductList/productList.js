@@ -33,7 +33,7 @@ const ProductList = () => {
             {status === 'succeeded' && (
                 <div className='row'>
                     {allProducts.map((product) => (
-                        <div className='col-xl-4 col-lg-6 col-md-6 col-sm-6'>
+                        <div key={product.ProID} className='col-xl-4 col-lg-6 col-md-6 col-sm-6'>
                             <div className='single-new-arrival mb-50 text-center'>
                                 <div className='popular-img'>
                                     <img
@@ -43,7 +43,11 @@ const ProductList = () => {
                                 </div>
                                 <div className='popular-caption'>
                                     <h3>
-                                        <Link className='link' to={`/products/${product.ProID}`}>
+                                        <Link
+                                            key={product.ProID}
+                                            className='link'
+                                            to={`/products/${product.ProID}`}
+                                        >
                                             {product.ProName}
                                         </Link>
                                     </h3>

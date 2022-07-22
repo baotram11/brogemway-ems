@@ -42,8 +42,8 @@ const Header = () => {
                             <div className='logo2'>
                                 <Link className='link' style={{ textDecoration: 'none' }} to='/'>
                                     <img
-                                        style={{ height: '7em' }}
-                                        src={require('../../assets/images/logos/bgw-transparent.png')}
+                                        style={{ height: '5em' }}
+                                        src={require('../../assets/images/logos/bgw_v2-transparent.png')}
                                         alt='brogemway'
                                     />
                                 </Link>
@@ -88,13 +88,22 @@ const Header = () => {
                                                 Về chúng tôi
                                             </Link>
                                         </li>
+                                        <li>
+                                            <Link
+                                                className='link'
+                                                style={{ textDecoration: 'none' }}
+                                                to='/contact'
+                                            >
+                                                Liên hệ
+                                            </Link>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>
                         </div>
 
-                        <div className='header-right1 d-inline-flex align-items-center'>
-                            <ul className='search d-flex align-items-center'>
+                        <div className='header-right1 d-inline-flex justify-content-end'>
+                            <ul className='search d-flex align-items-center '>
                                 <li>
                                     <form action='#' className='form-box f-right'>
                                         <input type={'text'} name='Search' placeholder='Tìm kiếm sản phẩm' />
@@ -119,10 +128,10 @@ const Header = () => {
                                     <li>
                                         <Link
                                             className='link account-btn'
-                                            to='login'
+                                            to='/login'
                                             style={{ textDecoration: 'none' }}
                                         >
-                                            ĐĂNG NHẬP
+                                            ĐĂNG NHẬP/ĐĂNG KÝ
                                         </Link>
                                     </li>
                                 )}

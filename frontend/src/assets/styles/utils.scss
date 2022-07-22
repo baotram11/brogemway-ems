@@ -11,7 +11,7 @@ h1 {
     color: #1a1a1a;
     margin-top: 0px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: bold;
     text-transform: normal;
     .link {
         color: inherit;
@@ -22,7 +22,7 @@ h2 {
     color: #1a1a1a;
     margin-top: 0px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: bold;
     text-transform: normal;
     .link {
         color: inherit;
@@ -33,7 +33,7 @@ h3 {
     color: #1a1a1a;
     margin-top: 0px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: bold;
     text-transform: normal;
     .link {
         color: inherit;
@@ -44,7 +44,7 @@ h4 {
     color: #1a1a1a;
     margin-top: 0px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: bold;
     text-transform: normal;
     .link {
         color: inherit;
@@ -55,7 +55,7 @@ h5 {
     color: #1a1a1a;
     margin-top: 0px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: bold;
     text-transform: normal;
     .link {
         color: inherit;
@@ -66,7 +66,7 @@ h6 {
     color: #1a1a1a;
     margin-top: 0px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: bold;
     text-transform: normal;
     .link {
         color: inherit;
@@ -233,7 +233,7 @@ li {
     cursor: pointer;
     display: inline-block;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: bold;
     letter-spacing: 1px;
     margin-bottom: 0;
     position: relative;
@@ -275,21 +275,7 @@ li {
         }
     }
 }
-.breadcrumb {
-    > .active {
-        color: #888;
-    }
-    background: none;
-    padding: 0;
-    margin: 0;
-    a {
-        color: #fff;
-        font-size: 15px;
-        text-transform: capitalize;
-        line-height: 1;
-        font-weight: 500;
-    }
-}
+
 .footer-padding {
     padding-top: 50px;
     padding-bottom: 30px;
@@ -598,7 +584,7 @@ li {
     .category-listing {
         .categories-wrapper {
             .select-categories {
-                .nice-select {
+                .select {
                     padding-left: 25px;
                 }
             }
@@ -606,7 +592,7 @@ li {
     }
     .count-job {
         .select-cat {
-            .nice-select {
+            .select {
                 margin-bottom: 20px;
                 padding-left: 25px;
             }

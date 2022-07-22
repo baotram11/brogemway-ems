@@ -1,8 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import GroupByCat from '../../components/GroupByCat/groupByCat';
 import NavSlider from '../../components/NavSlider/navSlider';
-import ProductList from '../../components/ProductList/productList';
 import Header from '../../navigations/Header/header';
+import Footer from '../../navigations/Footer/footer';
 
 const AllProducts = () => {
     const breadcrumb = { title: 'Sản phẩm', parentTitle: null };
@@ -15,8 +16,12 @@ const AllProducts = () => {
             </Helmet>
 
             <Header />
-            
+
             <NavSlider {...breadcrumb} />
+
+            <GroupByCat />
+
+            <Footer />
         </div>
     );
 };

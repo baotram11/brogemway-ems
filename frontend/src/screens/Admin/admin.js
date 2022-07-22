@@ -7,10 +7,13 @@ import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
 import Tab from 'react-bootstrap/Tab';
 import CategoryList from '../../components/CategoryList/categoryList';
-
+import Header from '../../navigations/Header/header';
+import Footer from '../../navigations/Footer/footer';
 const Admin = () => {
     return (
         <div className='admin'>
+            <Header />
+
             {/* <div className='row pt-5'>
                 <div className='col-md-auto pr-5'>
                     <div className='list-group text-center'>
@@ -63,6 +66,8 @@ const Admin = () => {
                     </Col>
                 </Row>
             </Tab.Container>
+
+            <Footer />
         </div>
     );
 };

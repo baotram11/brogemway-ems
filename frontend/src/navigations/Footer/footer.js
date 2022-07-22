@@ -13,9 +13,10 @@ const Footer = () => {
                                     <div className='footer-logo'>
                                         <Link className='link' to='/'>
                                             <img
-                                                width={'200px'}
-                                                height={'200px'}
-                                                src={require('../../assets/images/logos/bgw-transparent.png')}
+                                                width={'40%'}
+                                                height={'40%'}
+                                                style={{ paddingBottom: '20px' }}
+                                                src={require('../../assets/images/logos/bgw_v2-transparent.png')}
                                                 alt='...'
                                             />
                                         </Link>
@@ -128,8 +129,7 @@ const Footer = () => {
                                 <div className='footer-copy-right text-center'>
                                     <p>
                                         Copyright ©2022 All rights reserved | Brogemway{' '}
-                                        <i className="fa-solid fa-meteor"></i>
-                                        {' '}2019
+                                        <i className='fa-solid fa-meteor'></i> 2019
                                     </p>
                                 </div>
                             </div>

@@ -30,7 +30,7 @@ const NavSlider = (props) => {
                                             <h1
                                                 data-animation='fadeInUp'
                                                 data-delay='.4s'
-                                                style={{ animationDelay: '0.4s', color:'#fd8f5f' }}
+                                                style={{ animationDelay: '0.4s'}}
                                             >
                                                 {title}
                                             </h1>

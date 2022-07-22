@@ -3,7 +3,8 @@ import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectStatus, selectErrorMessage, fetchProductByID } from '../../store/slices/productSlice';
-
+import Header from '../../navigations/Header/header';
+import Footer from '../../navigations/Footer/footer';
 import ProductDetail from '../../components/ProductDetail/productDetail';
 
 const Product = () => {
@@ -26,6 +27,7 @@ const Product = () => {
                 <meta charSet='utf-8' />
                 <title>{param.id} &#9702; Brogemway</title>
             </Helmet>
+            <Header />
 
             {status === 'loading' && (
                 <div className='spinner-border text-secondary' role='status'>
@@ -34,6 +36,8 @@ const Product = () => {
             )}
             {status === 'failed' && <h5 style={{ color: 'red' }}>{errorMessage}</h5>}
             {status === 'succeeded' && <ProductDetail />}
+            <Footer />
+
         </div>
     );
 };
