@@ -4,7 +4,13 @@ import clsx from 'clsx';
 import { Link, useNavigate } from 'react-router-dom';
 import { UseLoginFormValidator } from '../../utils/useFormValidator';
 
-import { loginUser, selectErrorLogin, selectLogin } from '../../store/slices/authSlice';
+import {
+    loginUser,
+    selectErrorLogin,
+    selectLogin,
+} from '../../store/slices/authSlice';
+import ForgotPassword from '../ForgotPassword/forgotPassword';
+import Alert from '../Alert/alert';
 
 const LoginForm = () => {
     const navigate = useNavigate();
@@ -70,6 +76,20 @@ const LoginForm = () => {
         width: '100%',
     };
 
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const props = {
+        type: 'error',
+        show: show,
+        message: 'Something went wrong, please try again.',
+        handleClose: handleClose,
+    };
+    const handleForgotPassword = () => {
+        console.log('Forgot Password !');
+
+        return setShow(true);
+    };
+
     useEffect(() => {
         console.log(login);
 
@@ -96,16 +116,21 @@ const LoginForm = () => {
                                         fontSize: '15px',
                                     }}
                                 >
-                                    Để giữ kết nối với chúng tôi, vui lòng đăng nhập bằng tài khoản của bạn
+                                    Để giữ kết nối với chúng tôi, vui lòng đăng
+                                    nhập bằng tài khoản của bạn
                                 </p>
                             </div>
 
                             <div className='input-box'>
                                 <div className='single-input-fields'>
-                                    <label>Số Điện Thoại Hoặc Địa Chỉ Email</label>
+                                    <label>
+                                        Số Điện Thoại Hoặc Địa Chỉ Email
+                                    </label>
                                     <input
                                         className={clsx(
-                                            errors.username.dirty && errors.username.error && formFieldError
+                                            errors.username.dirty &&
+                                                errors.username.error &&
+                                                formFieldError
                                         )}
                                         name='username'
                                         type={'text'}
@@ -115,12 +140,18 @@ const LoginForm = () => {
                                         onChange={onUpdateField}
                                         onBlur={onBlurField}
                                     />
-                                    {errors.username.dirty && errors.username.error ? (
-                                        <p style={formFieldErrorMessage}>{errors.username.message}</p>
+                                    {errors.username.dirty &&
+                                    errors.username.error ? (
+                                        <p style={formFieldErrorMessage}>
+                                            {errors.username.message}
+                                        </p>
                                     ) : null}
 
-                                    {errorMessage && errorMessage.type === 'username' ? (
-                                        <p style={formFieldErrorMessage}>{errorMessage.error}</p>
+                                    {errorMessage &&
+                                    errorMessage.type === 'username' ? (
+                                        <p style={formFieldErrorMessage}>
+                                            {errorMessage.error}
+                                        </p>
                                     ) : null}
                                 </div>
 
@@ -128,7 +159,9 @@ const LoginForm = () => {
                                     <label>Mật Khẩu</label>
                                     <input
                                         className={clsx(
-                                            errors.password.dirty && errors.password.error && formFieldError
+                                            errors.password.dirty &&
+                                                errors.password.error &&
+                                                formFieldError
                                         )}
                                         name='password'
                                         type={passwordType}
@@ -152,20 +185,37 @@ const LoginForm = () => {
                                             <i className='fa-solid fa-eye'></i>
                                         )}
                                     </button>
-                                    
-                                    {errors.password.dirty && errors.password.error ? (
-                                        <p style={formFieldErrorMessage}>{errors.password.message}</p>
+
+                                    {errors.password.dirty &&
+                                    errors.password.error ? (
+                                        <p style={formFieldErrorMessage}>
+                                            {errors.password.message}
+                                        </p>
                                     ) : null}
 
-                                    {errorMessage && errorMessage.type === 'password' ? (
-                                        <p style={formFieldErrorMessage}>{errorMessage.error}</p>
+                                    {errorMessage &&
+                                    errorMessage.type === 'password' ? (
+                                        <p style={formFieldErrorMessage}>
+                                            {errorMessage.error}
+                                        </p>
                                     ) : null}
                                 </div>
 
                                 <div className='single-input-fields login-check'>
-                                    <input type={'checkbox'} id='fruit1' name='keep-log' />
-                                    <label htmlFor='fruit1'> Ghi nhớ đăng nhập</label>
-                                    <Link to='#' className='link f-right'>
+                                    <input
+                                        type={'checkbox'}
+                                        id='fruit1'
+                                        name='keep-log'
+                                    />
+                                    <label htmlFor='fruit1'>
+                                        {' '}
+                                        Ghi nhớ đăng nhập
+                                    </label>
+                                    <Link
+                                        to='#'
+                                        className='link f-right'
+                                        onClick={handleForgotPassword}
+                                    >
                                         Quên mật khẩu?
                                     </Link>
                                 </div>
@@ -179,11 +229,14 @@ const LoginForm = () => {
                                     </Link>{' '}
                                     ở đây
                                 </p>
-                                <button className='submit-btn1'>Đăng nhập</button>
+                                <button className='submit-btn1'>
+                                    Đăng nhập
+                                </button>
                             </div>
                         </form>
                     </div>
                 </div>
+                {show ? <Alert {...props} /> : null}
             </div>
         </div>
     );

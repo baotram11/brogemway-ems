@@ -8,9 +8,10 @@
 @import 'variables';
 
 // components
-@import '../../components/AccountTable/accountTable.scss';
 @import '../../components/AccountManager/accountManager.scss';
 @import '../../components/AccountModal/accountModal.scss';
+@import '../../components/AccountTable/accountTable.scss';
+@import '../../components/Alert/alert.scss';
 @import '../../components/CarouselSlider/carouselSlider.scss';
 @import '../../components/CategoryList/categoryList.scss';
 @import '../../components/ContactUs/contactUs.scss';

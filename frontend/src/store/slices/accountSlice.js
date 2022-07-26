@@ -3,50 +3,63 @@ import axios from 'axios';
 
 const apiUrl = 'http://localhost:5000/api/accounts/';
 
-export const fetchAccounts = createAsyncThunk('account/fetchAccounts', async () => {
-    try {
-        console.log('CALL API: ' + apiUrl);
-        const response = await axios.get(apiUrl);
-        return [...response.data];
-    } catch (error) {
-        return error.message;
-    }
-});
-
-export const addAccount = createAsyncThunk('account/addAccount', async (data, { rejectWithValue }) => {
-    try {
-        console.log('CALL API: ' + apiUrl);
-
-        const newAccount = {
-            Name: data.name,
-            PhoneNumber: data.telephone,
-            Email: data.email,
-            Password: data.password,
-        };
-
-        const response = await axios.post(apiUrl, newAccount);
-        console.log(response);
-
-        if (response.status < 200 || response.status >= 300) {
-            return rejectWithValue(response.data);
+export const fetchAccounts = createAsyncThunk(
+    'account/fetchAccounts',
+    async () => {
+        try {
+            console.log('CALL API: ' + apiUrl);
+            const response = await axios.get(apiUrl);
+            return [...response.data];
+        } catch (error) {
+            return error.message;
         }
-
-        return response.data;
-    } catch (error) {
-        return rejectWithValue(error.message);
     }
-});
+);
 
-export const updateAccount = createAsyncThunk('account/updateAccount', async (data) => {
-    try {
-        const response = await axios.patch(apiUrl + data.Account._id, data.Update);
-        if (response.data.status === 'updated') {
-            return data.Account;
+export const addAccount = createAsyncThunk(
+    'account/addAccount',
+    async (data, { rejectWithValue }) => {
+        try {
+            console.log('CALL API: ' + apiUrl);
+
+            const newAccount = {
+                Name: data.name,
+                PhoneNumber: data.telephone,
+                Email: data.email,
+                Password: data.password,
+            };
+
+            const response = await axios.post(apiUrl, newAccount);
+            console.log(response);
+
+            if (response.status < 200 || response.status >= 300) {
+                return rejectWithValue(response.data);
+            }
+
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error.message);
         }
-    } catch (error) {
-        return error.message;
     }
-});
+);
+
+export const updateAccount = createAsyncThunk(
+    'account/updateAccount',
+    async (data) => {
+        try {
+            const response = await axios.patch(
+                apiUrl + data.Account._id,
+                data.Update
+            );
+            if (response.data.status === 'updated') {
+                return data.Account;
+            }
+        } catch (error) {
+            return error.message;
+        }
+    }
+);
 
 export const accountSlice = createSlice({
     name: 'account',
