@@ -1,58 +1,55 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
+import { useNavigate } from 'react-router-dom';
 
 const Alert = (props) => {
-    const { type, show, message, handleClose } = props;
+    const navigate = useNavigate();
+    const { type, show, message, handleClose, redirect } = props;
+    const handleBtn = () => {
+        handleClose();
+        return navigate(redirect);
+    };
     return (
-        <div className='alert'>
+        <Modal
+            className='alert-modal'
+            show={show}
+            onHide={handleClose}
+            backdrop='static'
+            keyboard={false}
+            size='md'
+            aria-labelledby='contained-modal-title-vcenter'
+            centered
+        >
             {type === 'error' ? (
-                <Modal
-                    className='modal'
-                    show={show}
-                    onHide={handleClose}
-                    size='md'
-                    aria-labelledby='contained-modal-title-vcenter'
-                    centered
-                >
-                    <div className='wrapper red'>
-                        <div className='header__wrapper'>
-                            <div className='header'>
-                                <div className='sign'>
-                                    <span></span>
-                                </div>
+                <div className='wrapper red'>
+                    <div className='header__wrapper'>
+                        <div className='header'>
+                            <div className='sign'>
+                                <span></span>
                             </div>
                         </div>
-                        <h1>Lỗi!</h1>
-                        <p>{message}</p>
-
-                        <button>Đã hiểu</button>
                     </div>
-                </Modal>
+                    <h1>Lỗi!</h1>
+                    <p>{message}</p>
+
+                    <button onClick={handleClose}>Đã hiểu</button>
+                </div>
             ) : (
-                <Modal
-                    className='modal'
-                    show={show}
-                    onHide={handleClose}
-                    size='md'
-                    aria-labelledby='contained-modal-title-vcenter'
-                    centered
-                >
-                    <div className='wrapper green'>
-                        <div className='header__wrapper'>
-                            <div className='header'>
-                                <div className='sign'>
-                                    <span></span>
-                                </div>
+                <div className='wrapper green'>
+                    <div className='header__wrapper'>
+                        <div className='header'>
+                            <div className='sign'>
+                                <span></span>
                             </div>
                         </div>
-                        <h1>Thành công!</h1>
-                        <p>{message}</p>
-
-                        <button>OK</button>
                     </div>
-                </Modal>
+                    <h1>Thành công!</h1>
+                    <p>{message}</p>
+
+                    <button onClick={handleBtn}>OK</button>
+                </div>
             )}
-        </div>
+        </Modal>
     );
 };
 

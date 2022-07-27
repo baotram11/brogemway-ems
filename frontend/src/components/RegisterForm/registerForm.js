@@ -5,14 +5,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UseRegisterFormValidator } from '../../utils/useFormValidator';
 import { useDispatch, useSelector } from 'react-redux';
 import { addAccount, selectAdd, selectErrorCreate, selectNewAccount } from '../../store/slices/accountSlice';
+import Alert from '../Alert/alert';
 
 const RegisterForm = (props) => {
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
     const add = useSelector(selectAdd);
-    // const newAccount = useSelector(selectNewAccount);
-    // const errorCreate = useSelector(selectErrorCreate);
+    const newAccount = useSelector(selectNewAccount);
+    const errorCreate = useSelector(selectErrorCreate);
 
     const [passwordType, setPasswordType] = useState('password');
     const [confirmPasswordType, setConfirmPasswordType] = useState('password');
@@ -83,15 +84,33 @@ const RegisterForm = (props) => {
         width: '100%',
     };
 
+    const [showSucceedAlert, setShowSucceedAlert] = useState(false);
+    const [showErrorAlert, setShowErrorAlert] = useState(false);
+    const handleClose = () => {
+        setShowSucceedAlert(false);
+        setShowErrorAlert(false);
+    };
+    const errorAlert = {
+        type: 'error',
+        show: showErrorAlert,
+        message: errorCreate,
+        handleClose: handleClose,
+        redirect: '#',
+    };
+    const succeedAlert = {
+        type: 'succeed',
+        show: showSucceedAlert,
+        message: 'Đăng ký thành công!',
+        handleClose: handleClose,
+        redirect: '/',
+    };
     useEffect(() => {
-        console.log(add);
-
         if (add === 'succeeded') {
-            return navigate('/');
+            setShowSucceedAlert(true);
         } else if (add === 'failed') {
-            alert(JSON.stringify('Đăng ký chưa thành công!', null, 2));
+            setShowErrorAlert(true);
         }
-    }, [add, navigate]);
+    }, [add, navigate, newAccount, setShowSucceedAlert, setShowErrorAlert]);
 
     return (
         <div className='register-form-area'>
@@ -122,6 +141,7 @@ const RegisterForm = (props) => {
                                         type={'text'}
                                         aria-label='Name field'
                                         placeholder='Nhập họ và tên của bạn'
+                                        autoComplete='off'
                                         value={form.name}
                                         onChange={onUpdateField}
                                         onBlur={onBlurField}
@@ -141,6 +161,7 @@ const RegisterForm = (props) => {
                                         type={'text'}
                                         aria-label='Email field'
                                         placeholder='Nhập địa chỉ email'
+                                        autoComplete='off'
                                         value={form.email}
                                         onChange={onUpdateField}
                                         onBlur={onBlurField}
@@ -160,6 +181,7 @@ const RegisterForm = (props) => {
                                         type={'tel'}
                                         aria-label='Telephone field'
                                         placeholder='Nhập số điện thoại'
+                                        autoComplete='off'
                                         onChange={onUpdateField}
                                         onBlur={onBlurField}
                                     />
@@ -179,6 +201,7 @@ const RegisterForm = (props) => {
                                         aria-label='Password field'
                                         aria-describedby='button-addon1'
                                         placeholder='Nhập mật khẩu'
+                                        autoComplete='off'
                                         value={form.password}
                                         onChange={onUpdateField}
                                         onBlur={onBlurField}
@@ -215,6 +238,7 @@ const RegisterForm = (props) => {
                                         aria-label='Confirm password field'
                                         aria-describedby='button-addon2'
                                         placeholder='Nhập lại mật khẩu'
+                                        autoComplete='off'
                                         value={form.confirmPassword}
                                         onChange={onUpdateField}
                                         onBlur={onBlurField}
@@ -253,6 +277,8 @@ const RegisterForm = (props) => {
                     </div>
                 </div>
             </div>
+            {showErrorAlert ? <Alert {...errorAlert} /> : null}
+            {showSucceedAlert ? <Alert {...succeedAlert} /> : null}
         </div>
     );
 };
