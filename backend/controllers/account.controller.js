@@ -1,8 +1,9 @@
 const bcrypt = require('bcrypt');
 
 const Account = require('../models/account.model');
+const authController = require('./auth.controller');
 
-module.exports = {
+accountController = {
     getAllAccounts: async (req, res, next) => {
         try {
             const results = await Account.find();
@@ -27,104 +28,14 @@ module.exports = {
             var length = Object.keys(result).length;
 
             if (!length) {
-                return res.status(404).json({ error: 'Account does not exist!' });
+                return res
+                    .status(404)
+                    .json({ error: 'Account does not exist!' });
             }
 
             res.send(result);
         } catch (error) {
             res.status(400).json('Error: ' + error);
-            next();
-        }
-    },
-
-    createNewAccount: async (req, res, next) => {
-        try {
-            const phoneNumber = req.body.PhoneNumber;
-            const name = req.body.Name;
-            const email = req.body.Email;
-            const address = req.body.Address;
-            const isActive = req.body.IsActive;
-            const level = req.body.Level;
-            const rawPassword = req.body.Password;
-            const dob = req.body.DoB;
-
-            const salt = await bcrypt.genSalt(10);
-            const hash = await bcrypt.hash(rawPassword, salt);
-
-            const newAccount = new Account({
-                PhoneNumber: phoneNumber,
-                Name: name,
-                Email: email,
-                Address: address,
-                IsActive: isActive,
-                Level: level,
-                Password: hash,
-                DoB: dob,
-            });
-
-            const result = await newAccount.save();
-
-            return res.status(200).send({
-                success: true,
-                account: {
-                    ID: result._id,
-                    PhoneNumber: result.PhoneNumber,
-                    Name: result.Name,
-                    Email: result.Email,
-                    IsActive: result.IsActive,
-                    Level: result.Level,
-                    Password: result.Password,
-                },
-            });
-        } catch (error) {
-            res.status(422).json({ status: 422, error: error.message });
-            next();
-        }
-    },
-
-    loginAccount: async (req, res, next) => {
-        try {
-            const { username, password } = req.body;
-
-            var user = null;
-
-            if (username.includes('@')) {
-                user = await Account.findOne({ Email: username });
-            } else {
-                user = await Account.findOne({ PhoneNumber: username });
-            }
-
-            if (!user) {
-                return res
-                    .status(404)
-                    .send({ success: false, type: 'username', error: 'Không tìm thấy tài khoản phù hợp' });
-            }
-
-            const isMatch = await bcrypt.compare(password, user.Password);
-            if (!isMatch) {
-                return res.status(404).send({
-                    success: false,
-                    type: 'password',
-                    error: 'Mật khẩu chưa chính xác',
-                });
-            }
-
-            return res.status(200).send({
-                success: true,
-                account: {
-                    ID: user._id,
-                    PhoneNumber: user.PhoneNumber,
-                    Name: user.Name,
-                    Email: user.Email,
-                    IsActive: user.IsActive,
-                    Level: user.Level,
-                    Password: user.Password,
-                },
-            });
-        } catch (error) {
-            res.status(400).send({
-                error: error.message,
-            });
             next();
         }
     },
@@ -137,7 +48,9 @@ module.exports = {
             const result = await Account.findByIdAndUpdate(id, updates);
 
             if (!result) {
-                return res.status(404).json({ error: 'Account does not exist!' });
+                return res
+                    .status(404)
+                    .json({ error: 'Account does not exist!' });
             }
 
             res.send({ status: 'updated' });
@@ -151,10 +64,14 @@ module.exports = {
         const id = req.params.id;
 
         try {
-            const result = await Account.findByIdAndUpdate(id, { IsActive: false });
+            const result = await Account.findByIdAndUpdate(id, {
+                IsActive: false,
+            });
 
             if (!result) {
-                return res.status(404).json({ error: 'Account does not exist!' });
+                return res
+                    .status(404)
+                    .json({ error: 'Account does not exist!' });
             }
 
             res.send(`Locked the Account: ${id} !!`);
@@ -168,10 +85,14 @@ module.exports = {
         const id = req.params.id;
 
         try {
-            const result = await Account.findByIdAndUpdate(id, { IsActive: true });
+            const result = await Account.findByIdAndUpdate(id, {
+                IsActive: true,
+            });
 
             if (!result) {
-                return res.status(404).json({ error: 'Account does not exist!' });
+                return res
+                    .status(404)
+                    .json({ error: 'Account does not exist!' });
             }
 
             res.send(`Activated the account: ${id} !!`);
@@ -181,3 +102,5 @@ module.exports = {
         }
     },
 };
+
+module.exports = accountController;

@@ -8,12 +8,6 @@ router.get('/', AccountController.getAllAccounts);
 //Get a Account by UserID
 router.get('/:id', AccountController.findAccountById);
 
-//Create a new Account
-router.post('/', AccountController.createNewAccount);
-
-//Create a new Account
-router.post('/login', AccountController.loginAccount);
-
 //Update a Account by UserID
 router.patch('/:id', AccountController.updateAccount);
 

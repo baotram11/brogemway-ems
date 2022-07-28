@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Submenu from '../../components/Submenu/submenu';
 import UserMenu from '../../components/UserMenu/userMenu';
 import { useSelector } from 'react-redux';
-import { selectCurrentUser } from '../../store/slices/authSlice';
+import { selectCurrentUser, selectNewUser } from '../../store/slices/authSlice';
 
 window.addEventListener('DOMContentLoaded', (event) => {
     var navbarShrink = function () {
@@ -22,8 +22,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 const Header = () => {
-    const user = useSelector(selectCurrentUser);
-    console.log(user);
+    const currUser = useSelector(selectCurrentUser);
+    const newUser = useSelector(selectNewUser);
+    console.log(currUser);
+    console.log(newUser);
 
     return (
         <div className='header-area'>
@@ -32,7 +34,11 @@ const Header = () => {
                     <div className='row menu-wrapper align-items-center justify-content-between'>
                         <div className='header-left d-inline-flex align-items-center'>
                             <div className='logo'>
-                                <Link className='link' style={{ textDecoration: 'none' }} to='/'>
+                                <Link
+                                    className='link'
+                                    style={{ textDecoration: 'none' }}
+                                    to='/'
+                                >
                                     <img
                                         src={require('../../assets/images/logos/bgw-192x158px.png')}
                                         alt='brogemway'
@@ -40,7 +46,11 @@ const Header = () => {
                                 </Link>
                             </div>
                             <div className='logo2'>
-                                <Link className='link' style={{ textDecoration: 'none' }} to='/'>
+                                <Link
+                                    className='link'
+                                    style={{ textDecoration: 'none' }}
+                                    to='/'
+                                >
                                     <img
                                         style={{ height: '5em' }}
                                         src={require('../../assets/images/logos/bgw_v2-transparent.png')}
@@ -54,7 +64,9 @@ const Header = () => {
                                         <li>
                                             <Link
                                                 className='link'
-                                                style={{ textDecoration: 'none' }}
+                                                style={{
+                                                    textDecoration: 'none',
+                                                }}
                                                 to='/products'
                                             >
                                                 Sản phẩm
@@ -63,7 +75,9 @@ const Header = () => {
                                         <li>
                                             <Link
                                                 className='link'
-                                                style={{ textDecoration: 'none' }}
+                                                style={{
+                                                    textDecoration: 'none',
+                                                }}
                                                 to='/products'
                                             >
                                                 Danh mục
@@ -73,7 +87,9 @@ const Header = () => {
                                         <li>
                                             <Link
                                                 className='link'
-                                                style={{ textDecoration: 'none' }}
+                                                style={{
+                                                    textDecoration: 'none',
+                                                }}
                                                 to='/term'
                                             >
                                                 Điều khoản
@@ -82,7 +98,9 @@ const Header = () => {
                                         <li>
                                             <Link
                                                 className='link'
-                                                style={{ textDecoration: 'none' }}
+                                                style={{
+                                                    textDecoration: 'none',
+                                                }}
                                                 to='/about'
                                             >
                                                 Về chúng tôi
@@ -91,7 +109,9 @@ const Header = () => {
                                         <li>
                                             <Link
                                                 className='link'
-                                                style={{ textDecoration: 'none' }}
+                                                style={{
+                                                    textDecoration: 'none',
+                                                }}
                                                 to='/contact'
                                             >
                                                 Liên hệ
@@ -105,22 +125,40 @@ const Header = () => {
                         <div className='header-right1 d-inline-flex justify-content-end'>
                             <ul className='search d-flex align-items-center '>
                                 <li>
-                                    <form action='#' className='form-box f-right'>
-                                        <input type={'text'} name='Search' placeholder='Tìm kiếm sản phẩm' />
+                                    <form
+                                        action='#'
+                                        className='form-box f-right'
+                                    >
+                                        <input
+                                            type={'text'}
+                                            name='Search'
+                                            placeholder='Tìm kiếm sản phẩm'
+                                        />
                                         <div className='search-icon'>
                                             <i className='fa-solid fa-magnifying-glass'></i>
                                         </div>
                                     </form>
                                 </li>
 
-                                {user !== null ? (
+                                {currUser !== null ? (
                                     <li>
                                         <Link
                                             className='link'
-                                            to={`/account/${user.account.ID}`}
+                                            to={`/account/${currUser.account.ID}`}
                                             style={{ textDecoration: 'none' }}
                                         >
-                                            {user.account.Name}
+                                            {currUser.account.Name}
+                                        </Link>
+                                        <UserMenu />
+                                    </li>
+                                ) : newUser !== null ? (
+                                    <li>
+                                        <Link
+                                            className='link'
+                                            to={`/account/${newUser.account.ID}`}
+                                            style={{ textDecoration: 'none' }}
+                                        >
+                                            {newUser.account.Name}
                                         </Link>
                                         <UserMenu />
                                     </li>
@@ -159,7 +197,9 @@ const Header = () => {
                                         className='link slicknav-btn slicknav-collapsed'
                                         style={{ textDecoration: 'none' }}
                                     >
-                                        <span className='slicknav-menu'>MENU</span>
+                                        <span className='slicknav-menu'>
+                                            MENU
+                                        </span>
                                         <span className='slicknav-icon'>
                                             <span className='slicknav-icon-bar'></span>
                                             <span className='slicknav-icon-bar'></span>
@@ -175,7 +215,9 @@ const Header = () => {
                                         <li>
                                             <Link
                                                 className='link'
-                                                style={{ textDecoration: 'none' }}
+                                                style={{
+                                                    textDecoration: 'none',
+                                                }}
                                                 to='/'
                                                 role={'menuitem'}
                                                 tabIndex='0'
@@ -186,7 +228,9 @@ const Header = () => {
                                         <li>
                                             <Link
                                                 className='link'
-                                                style={{ textDecoration: 'none' }}
+                                                style={{
+                                                    textDecoration: 'none',
+                                                }}
                                                 to='/products'
                                                 role={'menuitem'}
                                                 tabIndex='0'
@@ -201,10 +245,14 @@ const Header = () => {
                                                 aria-haspopup='true'
                                                 tabIndex={'0'}
                                                 className='link slicknav-item slicknav-row'
-                                                style={{ textDecoration: 'none' }}
+                                                style={{
+                                                    textDecoration: 'none',
+                                                }}
                                             >
                                                 Danh mục
-                                                <span className='slicknav-arrow'>-</span>
+                                                <span className='slicknav-arrow'>
+                                                    -
+                                                </span>
                                             </Link>
                                             <ul
                                                 className='submenu'
@@ -215,7 +263,10 @@ const Header = () => {
                                                 <li>
                                                     <Link
                                                         className='link'
-                                                        style={{ textDecoration: 'none' }}
+                                                        style={{
+                                                            textDecoration:
+                                                                'none',
+                                                        }}
                                                         to='/category/1'
                                                         role={'menuitem'}
                                                         tabIndex='0'
@@ -226,7 +277,10 @@ const Header = () => {
                                                 <li>
                                                     <Link
                                                         className='link'
-                                                        style={{ textDecoration: 'none' }}
+                                                        style={{
+                                                            textDecoration:
+                                                                'none',
+                                                        }}
                                                         to='/category/2'
                                                         role={'menuitem'}
                                                         tabIndex='0'
@@ -237,7 +291,10 @@ const Header = () => {
                                                 <li>
                                                     <Link
                                                         className='link'
-                                                        style={{ textDecoration: 'none' }}
+                                                        style={{
+                                                            textDecoration:
+                                                                'none',
+                                                        }}
                                                         to='/category/3'
                                                         role={'menuitem'}
                                                         tabIndex='0'
@@ -248,7 +305,10 @@ const Header = () => {
                                                 <li>
                                                     <Link
                                                         className='link'
-                                                        style={{ textDecoration: 'none' }}
+                                                        style={{
+                                                            textDecoration:
+                                                                'none',
+                                                        }}
                                                         to='/category/4'
                                                         role={'menuitem'}
                                                         tabIndex='0'
@@ -259,7 +319,10 @@ const Header = () => {
                                                 <li>
                                                     <Link
                                                         className='link'
-                                                        style={{ textDecoration: 'none' }}
+                                                        style={{
+                                                            textDecoration:
+                                                                'none',
+                                                        }}
                                                         to='/category/5'
                                                         role={'menuitem'}
                                                         tabIndex='0'
@@ -270,7 +333,10 @@ const Header = () => {
                                                 <li>
                                                     <Link
                                                         className='link'
-                                                        style={{ textDecoration: 'none' }}
+                                                        style={{
+                                                            textDecoration:
+                                                                'none',
+                                                        }}
                                                         to='/category/6'
                                                         role={'menuitem'}
                                                         tabIndex='0'
@@ -283,7 +349,9 @@ const Header = () => {
                                         <li>
                                             <Link
                                                 className='link'
-                                                style={{ textDecoration: 'none' }}
+                                                style={{
+                                                    textDecoration: 'none',
+                                                }}
                                                 to='/term'
                                                 role={'menuitem'}
                                                 tabIndex='0'
@@ -294,7 +362,9 @@ const Header = () => {
                                         <li>
                                             <Link
                                                 className='link'
-                                                style={{ textDecoration: 'none' }}
+                                                style={{
+                                                    textDecoration: 'none',
+                                                }}
                                                 to='/about'
                                                 role={'menuitem'}
                                                 tabIndex='0'
@@ -305,7 +375,9 @@ const Header = () => {
                                         <li>
                                             <Link
                                                 className='link'
-                                                style={{ textDecoration: 'none' }}
+                                                style={{
+                                                    textDecoration: 'none',
+                                                }}
                                                 to='/contact'
                                                 role={'menuitem'}
                                                 tabIndex='0'

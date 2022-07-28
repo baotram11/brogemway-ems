@@ -13,30 +13,30 @@ export const fetchAccounts = createAsyncThunk('account/fetchAccounts', async () 
     }
 });
 
-export const addAccount = createAsyncThunk('account/addAccount', async (data, { rejectWithValue }) => {
-    try {
-        console.log('CALL API: ' + apiUrl);
+// export const addAccount = createAsyncThunk('account/addAccount', async (data, { rejectWithValue }) => {
+//     try {
+//         console.log('CALL API: ' + apiUrl);
 
-        const newAccount = {
-            Name: data.name,
-            PhoneNumber: data.telephone,
-            Email: data.email,
-            Password: data.password,
-        };
+//         const newAccount = {
+//             Name: data.name,
+//             PhoneNumber: data.telephone,
+//             Email: data.email,
+//             Password: data.password,
+//         };
 
-        const response = await axios.post(apiUrl, newAccount);
-        console.log(response);
+//         const response = await axios.post(apiUrl, newAccount);
+//         console.log(response);
 
-        if (response.status < 200 || response.status >= 300) {
-            return rejectWithValue(response.data);
-        }
+//         if (response.status < 200 || response.status >= 300) {
+//             return rejectWithValue(response.data);
+//         }
 
-        return response.data;
-    } catch (error) {
-        console.log(error.response);
-        if (error.response.status === 422) return rejectWithValue("Số điện thoại đã tồn tại!");
-    }
-});
+//         return response.data;
+//     } catch (error) {
+//         console.log(error.response);
+//         if (error.response.status === 422) return rejectWithValue("Số điện thoại đã tồn tại!");
+//     }
+// });
 
 export const updateAccount = createAsyncThunk('account/updateAccount', async (data) => {
     try {
@@ -53,16 +53,16 @@ export const accountSlice = createSlice({
     name: 'account',
     initialState: {
         update: false,
-        add: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
+        // add: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
         status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
 
-        newAccount: [],
+        // newAccount: [],
         currentAccount: [],
         allAccounts: [],
 
         errorMessage: null,
         errorUpdate: null,
-        errorCreate: null,
+        // errorCreate: null,
     },
     reducers: {},
     extraReducers: (builder) => {
@@ -91,18 +91,18 @@ export const accountSlice = createSlice({
             state.errorUpdate = action.payload;
         });
 
-        // account/addAccount
-        builder.addCase(addAccount.pending, (state) => {
-            state.add = 'loading';
-        });
-        builder.addCase(addAccount.fulfilled, (state, action) => {
-            state.add = 'succeeded';
-            state.newAccount = action.payload;
-        });
-        builder.addCase(addAccount.rejected, (state, action) => {
-            state.add = 'failed';
-            state.errorCreate = action.payload;
-        });
+        // // account/addAccount
+        // builder.addCase(addAccount.pending, (state) => {
+        //     state.add = 'loading';
+        // });
+        // builder.addCase(addAccount.fulfilled, (state, action) => {
+        //     state.add = 'succeeded';
+        //     state.newAccount = action.payload;
+        // });
+        // builder.addCase(addAccount.rejected, (state, action) => {
+        //     state.add = 'failed';
+        //     state.errorCreate = action.payload;
+        // });
     },
 });
 
@@ -113,8 +113,8 @@ export const selectStatus = (state) => state.account.status;
 export const selectAllAccounts = (state) => state.account.allAccounts;
 export const selectErrorMessage = (state) => state.account.errorMessage;
 
-export const selectAdd = (state) => state.account.add;
-export const selectNewAccount = (state) => state.account.newAccount;
-export const selectErrorCreate = (state) => state.account.errorCreate;
+// export const selectAdd = (state) => state.account.add;
+// export const selectNewAccount = (state) => state.account.newAccount;
+// export const selectErrorCreate = (state) => state.account.errorCreate;
 
 export default accountSlice.reducer;

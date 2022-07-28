@@ -1,13 +1,26 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { selectCurrentUser, logout } from '../../store/slices/authSlice';
+import {
+    selectCurrentUser,
+    logout,
+    selectNewUser,
+} from '../../store/slices/authSlice';
 
 const UserMenu = () => {
     const dispatch = useDispatch();
 
-    const user = useSelector(selectCurrentUser);
-    console.log(user);
+    const currUser = useSelector(selectCurrentUser);
+    const newUser = useSelector(selectNewUser);
+    console.log(currUser);
+    console.log(newUser);
+
+    var user;
+    if (currUser === null) {
+        user = newUser;
+    } else {
+        user = currUser;
+    }
 
     const handleLogout = () => {
         dispatch(logout());

@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import clsx from 'clsx';
-import { Link, useNavigate } from 'react-router-dom';
-
-import { UseRegisterFormValidator } from '../../utils/useFormValidator';
 import { useDispatch, useSelector } from 'react-redux';
-import { addAccount, selectAdd, selectErrorCreate, selectNewAccount } from '../../store/slices/accountSlice';
-import Alert from '../Alert/alert';
+import { Link, useNavigate } from 'react-router-dom';
+import clsx from 'clsx';
+import Alert from '../Alert/alert'; 
+import { UseRegisterFormValidator } from '../../utils/useFormValidator';
+import { registerUser, selectErrorRegister, selectNewUser, selectRegister } from '../../store/slices/authSlice';
 
 const RegisterForm = (props) => {
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
-    const add = useSelector(selectAdd);
-    const newAccount = useSelector(selectNewAccount);
-    const errorCreate = useSelector(selectErrorCreate);
+    const register = useSelector(selectRegister);
+    const newUser = useSelector(selectNewUser);
+    const errorRegister = useSelector(selectErrorRegister);
 
     const [passwordType, setPasswordType] = useState('password');
     const [confirmPasswordType, setConfirmPasswordType] = useState('password');
@@ -71,7 +70,7 @@ const RegisterForm = (props) => {
         });
         if (!isValid) return;
 
-        if (add !== 'succeeded') dispatch(addAccount(form));
+        if (register !== 'succeeded') dispatch(registerUser(form));
     };
 
     const formFieldError = { border: '1px solid #e11d48' };
@@ -93,7 +92,7 @@ const RegisterForm = (props) => {
     const errorAlert = {
         type: 'error',
         show: showErrorAlert,
-        message: errorCreate,
+        message: errorRegister,
         handleClose: handleClose,
         redirect: '#',
     };
@@ -105,12 +104,12 @@ const RegisterForm = (props) => {
         redirect: '/',
     };
     useEffect(() => {
-        if (add === 'succeeded') {
+        if (register === 'succeeded') {
             setShowSucceedAlert(true);
-        } else if (add === 'failed') {
+        } else if (register === 'failed') {
             setShowErrorAlert(true);
         }
-    }, [add, navigate, newAccount, setShowSucceedAlert, setShowErrorAlert]);
+    }, [register, navigate, newUser, setShowSucceedAlert, setShowErrorAlert]);
 
     return (
         <div className='register-form-area'>
