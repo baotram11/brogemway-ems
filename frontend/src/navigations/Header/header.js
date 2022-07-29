@@ -4,6 +4,7 @@ import Submenu from '../../components/Submenu/submenu';
 import UserMenu from '../../components/UserMenu/userMenu';
 import { useSelector } from 'react-redux';
 import { selectCurrentUser, selectNewUser } from '../../store/slices/authSlice';
+import SearchForm from '../../components/SearchForm/searchForm';
 
 window.addEventListener('DOMContentLoaded', (event) => {
     var navbarShrink = function () {
@@ -125,19 +126,7 @@ const Header = () => {
                         <div className='header-right1 d-inline-flex justify-content-end'>
                             <ul className='search d-flex align-items-center '>
                                 <li>
-                                    <form
-                                        action='#'
-                                        className='form-box f-right'
-                                    >
-                                        <input
-                                            type={'text'}
-                                            name='Search'
-                                            placeholder='Tìm kiếm sản phẩm'
-                                        />
-                                        <div className='search-icon'>
-                                            <i className='fa-solid fa-magnifying-glass'></i>
-                                        </div>
-                                    </form>
+                                    <SearchForm />
                                 </li>
 
                                 {currUser !== null ? (

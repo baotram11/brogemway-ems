@@ -1,0 +1,28 @@
+.form-box {
+	position: relative;
+	input {
+		background: none;
+		padding: 0px;
+		width: 260px;
+		height: 42px;
+		border: 0;
+		border-bottom: 1px solid #a58f98;
+		color: #010a44;
+		&::placeholder {
+			font-size: 15px;
+			font-weight: 400;
+			color: #010a44;
+		}
+	}
+	.search-icon {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		transform: translateY(-50%);
+		i {
+			color: #010a44;
+			cursor: pointer;
+			font-size: 19px;
+		}
+	}
+}

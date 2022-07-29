@@ -24,18 +24,6 @@ const Home = () => {
             <LikedProducts />
 
             <Footer />
-            {/* <header className='masthead'></header>
-            <section className='page-section bg-light' id='portfolio'>
-                <Portfolio />
-            </section>
-
-            <section className='page-section bg-light' id='best-seller'>
-                <CarouselSlider />
-            </section>
-
-            <section className='page-section bg-light' id='contact-us'>
-                <ContactUs />
-            </section> */}
         </div>
     );
 };

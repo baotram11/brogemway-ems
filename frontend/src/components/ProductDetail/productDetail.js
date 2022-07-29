@@ -3,6 +3,7 @@ import ImageSlider from '../../components/ImageSlider/imageSlider';
 import { AiFillHeart } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import { selectProduct } from '../../store/slices/productSlice';
+import { CurrencyConverter } from '../../utils/CurrencyConverter';
 
 const ProductDetail = () => {
     const [product] = useSelector(selectProduct);
@@ -39,20 +40,8 @@ const ProductDetail = () => {
                                 <div className='mt-2 pr-3 content'>
                                     <p>{product.Description}</p>
                                 </div>
-                                <h3>{product.Price}</h3>
+                                <h3>{CurrencyConverter(product.Price)}</h3>
 
-                                <div className='mt-5'>
-                                    <span className='fw-bold'>Color</span>
-                                    <div className='colors'>
-                                        <ul id='marker'>
-                                            <li id='marker-1'></li>
-                                            <li id='marker-2'></li>
-                                            <li id='marker-3'></li>
-                                            <li id='marker-4'></li>
-                                            <li id='marker-5'></li>
-                                        </ul>
-                                    </div>
-                                </div>
                                 <div className='buttons d-flex flex-row mt-5 gap-3'>
                                     <button className='btn btn-outline-dark'>Mua ngay</button>
                                     <button className='btn btn-dark'>Thêm vào giỏ</button>
