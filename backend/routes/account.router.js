@@ -1,20 +1,28 @@
-const router = require('express').Router();
-
 const AccountController = require('../controllers/account.controller');
 
+const router = require('express').Router();
+const {
+	verifyToken,
+	verifyTokenAndAdmin,
+	verifyTokenAndUserAuthorization,
+} = require('../middlewares/verifyToken.mdw');
+
 //Get a list of all Accounts
-router.get('/', AccountController.getAllAccounts);
+router.get('/', verifyTokenAndAdmin, AccountController.getAllAccounts);
 
-//Get a Account by UserID
-router.get('/:id', AccountController.findAccountById);
+//Get an Account by UserID
+router.get('/:id', verifyToken, AccountController.findAccountById);
 
-//Update a Account by UserID
-router.patch('/:id', AccountController.updateAccount);
+//Update an Account by UserID
+router.patch('/:id', verifyTokenAndUserAuthorization, AccountController.updateAccount);
 
-//Lock a Account by UserID
-router.patch('/lock/:id', AccountController.lockAccount);
+//Lock an Account by UserID
+router.patch('/lock/:id', verifyTokenAndAdmin, AccountController.lockAccount);
 
-//Unlock a Account by UserID
-router.patch('/unlock/:id', AccountController.unlockAccount);
+//Unlock an Account by UserID
+router.patch('/unlock/:id', verifyTokenAndAdmin, AccountController.unlockAccount);
+
+//delete an account
+// router.delete("/:id", verifyTokenAndUserAuthorization, AccountController.deleteUser);
 
 module.exports = router;

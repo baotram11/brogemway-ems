@@ -23,7 +23,7 @@ accountController = {
     findAccountById: async (req, res, next) => {
         const id = req.params.id;
         try {
-            const result = await Account.find({ UserID: id });
+            const result = await Account.findById(id);
 
             var length = Object.keys(result).length;
 

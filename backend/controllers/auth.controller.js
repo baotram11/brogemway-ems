@@ -3,13 +3,37 @@ const bcrypt = require('bcrypt');
 
 const Account = require('../models/account.model');
 
+let refreshTokens=[];
+
 const authController = {
+    generateAccessToken: (user) => {
+        return jwt.sign(
+            {
+                id: user._id,
+                role: user.Level,
+            },
+            process.env.JWT_ACCESS_KEY,
+            { expiresIn: '30d' }
+        );
+    },
+
+    generateRefreshToken: (user) => {
+        return jwt.sign(
+            {
+                id: user._id,
+                role: user.Level,
+            },
+            process.env.JWT_REFRESH_KEY,
+            { expiresIn: '365d' }
+        );
+    },
+
     registerUser: async (req, res, next) => {
         try {
             const salt = await bcrypt.genSalt(10);
             const hashed = await bcrypt.hash(req.body.Password, salt);
 
-            const newAccount = new Account({
+            const newAccount = await new Account({
                 PhoneNumber: req.body.PhoneNumber,
                 Name: req.body.Name,
                 Email: req.body.Email,
@@ -70,18 +94,21 @@ const authController = {
             }
 
             if (user && isMatch) {
-                const accessToken = jwt.sign(
-                    {
-                        id: user._id,
-                        role: user.Level,
-                    },
-                    process.env.JWT_ACCESS_KEY,
-                    { expiresIn: '365d' }
-                );
+                const accessToken = authController.generateAccessToken(user);
+                const refreshToken = authController.generateRefreshToken(user);
+                refreshTokens.push(refreshToken);
+                res.cookie('refreshToken', refreshToken, {
+                    httpOnly: true,
+                    secure:false,
+                    path:'/',
+                    sameSite: 'strict'
+                })
+
                 const { Password, ...orthers } = user._doc;
                 res.status(200).send({
                     success: true,
                     accessToken: accessToken,
+                    refreshToken: refreshToken,
                     account: { ...orthers },
                 });
             }
@@ -92,6 +119,46 @@ const authController = {
             next();
         }
     },
+
+    requestRefreshToken: async(req, res) => {
+        const refreshToken = req.cookies.refreshToken;
+        if(!refreshToken) return res.status(200).json('You are not authenticated!');
+        if (!refreshTokens.includes(refreshToken)) {
+            return res.status(403).json('Refresh token is not valid');
+          }
+        jwt.verify(refreshToken, process.env.JWT_REFRESH_KEY, (err, user) => {
+            if(err){
+                console.log(err);
+            }
+
+            refreshTokens = refreshTokens.filter((token) => token !== refreshToken);
+
+            const newAccessToken = authController.generateAccessToken(user);
+            const newRefreshToken = authController.generateRefreshToken(user);
+            refreshTokens.push(newRefreshToken);
+            res.cookie('refreshToken', newRefreshToken, {
+                httpOnly:true,
+                secure:false,
+                path:'/',
+                sameSite:'strict',
+            });
+            res.status(200).json({
+                accessToken: newAccessToken,
+                refreshToken: newRefreshToken,
+            });
+        })
+    },
+
+    logOut: async (req, res, next) => {
+        refreshTokens = refreshTokens.filter((token) => token !== req.body.token);
+        res.clearCookie("refreshToken");
+        res.status(200).json("Logged out successfully!");
+      },
 };
+
+// Store Token
+// 1. Local Storage: XSS
+// 2. HTTPOnly Cookies: CSRF -> SAMESITE
+// 3. Redux Store -> AccessToken, HTTPOnly Cookies -> RefreshToken
 
 module.exports = authController;
