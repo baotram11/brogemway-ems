@@ -26,11 +26,13 @@ const productRouter = require('./routes/product.router');
 const accountRouter = require('./routes/account.router');
 const authRouter = require('./routes/auth.router');
 const categoryRouter = require('./routes/category.router');
+const searchRouter = require('./routes/search.router');
 
 app.use('/api/products', productRouter);
 app.use('/api/accounts', accountRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/categories', categoryRouter);
+app.use('/search', searchRouter);
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);

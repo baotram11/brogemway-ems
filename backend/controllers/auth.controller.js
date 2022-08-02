@@ -5,7 +5,7 @@ const Account = require('../models/account.model');
 
 let refreshTokens=[];
 
-const authController = {
+const AuthController = {
     generateAccessToken: (user) => {
         return jwt.sign(
             {
@@ -94,8 +94,8 @@ const authController = {
             }
 
             if (user && isMatch) {
-                const accessToken = authController.generateAccessToken(user);
-                const refreshToken = authController.generateRefreshToken(user);
+                const accessToken = AuthController.generateAccessToken(user);
+                const refreshToken = AuthController.generateRefreshToken(user);
                 refreshTokens.push(refreshToken);
                 res.cookie('refreshToken', refreshToken, {
                     httpOnly: true,
@@ -133,8 +133,8 @@ const authController = {
 
             refreshTokens = refreshTokens.filter((token) => token !== refreshToken);
 
-            const newAccessToken = authController.generateAccessToken(user);
-            const newRefreshToken = authController.generateRefreshToken(user);
+            const newAccessToken = AuthController.generateAccessToken(user);
+            const newRefreshToken = AuthController.generateRefreshToken(user);
             refreshTokens.push(newRefreshToken);
             res.cookie('refreshToken', newRefreshToken, {
                 httpOnly:true,
@@ -161,4 +161,4 @@ const authController = {
 // 2. HTTPOnly Cookies: CSRF -> SAMESITE
 // 3. Redux Store -> AccessToken, HTTPOnly Cookies -> RefreshToken
 
-module.exports = authController;
+module.exports = AuthController;

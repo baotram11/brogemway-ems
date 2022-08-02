@@ -1,6 +1,6 @@
 const Product = require('../models/product.model');
 
-module.exports = {
+const ProductController = {
     getAllProducts: async (req, res, next) => {
         try {
             const results = await Product.find();
@@ -110,3 +110,5 @@ module.exports = {
         }
     },
 };
+
+module.exports = ProductController;

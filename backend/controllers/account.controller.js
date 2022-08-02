@@ -1,9 +1,6 @@
-const bcrypt = require('bcrypt');
-
 const Account = require('../models/account.model');
-const authController = require('./auth.controller');
 
-accountController = {
+AccountController = {
     getAllAccounts: async (req, res, next) => {
         try {
             const results = await Account.find();
@@ -103,4 +100,4 @@ accountController = {
     },
 };
 
-module.exports = accountController;
+module.exports = AccountController;

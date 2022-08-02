@@ -1,7 +1,7 @@
 const Category = require('../models/category.model');
 const Product = require('../models/product.model');
 
-module.exports = {
+const CategoryController = {
     getAllCategories: async (req, res, next) => {
         try {
             const results = await Category.find();
@@ -99,3 +99,5 @@ module.exports = {
         }
     },
 };
+
+module.exports = CategoryController;
