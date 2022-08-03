@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <div className='footer-wapper'>
+        <div className='footer-wapper' id='footer'>
             <div className='footer-area footer-padding'>
                 <div className='container'>
                     <div className='row justify-content-between'>

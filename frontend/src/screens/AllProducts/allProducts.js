@@ -1,29 +1,51 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
+import { useDispatch, useSelector } from 'react-redux';
+
 import GroupByCat from '../../components/GroupByCat/groupByCat';
 import NavSlider from '../../components/NavSlider/navSlider';
 import Header from '../../navigations/Header/header';
 import Footer from '../../navigations/Footer/footer';
 
+import {
+	selectAllProducts,
+	selectStatusList,
+	selectErrorMessage,
+	fetchProducts,
+} from '../../store/slices/productSlice';
+
 const AllProducts = () => {
-    const breadcrumb = { title: 'Sản phẩm', parentTitle: null };
+	const breadcrumb = { title: 'Sản phẩm', parentTitle: null };
 
-    return (
-        <div className='all-products'>
-            <Helmet>
-                <meta charSet='utf-8' />
-                <title>Sản phẩm &#9702; Brogemway</title>
-            </Helmet>
+	const dispatch = useDispatch();
+	const allProducts = useSelector(selectAllProducts);
+	const status = useSelector(selectStatusList);
+	const errorMessage = useSelector(selectErrorMessage);
 
-            <Header />
+	useEffect(() => {
+		console.log(status);
+		if (status === 'idle') {
+			dispatch(fetchProducts());
+		}
+	}, [status, dispatch]);
 
-            <NavSlider {...breadcrumb} />
+	return (
+		<div className='all-products'>
+			<Helmet>
+				<meta charSet='utf-8' />
+				<title>Sản phẩm &#9702; Brogemway</title>
+			</Helmet>
 
-            <GroupByCat />
+			<Header />
 
-            <Footer />
-        </div>
-    );
+			<NavSlider {...breadcrumb} />
+
+			<GroupByCat {...{ status, allProducts, errorMessage }} />
+			{console.log(allProducts)}
+
+			<Footer />
+		</div>
+	);
 };
 
 export default AllProducts;

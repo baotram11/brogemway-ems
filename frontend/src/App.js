@@ -12,13 +12,11 @@ import Router from './routes/Router';
 // import Footer from './navigations/Footer/footer';
 
 const App = () => {
-    return (
-        <BrowserRouter>
-            {/* <Header /> */}
-            <Router />
-            {/* <Footer /> */}
-        </BrowserRouter>
-    );
+	return (
+		<BrowserRouter>
+			<Router />
+		</BrowserRouter>
+	);
 };
 
 export default App;

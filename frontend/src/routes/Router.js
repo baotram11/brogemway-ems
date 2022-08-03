@@ -12,24 +12,26 @@ import Page404 from '../screens/Page404/page404';
 import Register from '../screens/Register/register';
 import AllProducts from '../screens/AllProducts/allProducts';
 import Category from '../screens/Category/category';
+import SearchResults from '../screens/SearchResults/searchResults';
 
 const Router = () => {
-    return (
-        <ScrollToTop>
-            <Routes>
-                <Route path='*' element={<Page404 />} />
-                <Route path='/' element={<Home />} />
-                <Route path='/about' element={<About />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/terms' element={<Terms />} />
-                <Route path='/register' element={<Register />} />
-                <Route path='/admin' element={<Admin />} />
-                <Route path='/products' element={<AllProducts />} />
-                <Route path='/products/:id' element={<Product />} />
-                <Route path='/category/:id' element={<Category />} />
-            </Routes>
-        </ScrollToTop>
-    );
+	return (
+		<ScrollToTop>
+			<Routes>
+				<Route path='*' element={<Page404 />} />
+				<Route path='/' element={<Home />} />
+				<Route path='/about' element={<About />} />
+				<Route path='/admin' element={<Admin />} />
+				<Route path='/login' element={<Login />} />
+				<Route path='/terms' element={<Terms />} />
+				<Route path='/search' element={<SearchResults />} />
+				<Route path='/register' element={<Register />} />
+				<Route path='/products' element={<AllProducts />} />
+				<Route path='/products/:id' element={<Product />} />
+				<Route path='/category/:id' element={<Category />} />
+			</Routes>
+		</ScrollToTop>
+	);
 };
 
 export default Router;
