@@ -13,6 +13,7 @@ import Register from '../screens/Register/register';
 import AllProducts from '../screens/AllProducts/allProducts';
 import Category from '../screens/Category/category';
 import SearchResults from '../screens/SearchResults/searchResults';
+import Contact from '../screens/Contact/contact';
 
 const Router = () => {
 	return (
@@ -20,11 +21,12 @@ const Router = () => {
 			<Routes>
 				<Route path='*' element={<Page404 />} />
 				<Route path='/' element={<Home />} />
+				<Route path='/term' element={<Terms />} />
 				<Route path='/about' element={<About />} />
 				<Route path='/admin' element={<Admin />} />
 				<Route path='/login' element={<Login />} />
-				<Route path='/terms' element={<Terms />} />
 				<Route path='/search' element={<SearchResults />} />
+				<Route path='/contact' element={<Contact />} />
 				<Route path='/register' element={<Register />} />
 				<Route path='/products' element={<AllProducts />} />
 				<Route path='/products/:id' element={<Product />} />
