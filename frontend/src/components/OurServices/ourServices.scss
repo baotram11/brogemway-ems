@@ -3,7 +3,6 @@
 	padding-bottom: 50px;
 	position: relative;
 	background: #f2e1d9;
-
 	&::before {
 		position: absolute;
 		content: '';
@@ -44,7 +43,7 @@
 				-o-transition: 0.2s;
 				transition: 0.2s;
 			}
-			a {
+			.link {
 				color: #1c165c;
 				font-size: 16px;
 				font-weight: 600;
