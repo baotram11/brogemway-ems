@@ -9,6 +9,7 @@ import LikedProducts from '../../components/LikedProducts/likedProducts';
 import OurSocial from '../../components/OurSocial/ourSocial';
 
 const Home = () => {
+
 	return (
 		<div className='home'>
 			<Helmet>

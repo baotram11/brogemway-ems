@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import ScrollToTop from '../utils/scrollToTop';
 
 import Home from '../screens/Home/home';
@@ -14,13 +14,16 @@ import AllProducts from '../screens/AllProducts/allProducts';
 import Category from '../screens/Category/category';
 import SearchResults from '../screens/SearchResults/searchResults';
 import Contact from '../screens/Contact/contact';
+import Page403 from '../screens/Page403/page403';
 
 const Router = () => {
+
 	return (
 		<ScrollToTop>
 			<Routes>
 				<Route path='*' element={<Page404 />} />
 				<Route path='/' element={<Home />} />
+				<Route path='/403' element={<Page403 />} />
 				<Route path='/term' element={<Terms />} />
 				<Route path='/about' element={<About />} />
 				<Route path='/admin' element={<Admin />} />
