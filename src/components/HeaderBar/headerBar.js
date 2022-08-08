@@ -22,7 +22,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 const HeaderBar = (props) => {
 	const { user } = props;
-	console.log(user);
 	return (
 		<div className='header-area'>
 			<div className='main-header header-sticky' id='mainHeader'>
@@ -119,7 +118,7 @@ const HeaderBar = (props) => {
 											style={{ textDecoration: 'none' }}>
 											{user.account.Name}
 										</Link>
-										<UserMenu />
+										<UserMenu {...user} />
 									</li>
 								) : (
 									<li>
