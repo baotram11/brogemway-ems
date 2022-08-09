@@ -3,15 +3,18 @@ import axios from 'axios';
 
 const apiUrl = 'http://localhost:5000/api/categories/';
 
-export const fetchCategories = createAsyncThunk('accounts/fetchCategories', async () => {
-    try {
-        console.log('CALL API: ' + apiUrl);
-        const response = await axios.get(apiUrl);
-        return [...response.data];
-    } catch (error) {
-        return error.message;
+export const fetchCategories = createAsyncThunk(
+    'accounts/fetchCategories',
+    async () => {
+        try {
+            console.log('CALL API: ' + apiUrl);
+            const response = await axios.get(apiUrl);
+            return [...response.data];
+        } catch (error) {
+            return error.message;
+        }
     }
-});
+);
 
 export const fetchProductsByCatID = createAsyncThunk(
     'accounts/fetchProductsByCatID',
@@ -33,7 +36,7 @@ export const categorySlice = createSlice({
         products: [],
         status_Pros: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
         status_Cats: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
-        errorMessage: null,
+        errorCats: null,
     },
     reducers: {},
     extraReducers: (builder) => {
@@ -49,7 +52,7 @@ export const categorySlice = createSlice({
 
         builder.addCase(fetchCategories.rejected, (state, action) => {
             state.status_Cats = 'failed';
-            state.errorMessage = action.error.message;
+            state.errorCats = action.error.message;
         });
 
         // fetchProductsByCatID
@@ -64,7 +67,7 @@ export const categorySlice = createSlice({
 
         builder.addCase(fetchProductsByCatID.rejected, (state, action) => {
             state.status_Pros = 'failed';
-            state.errorMessage = action.error.message;
+            state.errorCats = action.error.message;
         });
     },
 });
@@ -75,6 +78,6 @@ export const selectProducts = (state) => state.category.products;
 export const selectStatusCats = (state) => state.category.status_Cats;
 export const selectStatusPros = (state) => state.category.status_Pros;
 
-export const selectErrorMessage = (state) => state.category.errorMessage;
+export const selectErrorMessage = (state) => state.category.errorCats;
 
 export default categorySlice.reducer;

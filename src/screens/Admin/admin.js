@@ -19,8 +19,8 @@ const Admin = () => {
 
 	useEffect(() => {
 		console.log(currUser);
-		if (!currUser) {
-			return navigate('/403');
+		if (currUser) {
+			// return navigate('/403');
 		}
 	}, [currUser, navigate]);
 

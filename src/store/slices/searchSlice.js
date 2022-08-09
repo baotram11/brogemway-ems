@@ -5,7 +5,7 @@ const apiUrl = 'http://localhost:5000/search';
 
 export const searchProByName = createAsyncThunk(
     'search/searchProByName',
-    async (queryWords) => {
+    async (queryWords, { rejectWithValue }) => {
         try {
             console.log('CALL API: ' + apiUrl + '/product?q=' + queryWords);
 
@@ -13,11 +13,13 @@ export const searchProByName = createAsyncThunk(
                 apiUrl + '/product?q=' + queryWords
             );
             console.log(response);
-
+            if (response.status < 200 || response.status >= 300) {
+                return rejectWithValue(response.data);
+            }
             return [...response.data];
         } catch (error) {
             console.log(error.response);
-            return error.message;
+            return rejectWithValue(error.response);
         }
     }
 );
@@ -40,9 +42,11 @@ export const searchSlice = createSlice({
         builder.addCase(searchProByName.fulfilled, (state, action) => {
             state.statusPro = 'succeeded';
             state.listProducts = action.payload;
+            state.errorPro = null;
         });
         builder.addCase(searchProByName.rejected, (state, action) => {
             state.statusPro = 'failed';
+            state.listProducts = null;
             state.errorPro = action.payload.data;
         });
     },
