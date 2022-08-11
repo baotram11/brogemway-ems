@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
     selectAllCategories,
     selectStatusCats,
-    selectErrorMessage,
     fetchCategories,
+    selectErrorCats,
 } from '../../store/slices/categorySlice';
 
 const CategoryList = () => {
@@ -13,7 +13,7 @@ const CategoryList = () => {
 
     const allCategories = useSelector(selectAllCategories);
     const statusCats = useSelector(selectStatusCats);
-    const errorMessage = useSelector(selectErrorMessage);
+    const errorCats = useSelector(selectErrorCats);
 
     useEffect(() => {
         if (statusCats === 'idle') {

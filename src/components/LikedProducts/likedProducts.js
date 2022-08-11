@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 // import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAllProducts, selectStatusList, fetchProducts } from '../../store/slices/productSlice';
+import {
+    selectAllProducts,
+    selectStatusList,
+    fetchProducts,
+} from '../../store/slices/productSlice';
 import CarouselSlider from '../CarouselSlider/carouselSlider';
 
 const LikedProducts = () => {
@@ -40,14 +44,14 @@ const LikedProducts = () => {
                         >
                             <h2>Bạn có thể thích</h2>
                             <p>
-                                Những sản phẩm thuộc tất cả các thể loại từ thời trang, phụ kiện, giày, ngoài
-                                ra bạn có thể tìm thấy những sản phẩm thiết bị số ở cửa hàng chúng tôi, mong
-                                bạn sẽ thích thú và chọn mua chúng.
+                                Những sản phẩm thuộc tất cả các thể loại từ thời
+                                trang, phụ kiện, giày, ngoài ra bạn có thể tìm
+                                thấy những sản phẩm thiết bị số ở cửa hàng chúng
+                                tôi, mong bạn sẽ thích thú và chọn mua chúng.
                             </p>
                         </div>
                     </div>
                 </div>
-                <div className='row'>{/* <CarouselSlider /> */}</div>
                 <div className='row'></div>
             </div>
         </section>

@@ -33,10 +33,11 @@ export const categorySlice = createSlice({
     name: 'category',
     initialState: {
         allCategories: [],
-        products: [],
+        products: null,
         status_Pros: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
         status_Cats: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
         errorCats: null,
+        errorPros: null,
     },
     reducers: {},
     extraReducers: (builder) => {
@@ -67,7 +68,7 @@ export const categorySlice = createSlice({
 
         builder.addCase(fetchProductsByCatID.rejected, (state, action) => {
             state.status_Pros = 'failed';
-            state.errorCats = action.error.message;
+            state.errorPros = action.error.message;
         });
     },
 });
@@ -78,6 +79,7 @@ export const selectProducts = (state) => state.category.products;
 export const selectStatusCats = (state) => state.category.status_Cats;
 export const selectStatusPros = (state) => state.category.status_Pros;
 
-export const selectErrorMessage = (state) => state.category.errorCats;
+export const selectErrorCats = (state) => state.category.errorCats;
+export const selectErrorPros = (state) => state.category.errorPros;
 
 export default categorySlice.reducer;

@@ -10,6 +10,22 @@ import Submenu from '../../components/Submenu/submenu';
 import SearchForm from '../../components/SearchForm/searchForm';
 import UserMenu from '../../components/UserMenu/userMenu';
 
+window.addEventListener('DOMContentLoaded', (event) => {
+	var navbarShrink = function () {
+		const navbarCollapsible = document.body.querySelector('#mainHeader');
+		if (!navbarCollapsible) {
+			return;
+		}
+		if (window.scrollY === 0) {
+			navbarCollapsible.classList.remove('sticky-bar');
+		} else {
+			navbarCollapsible.classList.add('sticky-bar');
+		}
+	};
+
+	document.addEventListener('scroll', navbarShrink);
+});
+
 const Header = () => {
     const currUser = useSelector(selectCurrentUser);
     const newUser = useSelector(selectNewUser);
@@ -42,7 +58,7 @@ const Header = () => {
         <div className='header-area'>
             <div className='main-header header-sticky' id='mainHeader'>
                 <div className='container-fluid'>
-                    <div className='row menu-wrapper align-items-center justify-content-between'>
+                    <div className='menu-wrapper align-items-center justify-content-between'>
                         <div className='header-left d-inline-flex align-items-center'>
                             <div className='logo'>
                                 <Link
@@ -63,13 +79,13 @@ const Header = () => {
                                     to='/'
                                 >
                                     <img
-                                        style={{ height: '5em' }}
+                                        style={{ height: '70px' }}
                                         src={require('../../assets/images/logos/bgw_v2-transparent.png')}
                                         alt='brogemway'
                                     />
                                 </Link>
                             </div>
-                            <div className='main-menu'>
+                            <div className='main-menu d-none d-lg-block'>
                                 <nav>
                                     <ul id='navigation'>
                                         <li>
@@ -133,7 +149,7 @@ const Header = () => {
                             </div>
                         </div>
 
-                        <div className='header-right1 d-inline-flex justify-content-end'>
+                        <div className='header-right1 d-inline-flex flex-row-reverse'>
                             <ul className='search d-flex align-items-center '>
                                 <li>
                                     <SearchForm />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 
 import PopularProducts from '../../components/PopularProducts/popularProducts';
@@ -9,25 +9,24 @@ import LikedProducts from '../../components/LikedProducts/likedProducts';
 import OurSocial from '../../components/OurSocial/ourSocial';
 
 const Home = () => {
+    return (
+        <div className='home'>
+            <Helmet>
+                <meta charSet='utf-8' />
+                <title>Brogemway</title>
+            </Helmet>
 
-	return (
-		<div className='home'>
-			<Helmet>
-				<meta charSet='utf-8' />
-				<title>Brogemway</title>
-			</Helmet>
+            <Header />
 
-			<Header />
+            <HeroSlider />
 
-			<HeroSlider />
+            <PopularProducts />
+            <OurSocial />
+            <LikedProducts />
 
-			<PopularProducts />
-			<OurSocial />
-			<LikedProducts />
-
-			<Footer />
-		</div>
-	);
+            <Footer />
+        </div>
+    );
 };
 
 export default Home;

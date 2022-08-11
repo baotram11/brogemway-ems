@@ -1,10 +1,57 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectAllCategories } from '../../store/slices/categorySlice';
+import { useDispatch, useSelector } from 'react-redux';
+
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
+
+import {
+    fetchProductsByCatID,
+    selectAllCategories,
+    selectErrorPros,
+    selectProducts,
+    selectStatusCats,
+    selectStatusPros,
+} from '../../store/slices/categorySlice';
+import ProductList from '../ProductList/productList';
+
 const PopularProducts = () => {
+    const dispatch = useDispatch();
     const allCategories = useSelector(selectAllCategories);
 
+    const products = useSelector(selectProducts);
+    const status = useSelector(selectStatusPros);
+    const errorMessage = useSelector(selectErrorPros);
+
+    const [key, setKey] = useState(null);
+    const [show, setShow] = useState(false);
+    const [allProducts, setAllProducts] = useState(null);
+    const [listTop3, setListTop3] = useState([]);
+    const handleFetchProductsByCatId = (k) => {
+        console.log(k);
+        setKey(k);
+        dispatch(fetchProductsByCatID(k));
+        if (products) {
+            setAllProducts(products.slice(0, 3));
+            setShow(true);
+            console.log(show);
+        }
+    };
+    async function fetchTop3() {
+        if (!key && allCategories) {
+            for (let i = 0; i < allCategories.length; i++) {
+                console.log('here' + i);
+
+                dispatch(fetchProductsByCatID(i + 1));
+                setListTop3([...listTop3.slice(i, 1, products.slice(0, 3))]);
+                console.log(listTop3);
+            }
+        }
+    }
+    useEffect(() => {
+        fetchTop3();
+        console.log(listTop3);
+    }, []);
     return (
         <section className='properties new-arrival fix'>
             <div className='container'>
@@ -32,41 +79,34 @@ const PopularProducts = () => {
                 <div className='row'>
                     <div className='col-xl-12'>
                         <div className='properties__button text-center'>
-                            <nav>
-                                <div
-                                    className='nav nav-tabs'
-                                    id='nav-tab'
-                                    role={'tablist'}
-                                >
-                                    {allCategories.map((category) => (
-                                        <NavLink
-                                            className='nav-item nav-link'
-                                            to={`/category/${category.CatID}`}
-                                            key={category.CatID}
-                                        >
-                                            {category.CatName}
-                                        </NavLink>
-                                    ))}
-                                </div>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-                <div className='row'>
-                    <div className='tab-content' id='nav-tabContent'>
-                        <div
-                            className='tab-pane fade'
-                            id='nav1'
-                            role={'tabpanel'}
-                            aria-labelledby='nav-1-tab'
-                        >
-                            <div className='row'>
-                                <div className='col-lg-4 col-md-6 col-sm-6'></div>
-                                <div className='col-lg-4 col-md-6 col-sm-6'></div>
-                                <div className='col-lg-4 col-md-6 col-sm-6'></div>
-                                <div className='col-lg-4 col-md-6 col-sm-6'></div>
-                                <div className='col-lg-4 col-md-6 col-sm-6'></div>
-                            </div>
+                            <Tabs
+                                defaultActiveKey={5}
+                                onSelect={handleFetchProductsByCatId}
+                                id='uncontrolled-tab-example'
+                                className='nav nav-tabs'
+                            >
+                                {allCategories.map((category) => (
+                                    <Tab
+                                        transition={true}
+                                        className='nav-item nav-link'
+                                        key={category.CatID}
+                                        eventKey={category.CatID}
+                                        title={category.CatName}
+                                    >
+                                        {show ? (
+                                            <ProductList
+                                                {...{
+                                                    status,
+                                                    allProducts,
+                                                    errorMessage,
+                                                }}
+                                            />
+                                        ) : (
+                                            <p>Chưa có sản phẩm nổi bật</p>
+                                        )}
+                                    </Tab>
+                                ))}
+                            </Tabs>
                         </div>
                     </div>
                 </div>

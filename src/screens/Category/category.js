@@ -2,7 +2,11 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProductsByCatID, selectStatusPros, selectErrorMessage } from '../../store/slices/categorySlice';
+import {
+    fetchProductsByCatID,
+    selectStatusPros,
+    selectErrorCats,
+} from '../../store/slices/categorySlice';
 
 import GroupByCat from '../../components/GroupByCat/groupByCat';
 
@@ -11,7 +15,7 @@ const Category = () => {
 
     const dispatch = useDispatch();
     const status = useSelector(selectStatusPros);
-    const errorMessage = useSelector(selectErrorMessage);
+    const errorCats = useSelector(selectErrorCats);
 
     console.log(status);
 
@@ -34,7 +38,9 @@ const Category = () => {
                     <span className='visually-hidden'>Loading...</span>
                 </div>
             )}
-            {status === 'failed' && <h5 style={{ color: 'red' }}>{errorMessage}</h5>}
+            {status === 'failed' && (
+                <h5 style={{ color: 'red' }}>{errorCats}</h5>
+            )}
             {status === 'succeeded' && (
                 <div className='container p-5'>
                     <GroupByCat />
