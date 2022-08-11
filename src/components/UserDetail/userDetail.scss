@@ -1,42 +1,209 @@
-body {
-	background: rgb(99, 39, 120);
-}
-.form-control {
-	&:focus {
-		box-shadow: none;
-		border-color: #ba68c8;
+.user-detail {
+	font-family: $text-fontfamily;
+	.list-group-tabs {
+		width: 100%;
+		border-width: 0px;
 	}
-}
-.profile-button {
-	background: rgb(99, 39, 120);
-	box-shadow: none;
-	border: none;
-	&:hover {
-		background: #682773;
+	.list-group {
+		border-width: 0px;
 	}
-	&:focus {
-		background: #682773;
-		box-shadow: none;
+	.list-group-item {
+		color: $text-subcaption;
+		font-weight: 400;
+		background-color: transparent;
+		border-color: transparent;
+		&.active {
+			color: $footer-bg;
+			font-weight: bold;
+			z-index: 2;
+			background-color: transparent;
+			border-color: transparent;
+			border-left-color: $button-color;
+			border-left-width: 5px;
+		}
 	}
-	&:active {
-		background: #682773;
-		box-shadow: none;
+
+	.title {
+		color: #1a1a1a;
+		margin-top: 0px;
+		font-style: normal;
+		font-weight: bold;
+		text-transform: normal;
+		.link {
+			color: inherit;
+		}
 	}
-}
-.back {
-	&:hover {
-		color: #682773;
-		cursor: pointer;
+	#account-general {
+		.avatar {
+			width: 200px !important;
+			height: 200px;
+			border-radius: 100%;
+		}
 	}
-}
-.labels {
-	font-size: 11px;
-}
-.add-experience {
-	&:hover {
-		background: #ba68c8;
+	.form-label {
+		color: $footer-bg;
+		font-weight: bold;
+		margin-top: 10px;
+	}
+	.form-control {
+		width: 640px;
+		max-width: 100%;
+		margin-right: 5px;
+		background-color: #f6f8fa;
+	}
+	.btn-default {
+		border-color: rgba(24, 28, 33, 0.1);
+		background: rgba(0, 0, 0, 0);
+		color: #4e5155;
+	}
+	label {
+		&.btn {
+			margin-bottom: 0;
+		}
+	}
+	.btn-outline-customer {
+		border-color: transparent;
+		background: transparent;
+		border: 1px solid #d0d7de !important;
+		border-radius: 13px;
+		color: $footer-bg;
+		font-weight: 600;
+		border-radius: 3px;
+	}
+	.btn-customer {
+		background: $button-color;
+		text-transform: uppercase;
+		padding: 27px 44px;
 		color: #fff;
-		cursor: pointer;
-		border: solid 1px #ba68c8;
+		font-weight: bold;
+		font-size: 15px;
+		display: inline-block;
+		line-height: 1;
+		user-select: none;
+		-moz-user-select: none;
+		letter-spacing: 1px;
+		line-height: 0;
+		transition: color 0.4s linear;
+		position: relative;
+		z-index: 1;
+		border: 0;
+		overflow: hidden;
+		border-radius: 0px;
+		&::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 101%;
+			height: 101%;
+			background: $button-bg;
+			z-index: 1;
+			border-radius: 0px;
+			transition: transform 0.5s;
+			transition-timing-function: ease;
+			transform-origin: 0 0;
+			transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+			transform: scaleX(0);
+			border-radius: 0px;
+		}
+		&:hover {
+			&::before {
+				transform: scaleX(1);
+				color: #fff !important;
+				z-index: -1;
+			}
+		}
+		&:focus {
+			outline: 0;
+			box-shadow: none;
+			outline: 0;
+			box-shadow: none;
+		}
+	}
+	.text-light {
+		color: #babbbc !important;
+	}
+	.btn-facebook {
+		border-color: rgba(0, 0, 0, 0);
+		background: #3b5998;
+		color: #fff;
+	}
+	.btn-instagram {
+		border-color: rgba(0, 0, 0, 0);
+		background: #000;
+		color: #fff;
+	}
+	.card {
+		background-clip: padding-box;
+		box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
+	}
+	.row-bordered {
+		overflow: hidden;
+	}
+	.account-settings-fileinput {
+		position: absolute;
+		visibility: hidden;
+		width: 1px;
+		height: 1px;
+		opacity: 0;
+	}
+	.account-settings-links {
+		.list-group-item {
+			&.active {
+				font-weight: bold !important;
+			}
+		}
+	}
+	html {
+		&:not(.dark-style) {
+			.account-settings-links {
+				.list-group-item {
+					&.active {
+						background: transparent !important;
+					}
+				}
+			}
+		}
+	}
+	.account-settings-multiselect {
+		& ~ .select2-container {
+			width: 100% !important;
+		}
+	}
+	.light-style {
+		.account-settings-links {
+			.list-group-item {
+				padding: 0.85rem 1.5rem;
+				border-color: rgba(24, 28, 33, 0.03) !important;
+				padding: 0.85rem 1.5rem;
+				border-color: rgba(24, 28, 33, 0.03) !important;
+				&.active {
+					color: #4e5155 !important;
+					color: #4e5155 !important;
+				}
+			}
+		}
+	}
+	.material-style {
+		.account-settings-links {
+			.list-group-item {
+				padding: 0.85rem 1.5rem;
+				border-color: rgba(24, 28, 33, 0.03) !important;
+				&.active {
+					color: #4e5155 !important;
+				}
+			}
+		}
+	}
+	.dark-style {
+		.account-settings-links {
+			.list-group-item {
+				padding: 0.85rem 1.5rem;
+				border-color: rgba(255, 255, 255, 0.03) !important;
+				&.active {
+					color: #fff !important;
+				}
+			}
+		}
 	}
 }
