@@ -15,9 +15,9 @@ import Category from '../screens/Category/category';
 import SearchResults from '../screens/SearchResults/searchResults';
 import Contact from '../screens/Contact/contact';
 import Page403 from '../screens/Page403/page403';
+import User from '../screens/User/user';
 
 const Router = () => {
-
 	return (
 		<ScrollToTop>
 			<Routes>
@@ -32,6 +32,7 @@ const Router = () => {
 				<Route path='/contact' element={<Contact />} />
 				<Route path='/register' element={<Register />} />
 				<Route path='/products' element={<AllProducts />} />
+				<Route path='/account/:id' element={<User />} />
 				<Route path='/products/:id' element={<Product />} />
 				<Route path='/category/:id' element={<Category />} />
 			</Routes>

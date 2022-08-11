@@ -81,7 +81,7 @@ export const accountSlice = createSlice({
 		statusFetch: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
 		statusFetchById: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
 
-		account: [],
+		account: null,
 		allAccounts: [],
 
 		errorFetch: null,

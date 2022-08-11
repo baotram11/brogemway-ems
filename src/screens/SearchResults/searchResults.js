@@ -14,7 +14,11 @@ import GroupByCat from '../../components/GroupByCat/groupByCat';
 import NavSlider from '../../components/NavSlider/navSlider';
 
 const SearchResults = () => {
-	const breadcrumb = { title: 'Kết quả tìm kiếm', parentTitle: null };
+	const breadcrumb = {
+		title: 'Kết quả tìm kiếm',
+		titlePath: '#',
+		parentTitle: null,
+	};
 
 	const dispatch = useDispatch();
 

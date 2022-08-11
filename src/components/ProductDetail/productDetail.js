@@ -5,8 +5,9 @@ import { selectProduct } from '../../store/slices/productSlice';
 import { CurrencyConverter } from '../../utils/CurrencyConverter';
 import { selectAllCategories } from '../../store/slices/categorySlice';
 import ImageSlider from '../ImageSlider/imageSlider';
+import NavSlider from '../NavSlider/navSlider';
 
-const ProductDetail = () => {
+const ProductDetail = (props) => {
 	const [count, setCount] = useState(1);
 	const [showMessage, setShowMessage] = useState(false);
 	const [product] = useSelector(selectProduct);
@@ -22,7 +23,12 @@ const ProductDetail = () => {
 			setShowMessage(false);
 		}
 	};
-
+	const breadcrumb = {
+		title: product.ProName,
+		titlePath: '#',
+		parentTitle: 'Sản phẩm',
+		parentTitlePath: 'products',
+	};
 	useEffect(() => {
 		console.log(count);
 		if (count < 1 || count > 10) {
@@ -33,6 +39,8 @@ const ProductDetail = () => {
 	}, [count]);
 	return (
 		<div>
+			<NavSlider {...breadcrumb} />
+
 			<div className='product_image_area section-padding40'>
 				<div className='container'>
 					<div className='row s_product_inner'>

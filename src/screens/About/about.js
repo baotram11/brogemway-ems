@@ -6,7 +6,11 @@ import NavSlider from '../../components/NavSlider/navSlider';
 import OurStory from '../../components/OurStory/ourStory';
 
 const About = () => {
-	const breadcrumb = { title: 'Về chúng tôi', parentTitle: null };
+	const breadcrumb = {
+		title: 'Về chúng tôi',
+		titlePath: 'about',
+		parentTitle: null,
+	};
 
 	return (
 		<div className='about'>
@@ -18,7 +22,7 @@ const About = () => {
 			<Header />
 
 			<NavSlider {...breadcrumb} />
-            
+
 			<OurStory />
 
 			<Footer />

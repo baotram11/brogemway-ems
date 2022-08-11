@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 
 const NavSlider = (props) => {
 	const title = props.title;
+	const titlePath = props.titlePath;
 	const parentTitle = props.parentTitle;
-
+	const parentTitlePath = props.parentTitlePath;
 	return (
 		<div className='slider-area'>
 			<div className='slider-active slick-initialized slick-slider'>
@@ -43,14 +44,17 @@ const NavSlider = (props) => {
 														<li className='breadcrumb-item'>
 															<Link
 																className='link'
-																to={`/${parentTitle}`}
+																to={`/${parentTitlePath}`}
 																tabIndex='0'>
 																{parentTitle}
 															</Link>
 														</li>
 													) : null}
 													<li className='breadcrumb-item'>
-														<Link className='link' to={`/${title}`} tabIndex='0'>
+														<Link
+															className='link'
+															to={`/${titlePath}`}
+															tabIndex='0'>
 															{title}
 														</Link>
 													</li>

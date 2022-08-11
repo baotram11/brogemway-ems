@@ -21,32 +21,35 @@ const Product = () => {
 	const product = useSelector(selectProduct);
 	const errorMessage = useSelector(selectErrorMessage);
 
-	// const [title, setTitle] = useState(null);
+	const [title, setTitle] = useState('Chi tiết sản phẩm');
 
 	useEffect(() => {
 		if (status === 'idle') {
 			dispatch(fetchProductByID(param.id));
 		}
-		// if (product) {
-		// 	setTitle(product[0].ProName);
-		// }
-		// const promise = dispatch(fetchProductByID(param.id));
-		// return () => {
-		// 	promise.abort();
-		// };
+		console.log(product[0])
 	}, [status, dispatch, param, product]);
 
-	const breadcrumb = { title: 'Chi tiết sản phẩm', parentTitle: 'Sản phẩm' };
+	const breadcrumb = {
+		title: title,
+		titlePath: '#',
+		parentTitle: 'Sản phẩm',
+		parentTitlePath: 'products',
+	};
 
 	return (
 		<div className='product-screen'>
 			<Helmet>
 				<meta charSet='utf-8' />
-				<title>{param.id} &#9702; Brogemway</title>
+
+				{product.length > 0 ? (
+					<title> {product[0].ProName} &#9702; Brogemway</title>
+				) : (
+					<title>{param.id} &#9702; Brogemway</title>
+				)}
 			</Helmet>
 			<Header />
-
-			<NavSlider {...breadcrumb} />
+			{/* <NavSlider {...breadcrumb} /> */}
 
 			{status === 'loading' && (
 				<div className='spinner-border text-secondary' role='status'>
@@ -54,7 +57,7 @@ const Product = () => {
 				</div>
 			)}
 			{status === 'failed' && <h5 style={{ color: 'red' }}>{errorMessage}</h5>}
-			{status === 'succeeded' && <ProductDetail />}
+			{status === 'succeeded' && <ProductDetail {...product[0]} />}
 			<Footer />
 		</div>
 	);

@@ -15,7 +15,11 @@ import {
 } from '../../store/slices/productSlice';
 
 const AllProducts = () => {
-	const breadcrumb = { title: 'Sản phẩm', parentTitle: null };
+	const breadcrumb = {
+		title: 'Sản phẩm',
+		titlePath: '#',
+		parentTitle: null,
+	};
 
 	const dispatch = useDispatch();
 	const allProducts = useSelector(selectAllProducts);

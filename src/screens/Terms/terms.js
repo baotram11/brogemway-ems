@@ -6,7 +6,11 @@ import NavSlider from '../../components/NavSlider/navSlider';
 import OurStory from '../../components/OurStory/ourStory';
 
 const Terms = () => {
-	const breadcrumb = { title: 'Điều khoản & Dịch vụ', parentTitle: null };
+	const breadcrumb = {
+		title: 'Điều khoản & Dịch vụ',
+		titlePath: '#',
+		parentTitle: null,
+	};
 
 	return (
 		<div className='about'>
@@ -18,7 +22,7 @@ const Terms = () => {
 			<Header />
 
 			<NavSlider {...breadcrumb} />
-            
+
 			<OurStory />
 
 			<Footer />
@@ -27,4 +31,3 @@ const Terms = () => {
 };
 
 export default Terms;
-

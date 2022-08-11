@@ -6,7 +6,11 @@ import NavSlider from '../../components/NavSlider/navSlider';
 import ContactUs from '../../components/ContactUs/contactUs';
 
 const Contact = () => {
-	const breadcrumb = { title: 'Liên hệ', parentTitle: null };
+	const breadcrumb = {
+		title: 'Liên hệ',
+		titlePath: '#',
+		parentTitle: null,
+	};
 
 	return (
 		<div className='about'>
