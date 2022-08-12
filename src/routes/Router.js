@@ -16,6 +16,7 @@ import SearchResults from '../screens/SearchResults/searchResults';
 import Contact from '../screens/Contact/contact';
 import Page403 from '../screens/Page403/page403';
 import User from '../screens/User/user';
+import ForgotPassword from '../screens/ForgotPassword/forgotPassword';
 
 const Router = () => {
 	return (
@@ -35,6 +36,7 @@ const Router = () => {
 				<Route path='/account/:id' element={<User />} />
 				<Route path='/products/:id' element={<Product />} />
 				<Route path='/category/:id' element={<Category />} />
+				<Route path='/forgot-password' element={<ForgotPassword />} />
 			</Routes>
 		</ScrollToTop>
 	);

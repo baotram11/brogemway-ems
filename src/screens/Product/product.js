@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,7 +10,6 @@ import {
 } from '../../store/slices/productSlice';
 import Header from '../../navigations/Header/header';
 import Footer from '../../navigations/Footer/footer';
-import NavSlider from '../../components/NavSlider/navSlider';
 import ProductDetail from '../../components/ProductDetail/productDetail';
 
 const Product = () => {
@@ -21,21 +20,12 @@ const Product = () => {
 	const product = useSelector(selectProduct);
 	const errorMessage = useSelector(selectErrorMessage);
 
-	const [title, setTitle] = useState('Chi tiết sản phẩm');
-
 	useEffect(() => {
 		if (status === 'idle') {
 			dispatch(fetchProductByID(param.id));
 		}
 		console.log(product[0])
 	}, [status, dispatch, param, product]);
-
-	const breadcrumb = {
-		title: title,
-		titlePath: '#',
-		parentTitle: 'Sản phẩm',
-		parentTitlePath: 'products',
-	};
 
 	return (
 		<div className='product-screen'>
@@ -49,7 +39,6 @@ const Product = () => {
 				)}
 			</Helmet>
 			<Header />
-			{/* <NavSlider {...breadcrumb} /> */}
 
 			{status === 'loading' && (
 				<div className='spinner-border text-secondary' role='status'>

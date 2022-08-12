@@ -45,7 +45,6 @@ const AllProducts = () => {
 			<NavSlider {...breadcrumb} />
 
 			<GroupByCat {...{ status, allProducts, errorMessage }} />
-			{console.log(allProducts)}
 
 			<Footer />
 		</div>
