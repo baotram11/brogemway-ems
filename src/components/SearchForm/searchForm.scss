@@ -1,6 +1,8 @@
 .form-box {
 	position: relative;
 	input {
+
+		font-weight: 600;
 		background: none;
 		padding: 0px;
 		width: 260px;
@@ -9,8 +11,8 @@
 		border-bottom: 1px solid #a58f98;
 		color: #010a44;
 		&::placeholder {
-			font-size: 15px;
-			font-weight: 400;
+			font-size: 16px;
+			font-weight: 600;
 			color: #010a44;
 		}
 	}
@@ -23,6 +25,7 @@
 			color: #010a44;
 			cursor: pointer;
 			font-size: 19px;
+			padding-right: 8px;
 		}
 	}
 }

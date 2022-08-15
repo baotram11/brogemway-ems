@@ -8,47 +8,48 @@ import Header from '../../navigations/Header/header';
 import Footer from '../../navigations/Footer/footer';
 
 import {
-	selectAllProducts,
-	selectStatusList,
-	selectErrorMessage,
-	fetchProducts,
+    selectAllProducts,
+    selectStatusList,
+    selectErrorMessage,
+    fetchProducts,
 } from '../../store/slices/productSlice';
 
 const AllProducts = () => {
-	const breadcrumb = {
-		title: 'Sản phẩm',
-		titlePath: '#',
-		parentTitle: null,
-	};
+    const breadcrumb = {
+        title: 'Sản phẩm',
+        titlePath: '#',
+        parentTitle: null,
+    };
 
-	const dispatch = useDispatch();
-	const allProducts = useSelector(selectAllProducts);
-	const status = useSelector(selectStatusList);
-	const errorMessage = useSelector(selectErrorMessage);
+    const dispatch = useDispatch();
+    const allProducts = useSelector(selectAllProducts);
+    const status = useSelector(selectStatusList);
+    const errorMessage = useSelector(selectErrorMessage);
+    const catId = 0;
 
-	useEffect(() => {
-		console.log(status);
-		if (status === 'idle') {
-			dispatch(fetchProducts());
-		}
-	}, [status, dispatch]);
+    useEffect(() => {
+        console.log(status);
+        if (status === 'idle') {
+            dispatch(fetchProducts());
+        }
+    }, [status, dispatch]);
 
-	return (
-		<div className='all-products'>
-			<Helmet>
-				<meta charSet='utf-8' />
-				<title>Sản phẩm &#9702; Brogemway</title>
-			</Helmet>
+    return (
+        <div className='all-products'>
+            <Helmet>
+                <meta charSet='utf-8' />
+                <title>Sản phẩm &#9702; Brogemway</title>
+            </Helmet>
 
-			<Header />
+            <Header />
 
-			<NavSlider {...breadcrumb} />
+            <NavSlider {...breadcrumb} />
 
-			<GroupByCat {...{ status, allProducts, errorMessage }} />
+            <GroupByCat {...{ catId, status, allProducts, errorMessage }} />
 
-			<Footer />
-		</div>
-	);
+            <Footer />
+        </div>
+    );
 };
 
 export default AllProducts;

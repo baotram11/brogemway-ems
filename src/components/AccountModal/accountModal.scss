@@ -1,7 +1,36 @@
+* {
+    font-family: $text-fontfamily;
+}
 .account-modal {
+    font-family: $text-fontfamily;
     .modal {
         height: 70%;
         width: 70%;
         padding-top: 15%;
     }
+}
+.gradient-custom {
+    /* fallback for old browsers */
+    background: rgb(253, 143, 95);
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(
+        to right bottom,
+        rgba(253, 143, 95, 1),
+        rgba(253, 160, 133, 1)
+    );
+
+    // /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(
+        to right bottom,
+        rgba(253, 143, 95, 1),
+        rgba(253, 160, 133, 1)
+    );
+
+    // background: rgb(253, 143, 95);
+    // background: linear-gradient(
+    //     to right bottom,
+    //     rgba(253, 143, 95, 1),
+    //     rgba(93, 124, 255, 1)
+    // );
 }

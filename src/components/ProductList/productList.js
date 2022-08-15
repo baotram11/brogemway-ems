@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { CurrencyConverter } from '../../utils/CurrencyConverter';
 
 const ProductList = (props) => {
-    const { status, allProducts, errorMessage } = props;
+    const { catId, status, allProducts, errorMessage } = props;
     return (
         <div className='new-arrival new-arrival3'>
             {status === 'loading' && (
@@ -52,13 +52,23 @@ const ProductList = (props) => {
             {allProducts ? (
                 <div className='row justify-content-center'>
                     <div className='room-btn mt-20'>
-                        <Link
-                            to='/products'
-                            className='link border-btn'
-                            style={{ textDecoration: 'none' }}
-                        >
-                            Xem thêm
-                        </Link>
+                        {catId === 0 ? (
+                            <Link
+                                to='#'
+                                className='link border-btn'
+                                style={{ textDecoration: 'none' }}
+                            >
+                                Xem thêm
+                            </Link>
+                        ) : (
+                            <Link
+                                to={`/category/${catId}`}
+                                className='link border-btn'
+                                style={{ textDecoration: 'none' }}
+                            >
+                                Xem thêm
+                            </Link>
+                        )}
                     </div>
                 </div>
             ) : null}
