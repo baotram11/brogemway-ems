@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
@@ -67,10 +68,7 @@ const PopularProducts = () => {
                             }}
                         >
                             <h2>Sản phẩm nổi bật</h2>
-                            <p>
-                                Những sản phẩm được yêu thích và lựa chọn nhiều
-                                nhất!
-                            </p>
+                            <p>Những sản phẩm được yêu thích và lựa chọn nhiều nhất!</p>
                         </div>
                     </div>
                 </div>
@@ -94,7 +92,7 @@ const PopularProducts = () => {
                                         {show ? (
                                             <ProductList
                                                 {...{
-													catId,
+                                                    catId,
                                                     status,
                                                     allProducts,
                                                     errorMessage,

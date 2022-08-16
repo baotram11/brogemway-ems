@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './store';
-import { AuthProvider } from './context/authContext';
+import { AuthProvider } from './contexts/authContext';
 
 // import { CookiesProvider } from 'react-cookie';
 

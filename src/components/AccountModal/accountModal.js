@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 
 const AccountModal = (props) => {
@@ -22,9 +23,7 @@ const AccountModal = (props) => {
                 <Modal.Header closeButton>
                     <Modal.Title>
                         <span>Mã tài khoản: </span>
-                        <span style={{ fontWeight: 'bold', color: '#167146' }}>
-                            {account._id}
-                        </span>
+                        <span style={{ fontWeight: 'bold', color: '#167146' }}>{account._id}</span>
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body className='modal-body'>
@@ -47,62 +46,59 @@ const AccountModal = (props) => {
                                         }}
                                     >
                                         <img
-                                            src={require('../../assets/images/avatars/4.png')}
+                                            src={require(`../../assets/images/avatars/${account._id}.png`)}
                                             alt='Avatar'
                                             className='img-fluid mt-5 mb-4'
                                             style={{ width: '100px' }}
                                         />
                                         <h5>{account.Name}</h5>
-                                        {account.Level === 'bidder' ? (
-                                            <p>Khách hàng</p>
-                                        ) : (
-                                            <p>Quản lý</p>
-                                        )}
+                                        {account.Level === 'bidder' ? <p>Khách hàng</p> : <p>Quản lý</p>}
                                     </div>
                                     <div className='col-md-8'>
                                         <div className='card-body p-4'>
-                                            <h6>Information</h6>
+                                            <h6>Thông tin cá nhân</h6>
                                             <hr className='mt-0 mb-4' />
                                             <div className='row pt-1'>
                                                 <div className='col-6 mb-3'>
                                                     <h6>Email</h6>
-                                                    <p className='text-muted'>
-                                                        info@example.com
-                                                    </p>
+                                                    <p className='text-muted'>{account.Email}</p>
                                                 </div>
                                                 <div className='col-6 mb-3'>
-                                                    <h6>Phone</h6>
-                                                    <p className='text-muted'>
-                                                        123 456 789
-                                                    </p>
+                                                    <h6>Số điện thoại</h6>
+                                                    <p className='text-muted'>{account.PhoneNumber}</p>
                                                 </div>
                                             </div>
-                                            <h6>Projects</h6>
+
+                                            <h6>Địa chỉ</h6>
+                                            <p className='text-muted'>{account.Address}</p>
+
                                             <hr className='mt-0 mb-4' />
                                             <div className='row pt-1'>
                                                 <div className='col-6 mb-3'>
-                                                    <h6>Recent</h6>
-                                                    <p className='text-muted'>
-                                                        Lorem ipsum
-                                                    </p>
+                                                    <h6>Tình trạng</h6>
+                                                    {account.IsActive ? (
+                                                        <p className='text-muted'>Đang hoạt động</p>
+                                                    ) : (
+                                                        <p className='text-muted'>Tạm khoá</p>
+                                                    )}
                                                 </div>
                                                 <div className='col-6 mb-3'>
-                                                    <h6>Most Viewed</h6>
+                                                    <h6>Ngày tạo</h6>
                                                     <p className='text-muted'>
-                                                        Dolor sit amet
+                                                        {new Date(account.createdAt).toLocaleString()}
                                                     </p>
                                                 </div>
                                             </div>
                                             <div className='d-flex justify-content-start'>
-                                                <a href='#!'>
+                                                <Link to='#!'>
+                                                    <i className='fab fa-google fa-lg me-3'></i>
+                                                </Link>
+                                                <Link to='#!'>
                                                     <i className='fab fa-facebook-f fa-lg me-3'></i>
-                                                </a>
-                                                <a href='#!'>
-                                                    <i className='fab fa-twitter fa-lg me-3'></i>
-                                                </a>
-                                                <a href='#!'>
+                                                </Link>
+                                                <Link to='#!'>
                                                     <i className='fab fa-instagram fa-lg'></i>
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>

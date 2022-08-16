@@ -10,7 +10,7 @@ import UserDetail from '../../components/UserDetail/userDetail';
 
 import { fetchAccountById, selectAccount, selectStatusFetchById } from '../../store/slices/accountSlice';
 
-import AuthContext from '../../context/authContext';
+import AuthContext from '../../contexts/authContext';
 import { useContext } from 'react';
 import { selectCurrentUser } from '../../store/slices/authSlice';
 

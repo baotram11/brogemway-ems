@@ -1,0 +1,35 @@
+.admin-area {
+    .list-group-tabs {
+        width: 100%;
+        border-width: 0px;
+    }
+    .list-group {
+        border-width: 0px;
+    }
+    .list-group-item {
+        color: $text-subcaption;
+        font-weight: 400;
+        background-color: transparent;
+        border-color: transparent;
+        &.active {
+            color: $footer-bg;
+            font-weight: bold;
+            z-index: 2;
+            background-color: transparent;
+            border-color: transparent;
+            border-left-color: $button-color;
+            border-left-width: 5px;
+        }
+    }
+
+    .title {
+        color: #1a1a1a;
+        margin-top: 0px;
+        font-style: normal;
+        font-weight: bold;
+        text-transform: normal;
+        .link {
+            color: inherit;
+        }
+    }
+}

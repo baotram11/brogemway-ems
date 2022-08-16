@@ -61,7 +61,7 @@ const Category = () => {
                 <h5 style={{ color: 'red' }}>{errorCats}</h5>
             )}
             {status === 'succeeded' && (
-                <div className='container p-5'>
+                <div className='container'>
                     <GroupByCat
                         {...{ catId, status, allProducts, errorMessage }}
                     />

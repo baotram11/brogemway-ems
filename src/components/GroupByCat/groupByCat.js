@@ -18,7 +18,7 @@ const GroupByCat = (props) => {
 
     useEffect(() => {
         console.log(catId);
-        if (status === 'idle') {
+        if (status === 'idle' && catId > 0) {
             dispatch(fetchProductsByCatID(catId));
         }
         if (status_Cats === 'idle') dispatch(fetchCategories);
@@ -32,21 +32,18 @@ const GroupByCat = (props) => {
     return (
         <div className='category-area'>
             <div className='container'>
-                <div className='row'>
+                <div className='row pb-4'>
                     <div className='col-xl-7 col-lg-8 col-md-10'>
                         <div className='section-tittle mb-50'>
                             <h2 className='mb-3'>Danh sách sản phẩm</h2>
-                            <p>
-                                Bạn có thể lựa chọn xem theo danh mục, lọc theo
-                                giá tiền và thương hiệu.
-                            </p>
+                            <p>Bạn có thể lựa chọn xem theo danh mục, lọc theo giá tiền và thương hiệu.</p>
                         </div>
                     </div>
                 </div>
                 <div className='row'>
-                    <div className='col-xl-3 col-lg-3 col-md-4'>
+                    {/* <div className='col-xl-3 col-lg-3 col-md-4'>
                         <div className='row'>
-                            <div className='col-12'>
+                            <div className='col-12 pt-3'>
                                 <div className='small-tittle mb-45'>
                                     <span>
                                         <img
@@ -75,114 +72,71 @@ const GroupByCat = (props) => {
                                 <div className='row'>
                                     <div className='col-12'>
                                         <div className='select-categories'>
-                                            <select
-                                                name='select1'
-                                                style={{ display: 'none' }}
-                                            >
+                                            <select name='select1' style={{ display: 'none' }}>
                                                 <option key={'all'} value={''}>
                                                     Tất cả
                                                 </option>
                                                 {categories.map((category) => (
-                                                    <option
-                                                        key={category.CatID}
-                                                        value={''}
-                                                    >
+                                                    <option key={category.CatID} value={''}>
                                                         {category.CatName}
                                                     </option>
                                                 ))}
                                             </select>
-                                            <div
-                                                className='select'
-                                                tabIndex={'0'}
-                                            >
+                                            <div className='select' tabIndex={'0'}>
                                                 <span>Danh mục</span>
                                                 <ul className='list'>
-                                                    <li
-                                                        key={'all'}
-                                                        data-value
-                                                        className='option selected focus'
-                                                    >
+                                                    <li key={'all'} data-value className='option selected focus'>
                                                         Tất cả
                                                     </li>
-                                                    {categories.map(
-                                                        (category) => (
-                                                            <li
-                                                                key={
-                                                                    category.CatID
-                                                                }
-                                                                data-value
-                                                                className='option'
-                                                            >
-                                                                {
-                                                                    category.CatName
-                                                                }
-                                                            </li>
-                                                        )
-                                                    )}
+                                                    {categories.map((category) => (
+                                                        <li key={category.CatID} data-value className='option'>
+                                                            {category.CatName}
+                                                        </li>
+                                                    ))}
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className='range-slider mt-50'>
-                                <div className='small-tittle small-tittle2'>
-                                    <h4>Mức giá</h4>
-                                </div>
-                                <div className='range_item'></div>
+                        </div>
+                    </div> */}
+                    {/* <div className='col-xl-9 col-lg-9 col-md-8 '>
+                        <div className='row py-3'> */}
+                    <div className='col-lg-12 py-3'>
+                        <div className='count-job mb-35'>
+                            <span style={{ fontWeight: 'bold' }}>
+                                {allProducts ? allProducts.length : 0} sản phẩm được tìm thấy
+                            </span>
+                            <div className='select-cat'>
+                                <span style={{ width: '172px' }}>Sắp xếp theo: </span>
+                                <select className='form-select' name='select'>
+                                    <option key={'new'} value={''}>
+                                        Sản phẩm mới nhất
+                                    </option>
+                                    <option key={'ascending'} value={''}>
+                                        Giá tăng dần
+                                    </option>
+                                    <option key={'descending'} value={''}>
+                                        Giá giảm dần
+                                    </option>
+                                </select>
                             </div>
                         </div>
-                    </div>
-                    <div className='col-xl-9 col-lg-9 col-md-8 '>
-                        <div className='row'>
-                            <div className='col-lg-12'>
-                                <div className='count-job mb-35'>
-                                    <span style={{ fontWeight: 'bold' }}>
-                                        {allProducts ? allProducts.length : 0}{' '}
-                                        sản phẩm được tìm thấy
-                                    </span>
-                                    <div className='select-cat'>
-                                        <span>Sắp xếp theo: </span>
-                                        <select
-                                            name='select'
-                                            style={{ display: 'none' }}
-                                        >
-                                            <option key={'new'} value={''}>
-                                                Sản phẩm mới nhất
-                                            </option>
-                                            <option
-                                                key={'ascending'}
-                                                value={''}
-                                            >
-                                                Giá tăng dần
-                                            </option>
-                                            <option
-                                                key={'descending'}
-                                                value={''}
-                                            >
-                                                Giá giảm dần
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {showError ? (
-                            <h2 style={{ color: 'red' }}>
-                                Không tìm thấy sản phẩm phù hợp.
-                            </h2>
-                        ) : (
-                            <ProductList
-                                {...{
-                                    catId,
-                                    status,
-                                    allProducts,
-                                    errorMessage,
-                                }}
-                            />
-                        )}
                     </div>
                 </div>
+                {showError ? (
+                    <h2 style={{ color: 'red' }}>Không tìm thấy sản phẩm phù hợp.</h2>
+                ) : (
+                    <ProductList
+                        {...{
+                            catId,
+                            status,
+                            allProducts,
+                            errorMessage,
+                        }}
+                    />
+                )}
             </div>
         </div>
     );

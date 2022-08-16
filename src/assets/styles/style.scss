@@ -9,13 +9,13 @@
 
 // components
 @import '../../components/AccessDenied/accessDenied.scss';
-@import '../../components/AccountManager/accountManager.scss';
 @import '../../components/AccountModal/accountModal.scss';
-@import '../../components/AccountTable/accountTable.scss';
 @import '../../components/Alert/alert.scss';
 @import '../../components/CarouselSlider/carouselSlider.scss';
+@import '../../components/CartDetail/cartDetail.scss';
 @import '../../components/CategoryList/categoryList.scss';
 @import '../../components/ChangePassword/changePassword.scss';
+@import '../../components/CheckoutDetail.js/checkoutDetail.scss';
 @import '../../components/ContactUs/contactUs.scss';
 @import '../../components/GetCodeForm/getCodeForm.scss';
 @import '../../components/GroupByCat/groupByCat.scss';
@@ -23,6 +23,9 @@
 @import '../../components/ImageSlider/imageSlider.scss';
 @import '../../components/LikedProducts/likedProducts.scss';
 @import '../../components/LoginForm/loginForm.scss';
+@import '../../components/ManagedCategory/ManagedCategory.scss';
+@import '../../components/ManagedProduct/managedProduct.scss';
+@import '../../components/ManagedUser/managedUser.scss';
 @import '../../components/NavSlider/navSlider.scss';
 @import '../../components/NotFound/notFound.scss';
 @import '../../components/OurServices/ourServices.scss';
@@ -31,6 +34,7 @@
 @import '../../components/PopularProducts/popularProducts.scss';
 @import '../../components/ProductDetail/productDetail.scss';
 @import '../../components/ProductList/productList.scss';
+@import '../../components/ProfilePhoto/profilePhoto.scss';
 @import '../../components/RegisterForm/registerForm.scss';
 @import '../../components/SearchForm/searchForm.scss';
 @import '../../components/Submenu/submenu.scss';
@@ -43,13 +47,13 @@
 @import '../../screens/About/about.scss';
 @import '../../screens/Admin/admin.scss';
 @import '../../screens/AllProducts/allProducts.scss';
+@import '../../screens/Cart/cart.scss';
 @import '../../screens/Category/category.scss';
 @import '../../screens/Checkout/checkout.scss';
 @import '../../screens/Contact/contact.scss';
 @import '../../screens/ForgotPassword/forgotPassword.scss';
 @import '../../screens/Home/home.scss';
 @import '../../screens/Login/login.scss';
-@import '../../screens/Order/order.scss';
 @import '../../screens/Page403/page403.scss';
 @import '../../screens/Page404/page404.scss';
 @import '../../screens/Product/product.scss';

@@ -2,7 +2,7 @@ import Cookies from 'js-cookie';
 import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import AuthContext from '../../context/authContext';
+import AuthContext from '../../contexts/authContext';
 import { logout } from '../../store/slices/authSlice';
 
 const UserMenu = (props) => {

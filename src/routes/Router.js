@@ -17,29 +17,33 @@ import Contact from '../screens/Contact/contact';
 import Page403 from '../screens/Page403/page403';
 import User from '../screens/User/user';
 import ForgotPassword from '../screens/ForgotPassword/forgotPassword';
+import Cart from '../screens/Cart/cart';
+import Checkout from '../screens/Checkout/checkout';
 
 const Router = () => {
-	return (
-		<ScrollToTop>
-			<Routes>
-				<Route path='*' element={<Page404 />} />
-				<Route path='/' element={<Home />} />
-				<Route path='/403' element={<Page403 />} />
-				<Route path='/term' element={<Terms />} />
-				<Route path='/about' element={<About />} />
-				<Route path='/admin' element={<Admin />} />
-				<Route path='/login' element={<Login />} />
-				<Route path='/search' element={<SearchResults />} />
-				<Route path='/contact' element={<Contact />} />
-				<Route path='/register' element={<Register />} />
-				<Route path='/products' element={<AllProducts />} />
-				<Route path='/account/:id' element={<User />} />
-				<Route path='/products/:id' element={<Product />} />
-				<Route path='/category/:id' element={<Category />} />
-				<Route path='/forgot-password' element={<ForgotPassword />} />
-			</Routes>
-		</ScrollToTop>
-	);
+    return (
+        <ScrollToTop>
+            <Routes>
+                <Route path='*' element={<Page404 />} />
+                <Route path='/' element={<Home />} />
+                <Route path='/403' element={<Page403 />} />
+                <Route path='/cart' element={<Cart />} />
+                <Route path='/term' element={<Terms />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/admin' element={<Admin />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/search' element={<SearchResults />} />
+                <Route path='/contact' element={<Contact />} />
+                <Route path='/checkout' element={<Checkout />} />
+                <Route path='/register' element={<Register />} />
+                <Route path='/products' element={<AllProducts />} />
+                <Route path='/account/:id' element={<User />} />
+                <Route path='/products/:id' element={<Product />} />
+                <Route path='/category/:id' element={<Category />} />
+                <Route path='/forgot-password' element={<ForgotPassword />} />
+            </Routes>
+        </ScrollToTop>
+    );
 };
 
 export default Router;

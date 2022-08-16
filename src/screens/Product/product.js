@@ -42,7 +42,6 @@ const Product = () => {
                     <title>{param.id} &#9702; Brogemway</title>
                 )}
             </Helmet>
-            <Header />
 
             {status === 'loading' && (
                 <div className='spinner-border text-secondary' role='status'>

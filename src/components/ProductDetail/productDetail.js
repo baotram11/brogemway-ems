@@ -2,18 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectProduct } from '../../store/slices/productSlice';
-import { CurrencyConverter } from '../../utils/CurrencyConverter';
-import {
-    fetchCategories,
-    selectAllCategories,
-    selectStatusCats,
-} from '../../store/slices/categorySlice';
+import { CurrencyConverter } from '../../utils/currencyConverter';
+import { fetchCategories, selectAllCategories, selectStatusCats } from '../../store/slices/categorySlice';
 import ImageSlider from '../ImageSlider/imageSlider';
 import NavSlider from '../NavSlider/navSlider';
+import Header from '../../navigations/Header/header';
 
 const ProductDetail = (props) => {
     const dispatch = useDispatch();
     const [count, setCount] = useState(1);
+    const [cartItems, setCartItems] = useState(2);
     const [showMessage, setShowMessage] = useState(false);
     const [product] = useSelector(selectProduct);
 
@@ -29,6 +27,11 @@ const ProductDetail = (props) => {
             setCount(rawValue);
             setShowMessage(false);
         }
+    };
+
+    const handleAddToCart = () => {
+        console.log(cartItems);
+        setCartItems(count)
     };
     const breadcrumb = {
         title: product.ProName,
@@ -51,6 +54,9 @@ const ProductDetail = (props) => {
     });
     return (
         <div>
+            {console.log(cartItems)}
+            <Header {...{cartItems}} />
+
             <NavSlider {...breadcrumb} />
 
             <div className='py-5 product_image_area section-padding40'>
@@ -82,17 +88,8 @@ const ProductDetail = (props) => {
                                 <ul className='list'>
                                     {categories[product.CatID - 1] ? (
                                         <li>
-                                            <Link
-                                                className='link active'
-                                                to={`/category/${product.CatID}`}
-
-                                            >
-                                                <span>Danh mục:</span>{' '}
-                                                {
-                                                    categories[
-                                                        product.CatID - 1
-                                                    ].CatName
-                                                }
+                                            <Link className='link active' to={`/category/${product.CatID}`}>
+                                                <span>Danh mục:</span> {categories[product.CatID - 1].CatName}
                                             </Link>
                                         </li>
                                     ) : null}
@@ -102,46 +99,12 @@ const ProductDetail = (props) => {
                                         </Link>
                                     </li>
                                 </ul>
-                                {/* <p>{product.Description}</p> */}
-                                <p>
-                                    Gi&agrave;y thể thao đế thấp Tread Slick
-                                    m&agrave;u trắng / vải cotton nhiều
-                                    m&agrave;u của Alexander McQueen c&oacute;
-                                    phần cổ tương phản, mũi gi&agrave;y
-                                    tr&ograve;n, đ&iacute;nh ren ph&iacute;a
-                                    trước, kh&oacute;a k&eacute;o ở g&oacute;t
-                                    v&agrave; đế cao su chunky. <br />
-                                    C&oacute; nguồn gốc từ Savile Row, Alexander
-                                    McQueen kết hợp di sản may đo của Anh với
-                                    tinh thần nổi loạn r&otilde; rệt. Dưới sự
-                                    quản l&yacute; của Sarah Burton - người
-                                    đ&atilde; tạo ra tầm nh&igrave;n l&atilde;ng
-                                    mạn của ri&ecirc;ng m&igrave;nh trong khi
-                                    vẫn duy tr&igrave; một g&oacute;c cạnh
-                                    khi&ecirc;u kh&iacute;ch - ng&ocirc;i
-                                    nh&agrave; tiếp tục g&acirc;y ấn tượng với
-                                    bộ trang phục kh&ocirc;ng lỗi, những bản in
-                                    r&ugrave;ng rợn v&agrave; d&ograve;ng
-                                    gi&agrave;y thể thao tuy&ecirc;n bố đặc
-                                    trưng.
-                                </p>
-                                <p>Đặc điểm:</p>{' '}
-                                <ul>
-                                    {' '}
-                                    <li>G&oacute;t: 5,5 cm;</li>{' '}
-                                    <li>Nền: 4 cm;</li>{' '}
-                                    <li>
-                                        B&ecirc;n ngo&agrave;i: 100% cotton,
-                                        L&oacute;t: 100% da, Đế: 100% cao su
-                                    </li>{' '}
-                                    <li>Sản xuất tại &Yacute;</li>{' '}
-                                </ul>
+
+                                <td dangerouslySetInnerHTML={{ __html: product.Description }} />
+
                                 <div className='card_area'>
                                     <div className='product_count d-inline-block'>
-                                        <span
-                                            className='inumber-decrement px-2'
-                                            style={{ cursor: 'pointer' }}
-                                        >
+                                        <span className='inumber-decrement px-2' style={{ cursor: 'pointer' }}>
                                             <i
                                                 className='fa-solid fa-minus'
                                                 onClick={() => {
@@ -157,16 +120,11 @@ const ProductDetail = (props) => {
                                             min={0}
                                             max={10}
                                         />
-                                        <span
-                                            className='number-increment px-2'
-                                            style={{ cursor: 'pointer' }}
-                                        >
+                                        <span className='number-increment px-2' style={{ cursor: 'pointer' }}>
                                             <i
                                                 className='fa-solid fa-plus'
                                                 onClick={() => {
-                                                    setCount(
-                                                        parseInt(count) + 1
-                                                    );
+                                                    setCount(parseInt(count) + 1);
                                                 }}
                                             ></i>
                                         </span>
@@ -179,8 +137,7 @@ const ProductDetail = (props) => {
                                                 paddingLeft: '20px',
                                             }}
                                         >
-                                            *Bạn được mua từ 1 đến tối đa 10 sản
-                                            phẩm
+                                            *Bạn được mua từ 1 đến tối đa 10 sản phẩm
                                         </span>
                                     ) : null}
                                     <div className='add_to_cart'>
@@ -191,16 +148,14 @@ const ProductDetail = (props) => {
                                                 style={{
                                                     textDecoration: 'none',
                                                 }}
+                                                onClick={handleAddToCart}
                                             >
                                                 Thêm vào giỏ hàng
                                             </Link>
                                         </span>
                                         <span>
                                             <Link to='#' className='like_us'>
-                                                <i
-                                                    className='fa fa-heart-o'
-                                                    aria-hidden='true'
-                                                ></i>
+                                                <i className='fa fa-heart-o' aria-hidden='true'></i>
                                             </Link>
                                         </span>
                                     </div>

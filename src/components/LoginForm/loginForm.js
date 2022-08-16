@@ -13,7 +13,7 @@ import {
 import ForgotPassword from '../GetCodeForm/getCodeForm';
 import Alert from '../Alert/alert';
 
-import AuthContext from '../../context/authContext';
+import AuthContext from '../../contexts/authContext';
 import Cookies from 'js-cookie';
 import { Navigate } from 'react-router-dom';
 

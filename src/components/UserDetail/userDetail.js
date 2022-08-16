@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAccountById, selectAccount, selectStatusFetchById } from '../../store/slices/accountSlice';
 import { selectCurrentUser } from '../../store/slices/authSlice';
 
-import AuthContext from '../../context/authContext';
+import AuthContext from '../../contexts/authContext';
 import { useContext } from 'react';
 import jwt from 'jwt-decode';
 
@@ -65,7 +65,7 @@ const UserDetail = () => {
 	useEffect(() => {
 		if (account) setRawAccount(account.account);
 		console.log(rawAccount);
-	});
+	},[]);
 
 	const breadcrumb = {
 		title: account.account.Name,
