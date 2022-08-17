@@ -17,99 +17,110 @@ import { ListGroup } from 'react-bootstrap';
 
 import ManagedCategory from '../../components/ManagedCategory/managedCategory';
 import CategoryContextProvider from '../../contexts/categoryContext';
+import ManagedProduct from '../../components/ManagedProduct/managedProduct';
+import ProductContextProvider from '../../contexts/productContext';
 
 const Admin = () => {
-    const navigate = useNavigate();
-    const currUser = useSelector(selectCurrentUser);
-    const { authToken, userName } = useContext(AuthContext);
-    const [admin, setAdmin] = useState(null);
+	const navigate = useNavigate();
+	const currUser = useSelector(selectCurrentUser);
+	const { authToken, userName } = useContext(AuthContext);
+	const [admin, setAdmin] = useState(null);
 
-    useEffect(() => {
-        if (authToken) {
-            const rawUser = jwt(authToken);
-            setAdmin({
-                accessToken: authToken,
-                account: {
-                    Name: userName,
-                    ID: rawUser.id,
-                    Level: rawUser.role,
-                    accessToken: authToken,
-                },
-            });
-        } else if (currUser) {
-            setAdmin(currUser);
-        } else {
-            setAdmin(null);
-            navigate('/403');
-        }
-    }, [setAdmin, authToken, currUser, userName, navigate]);
+	useEffect(() => {
+		if (authToken) {
+			const rawUser = jwt(authToken);
+			setAdmin({
+				accessToken: authToken,
+				account: {
+					Name: userName,
+					ID: rawUser.id,
+					Level: rawUser.role,
+					accessToken: authToken,
+				},
+			});
+		} else if (currUser) {
+			setAdmin(currUser);
+		} else {
+			setAdmin(null);
+		}
+	}, [setAdmin, authToken, currUser, userName, navigate]);
 
-    return (
-        <div className='admin-srceen'>
-            <Helmet>
-                <meta charSet='utf-8' />
-                <title>Quản lý &#9702; Brogemway</title>
-            </Helmet>
+	return (
+		<div className='admin-srceen'>
+			<Helmet>
+				<meta charSet='utf-8' />
+				<title>Quản lý &#9702; Brogemway</title>
+			</Helmet>
 
-            <Header />
+			<Header />
 
-            {admin ? (
-                <div className='admin-area py-5'>
-                    <Tab.Container bsPrefix='list-group-tabs' defaultActiveKey='#managed-product' transition={false}>
-                        <Row
-                            style={{
-                                marginLeft: '10%',
-                                marginRight: '3%',
-                                marginTop: '1%',
-                                marginBottom: '10%',
-                            }}
-                        >
-                            <Col sm={2}>
-                                <ListGroup bsPrefix='list-group'>
-                                    <ListGroup.Item bsPrefix='list-group-item' action href='#managed-product'>
-                                        Quản lý sản phẩm
-                                    </ListGroup.Item>
-                                    <ListGroup.Item action href='#managed-category'>
-                                        Quản lý danh mục
-                                    </ListGroup.Item>
-                                    <ListGroup.Item action href='#managed-user'>
-                                        Quản lý người dùng
-                                    </ListGroup.Item>
-                                    <ListGroup.Item action href='#managed-order'>
-                                        Quản lý đơn hàng
-                                    </ListGroup.Item>
-                                    <ListGroup.Item action href='#revenue-statistics'>
-                                        Thống kê doanh thu
-                                    </ListGroup.Item>
-                                </ListGroup>
-                            </Col>
-                            <Col>
-                                <Tab.Content transition={false}>
-                                    <Tab.Pane eventKey='#managed-product'></Tab.Pane>
+			{admin ? (
+				<div className='admin-area py-5'>
+					<Tab.Container
+						bsPrefix='list-group-tabs'
+						defaultActiveKey='#managed-product'
+						transition={false}>
+						<Row
+							style={{
+								marginLeft: '10%',
+								marginRight: '3%',
+								marginTop: '1%',
+								marginBottom: '10%',
+							}}>
+							<Col sm={2}>
+								<ListGroup bsPrefix='list-group'>
+									<ListGroup.Item bsPrefix='list-group-item' action href='#managed-product'>
+										Quản lý sản phẩm
+									</ListGroup.Item>
+									<ListGroup.Item action href='#managed-category'>
+										Quản lý danh mục
+									</ListGroup.Item>
+									<ListGroup.Item action href='#managed-user'>
+										Quản lý người dùng
+									</ListGroup.Item>
+									<ListGroup.Item action href='#managed-order'>
+										Quản lý đơn hàng
+									</ListGroup.Item>
+									<ListGroup.Item action href='#revenue-statistics'>
+										Thống kê doanh thu
+									</ListGroup.Item>
+								</ListGroup>
+							</Col>
+							<Col>
+								<Tab.Content transition={false}>
+									<Tab.Pane eventKey='#managed-product'>
+										<ProductContextProvider>
+											<ManagedProduct />
+										</ProductContextProvider>
+									</Tab.Pane>
 
-                                    <Tab.Pane eventKey='#managed-category'>
-                                        <CategoryContextProvider>
-                                            <ManagedCategory />
-                                        </CategoryContextProvider>
-                                    </Tab.Pane>
+									<Tab.Pane eventKey='#managed-category'>
+										<CategoryContextProvider>
+											<ManagedCategory />
+										</CategoryContextProvider>
+									</Tab.Pane>
 
-                                    <Tab.Pane eventKey='#managed-user'>
-                                        <ManagedUser {...admin} />
-                                    </Tab.Pane>
+									<Tab.Pane eventKey='#managed-user'>
+										<ManagedUser {...admin} />
+									</Tab.Pane>
 
-                                    <Tab.Pane eventKey='#managed-order'>Tính năng đang được phát triển.</Tab.Pane>
+									<Tab.Pane eventKey='#managed-order'>
+										Tính năng đang được phát triển.
+									</Tab.Pane>
 
-                                    <Tab.Pane eventKey='#revenue-statistics'>Tính năng đang được phát triển.</Tab.Pane>
-                                </Tab.Content>
-                            </Col>
-                        </Row>
-                    </Tab.Container>
-                </div>
-            ) : null}
+									<Tab.Pane eventKey='#revenue-statistics'>
+										Tính năng đang được phát triển.
+									</Tab.Pane>
+								</Tab.Content>
+							</Col>
+						</Row>
+					</Tab.Container>
+				</div>
+			) : null}
 
-            <Footer />
-        </div>
-    );
+			<Footer />
+		</div>
+	);
 };
 
 export default Admin;

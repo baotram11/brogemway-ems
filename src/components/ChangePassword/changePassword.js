@@ -1,9 +1,21 @@
+import { Alert } from 'react-bootstrap';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateAccount } from '../../store/slices/accountSlice';
 
-const ChangePassword = () => {
+const ChangePassword = (props) => {
+	const currentUser = props.rawAccount;
+	const accessToken = props.accessToken;
+
+	const dispatch = useDispatch();
+
 	const [oldPasswordType, setOldPasswordType] = useState('password');
 	const [newPasswordType, setNewPasswordType] = useState('password');
 	const [confirmNewPasswordType, setConfirmNewPasswordType] = useState('password');
+
+	const [oldPassword, setOldPassword] = useState();
+	const [newPassword, setNewPassword] = useState();
+	const [confirmNewPassword, setConfirmNewPassword] = useState();
 
 	const toggleOldPassword = () => {
 		if (oldPasswordType === 'password') {
@@ -27,9 +39,30 @@ const ChangePassword = () => {
 		setConfirmNewPasswordType('password');
 	};
 
+	const [show, setShow] = useState(false);
+	const handleChangePassword = () => {
+		console.log('ChangePassword');
+		const update = {
+			accessToken: accessToken,
+			Account: currentUser,
+			Update: { Password: newPassword },
+		};
+		console.log(update);
+		
+		dispatch(updateAccount(update));
+
+		setShow(true);
+		setTimeout(() => {
+			setShow(false);
+		}, 5000);
+	};
+
 	return (
 		<div id='account-change-password'>
 			<div className='card-body pb-2'>
+				<Alert show={show} variant='success' className='w-100 mt-3 ml-3 '>
+					Thay đổi mật khẩu thành công!
+				</Alert>
 				<div className='form-group'>
 					<label className='form-label'>Mật khẩu hiện tại</label>
 					<div className='input-group'>
@@ -42,8 +75,9 @@ const ChangePassword = () => {
 							placeholder='Nhập mật khẩu cũ'
 							autoComplete='off'
 							// value={form.password}
-							// onChange={onUpdateField}
-							// onBlur={onBlurField}
+							onChange={(e) => {
+								setOldPassword(e.target.value);
+							}} // onBlur={onBlurField}
 						/>
 
 						<button
@@ -72,7 +106,9 @@ const ChangePassword = () => {
 							placeholder='Nhập mật khẩu mới'
 							autoComplete='off'
 							// value={form.password}
-							// onChange={onUpdateField}
+							onChange={(e) => {
+								setNewPassword(e.target.value);
+							}}
 							// onBlur={onBlurField}
 						/>
 
@@ -102,8 +138,9 @@ const ChangePassword = () => {
 							placeholder='Nhập lại mật khẩu mới'
 							autoComplete='off'
 							// value={form.password}
-							// onChange={onUpdateField}
-							// onBlur={onBlurField}
+							onChange={(e) => {
+								setConfirmNewPassword(e.target.value);
+							}} // onBlur={onBlurField}
 						/>
 
 						<button
@@ -126,7 +163,7 @@ const ChangePassword = () => {
 						width: '640px',
 						maxWidth: '100%',
 					}}>
-					<button type='button' className='btn-customer'>
+					<button type='button' className='btn-customer' onClick={handleChangePassword}>
 						Lưu thay đổi
 					</button>
 					<hr className='border-light m-0' />

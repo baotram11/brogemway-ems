@@ -26,6 +26,8 @@ const UserDetail = () => {
 	const currentUser = useSelector(selectCurrentUser);
 	const { authToken } = useContext(AuthContext);
 
+	const [accessToken, setAccessToken] = useState(null);
+
 	const [rawAccount, setRawAccount] = useState({
 		Address: 'Nhập địa chỉ của bạn',
 		CreatedAt: new Date().toLocaleString(),
@@ -42,6 +44,7 @@ const UserDetail = () => {
 		async function fetchData() {
 			if (statusFetchById !== 'succeeded' || !account) {
 				if (currentUser) {
+					setAccessToken(currentUser.accessToken);
 					return dispatch(
 						fetchAccountById({
 							id: currentUser.account._id,
@@ -49,6 +52,7 @@ const UserDetail = () => {
 						})
 					);
 				} else if (authToken) {
+					setAccessToken(authToken);
 					const rawUser = jwt(authToken);
 					return dispatch(
 						fetchAccountById({
@@ -63,19 +67,24 @@ const UserDetail = () => {
 	}, []);
 
 	useEffect(() => {
+		if (currentUser) {
+			setAccessToken(currentUser.accessToken);
+		} else if (authToken) {
+			setAccessToken(authToken);
+		}
 		if (account) setRawAccount(account.account);
 		console.log(rawAccount);
-	},[]);
+	}, []);
 
 	const breadcrumb = {
 		title: account.account.Name,
 		titlePath: '#',
 	};
 
-	const [imageSrc, setImageSrc] = useState('');
-	const getData = (imageSrc) => {
-		setImageSrc(imageSrc);
-	};
+	// const [imageSrc, setImageSrc] = useState('');
+	// const getData = (imageSrc) => {
+	// 	setImageSrc(imageSrc);
+	// };
 
 	return (
 		<div className='user-detail'>
@@ -196,7 +205,7 @@ const UserDetail = () => {
 													Cho phép định dạng JPG, GIF hoặc PNG. Kích thước tối đa là
 													800K
 												</div>
-												<CreateAvatar getData={getData} />
+												{/* <CreateAvatar getData={getData} /> */}
 											</div>
 										</div>
 									</div>
@@ -204,7 +213,7 @@ const UserDetail = () => {
 							</Tab.Pane>
 
 							<Tab.Pane eventKey='#account-change-password'>
-								<ChangePassword />
+								<ChangePassword {...{ rawAccount, accessToken }} />
 							</Tab.Pane>
 
 							<Tab.Pane eventKey='#account-orders'>Tính năng đang được phát triển.</Tab.Pane>
@@ -215,7 +224,6 @@ const UserDetail = () => {
 
 							<Tab.Pane eventKey='#account-connections'>
 								<div id='account-connections'>
-                                    
 									<div className='card-body'>
 										<button type='button' className='btn btn-google'>
 											Liên kết với <strong>Google</strong>
