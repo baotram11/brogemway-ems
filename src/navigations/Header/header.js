@@ -154,7 +154,7 @@ const Header = (props) => {
                                             to={`/account/${user.account.ID}`}
                                             style={{ textDecoration: 'none' }}
                                         >
-                                            {user.account.Name}
+                                            Hi, {user.account.Name} !
                                         </Link>
                                         <UserMenu {...user} />
                                     </li>

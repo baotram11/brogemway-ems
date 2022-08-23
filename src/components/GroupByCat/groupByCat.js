@@ -6,6 +6,7 @@ import {
     selectAllCategories,
     selectStatusCats,
 } from '../../store/slices/categorySlice';
+import NavSlider from '../NavSlider/navSlider';
 import ProductList from '../ProductList/productList';
 
 const GroupByCat = (props) => {
@@ -16,8 +17,24 @@ const GroupByCat = (props) => {
 
     console.log(status, allProducts, errorMessage);
 
+    const [showBreadcrumb, setShowBreadcrumb] = useState(false);
+    const [title, setTitle] = useState('Danh sách sản phẩm');
+    const breadcrumb = {
+        title: title,
+        titlePath: '#',
+        parentTitle: 'Sản phẩm',
+        parentTitlePath: 'products',
+    };
+
     useEffect(() => {
         console.log(catId);
+        if (catId !== 0) {
+            setTitle(categories.filter((cat) => cat.CatID === catId)[0].CatName);
+            setShowBreadcrumb(true);
+        }
+    }, [categories, catId]);
+
+    useEffect(() => {
         if (status === 'idle' && catId > 0) {
             dispatch(fetchProductsByCatID(catId));
         }
@@ -30,18 +47,20 @@ const GroupByCat = (props) => {
     }, [status, setShowError]);
 
     return (
-        <div className='category-area'>
-            <div className='container'>
-                <div className='row pb-4'>
-                    <div className='col-xl-7 col-lg-8 col-md-10'>
-                        <div className='section-tittle mb-50'>
-                            <h2 className='mb-3'>Danh sách sản phẩm</h2>
-                            <p>Bạn có thể lựa chọn xem theo danh mục, lọc theo giá tiền và thương hiệu.</p>
+        <>
+            {showBreadcrumb ? <NavSlider style={{ width: '100%' }} {...breadcrumb} /> : null}
+            <div className='category-area'>
+                <div className='container'>
+                    <div className='row pb-4'>
+                        <div className='col-xl-7 col-lg-8 col-md-10'>
+                            <div className='section-tittle mb-50'>
+                                <h2 className='mb-3'>Danh sách sản phẩm</h2>
+                                <p>Bạn có thể lựa chọn xem theo danh mục, lọc theo giá tiền và thương hiệu.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className='row'>
-                    {/* <div className='col-xl-3 col-lg-3 col-md-4'>
+                    <div className='row'>
+                        {/* <div className='col-xl-3 col-lg-3 col-md-4'>
                         <div className='row'>
                             <div className='col-12 pt-3'>
                                 <div className='small-tittle mb-45'>
@@ -101,44 +120,45 @@ const GroupByCat = (props) => {
                             </div>
                         </div>
                     </div> */}
-                    {/* <div className='col-xl-9 col-lg-9 col-md-8 '>
+                        {/* <div className='col-xl-9 col-lg-9 col-md-8 '>
                         <div className='row py-3'> */}
-                    <div className='col-lg-12 py-3'>
-                        <div className='count-job mb-35'>
-                            <span style={{ fontWeight: 'bold' }}>
-                                {allProducts ? allProducts.length : 0} sản phẩm được tìm thấy
-                            </span>
-                            <div className='select-cat'>
-                                <span style={{ width: '172px' }}>Sắp xếp theo: </span>
-                                <select className='form-select' name='select'>
-                                    <option key={'new'} value={''}>
-                                        Sản phẩm mới nhất
-                                    </option>
-                                    <option key={'ascending'} value={''}>
-                                        Giá tăng dần
-                                    </option>
-                                    <option key={'descending'} value={''}>
-                                        Giá giảm dần
-                                    </option>
-                                </select>
+                        <div className='col-lg-12 py-3'>
+                            <div className='count-job mb-35'>
+                                <span style={{ fontWeight: 'bold' }}>
+                                    {allProducts ? allProducts.length : 0} sản phẩm được tìm thấy
+                                </span>
+                                <div className='select-cat'>
+                                    <span style={{ width: '172px' }}>Sắp xếp theo: </span>
+                                    <select className='form-select' name='select'>
+                                        <option key={'new'} value={''}>
+                                            Sản phẩm mới nhất
+                                        </option>
+                                        <option key={'ascending'} value={''}>
+                                            Giá tăng dần
+                                        </option>
+                                        <option key={'descending'} value={''}>
+                                            Giá giảm dần
+                                        </option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    {showError ? (
+                        <h2 style={{ color: 'red' }}>Không tìm thấy sản phẩm phù hợp.</h2>
+                    ) : (
+                        <ProductList
+                            {...{
+                                catId,
+                                status,
+                                allProducts,
+                                errorMessage,
+                            }}
+                        />
+                    )}
                 </div>
-                {showError ? (
-                    <h2 style={{ color: 'red' }}>Không tìm thấy sản phẩm phù hợp.</h2>
-                ) : (
-                    <ProductList
-                        {...{
-                            catId,
-                            status,
-                            allProducts,
-                            errorMessage,
-                        }}
-                    />
-                )}
             </div>
-        </div>
+        </>
     );
 };
 

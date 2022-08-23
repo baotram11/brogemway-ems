@@ -54,7 +54,6 @@ const ProductDetail = (props) => {
     });
     return (
         <div>
-            {console.log(cartItems)}
             <Header {...{cartItems}} />
 
             <NavSlider {...breadcrumb} />

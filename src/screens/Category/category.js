@@ -12,7 +12,7 @@ import {
 
 import GroupByCat from '../../components/GroupByCat/groupByCat';
 import Footer from '../../navigations/Footer/footer';
-import NavSlider from '../../components/NavSlider/navSlider';
+// import NavSlider from '../../components/NavSlider/navSlider';
 import Header from '../../navigations/Header/header';
 
 const Category = () => {
@@ -35,12 +35,7 @@ const Category = () => {
         }
         clag.current = param.id;
     }, [param.id, status, dispatch, allProducts]);
-    const breadcrumb = {
-        title: 'Danh mục',
-        titlePath: '#',
-        parentTitle: 'Sản phẩm',
-        parentTitlePath: 'products',
-    };
+
     return (
         <div className='category-groupBy'>
             <Helmet>
@@ -49,8 +44,6 @@ const Category = () => {
             </Helmet>
 
             <Header />
-
-            <NavSlider {...breadcrumb} />
 
             {status === 'loading' && (
                 <div className='spinner-border text-secondary' role='status'>
@@ -61,11 +54,9 @@ const Category = () => {
                 <h5 style={{ color: 'red' }}>{errorCats}</h5>
             )}
             {status === 'succeeded' && (
-                <div className='container'>
                     <GroupByCat
                         {...{ catId, status, allProducts, errorMessage }}
                     />
-                </div>
             )}
 
             <Footer />
